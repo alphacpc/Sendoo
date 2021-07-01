@@ -1,0 +1,133 @@
+.RegisterContainer{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #293B5F;
+    
+    img{
+        background-color: yellow;
+        border-radius: 50%;
+        box-shadow: 4px 2px 4px 2px #000;
+        margin-bottom: 40px;
+    }
+
+    .goHome{
+        position: absolute;
+        left: 50px;
+        top: 50px;
+
+
+        .goHomeLink{
+            background-color: #FFC107;
+            color: #000;
+            padding: 4px;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: "Montserrat";
+            font-size: 14px;
+            align-items: center;
+            display: flex;
+            width: 72px;
+            justify-content: space-around;
+            text-decoration: none;
+        }
+    }
+
+    form#RegisterForm{
+
+        padding: 44px 40px;
+        width: 40%;
+        z-index: 9999;
+        background-color: white;
+        margin-top: -110px;
+    
+
+        .RegisterFormGroup{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            width: 100%;
+            .RegisterFormGroupItem{
+                flex: 1;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 0 40px 0 0;
+                input{
+                    background-color: transparent;
+                    border: transparent;
+                    border-bottom: 1px solid #293B5F;
+                    outline: 0;
+                    padding: 4px 0;
+                    font-family: sans-serif;
+                    font-size: 12px;
+                    width: 100%;
+                    color: #293B5F;
+                    letter-spacing: 1px;
+                    margin-left: 20px;
+                }
+                
+            }
+        }
+
+        .Password{
+            display: flex;
+            flex-direction: column;
+
+            .RegisterFormGroupItem{
+                margin-bottom: 20px;
+                display: flex;
+                flex-direction: row !important;
+
+                input{
+                    border-color: transparent;
+                    border-radius: 30px;
+                    outline: 0;
+                    padding: 10px 14px;
+                    font-family: sans-serif;
+                    font-size: 16px;
+                    box-shadow: 0 4px 4px 0 #000;
+                }
+            }
+
+        }
+
+        .btnSave{
+            button{
+                float: right;
+                background-color: yellow;
+                font-weight: bold;
+                font-size: 14px;
+                letter-spacing: 2px;
+                padding: 14px 20px;
+                border: transparent;
+                margin-right: 50px;
+                width: 140px;
+                cursor: pointer;
+                transition: all ease .3s;
+                letter-spacing: 1px;
+                box-shadow: 4px 8px 12px 0 #000000;
+
+            }
+
+            button:hover{
+                transform: scale(.9,.9);
+            }
+        }
+
+        .signup p{
+            color: #000000;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+
+            #link{
+                color:#F05;
+                text-decoration: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.mainContainer{
+    background: rgb(230, 226, 226);
+    display: flex;
+
+
+    .mainContentLeft{
+        flex: 1;
+
+    }
+    .mainContentRight{
+        flex: 4;
+
+
+        .mainContentSection{
+            background: white;
+            margin: 40px;
+            height: 85vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+    }
+}

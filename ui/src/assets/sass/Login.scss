@@ -1,0 +1,101 @@
+.LoginContainer{
+    background-color: #343A40;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .goHome{
+        position: absolute;
+        left: 50px;
+        top: 50px;
+
+
+        .goHomeLink{
+            background-color: #FFC107;
+            color: #000;
+            padding: 4px;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: "Montserrat";
+            font-size: 14px;
+            align-items: center;
+            display: flex;
+            width: 72px;
+            justify-content: space-around;
+            text-decoration: none;
+        }
+    }
+    
+    .LoginForm{
+        background-color: #ffffff;
+        width: 340px !important;
+        padding: 30px 20px;
+        border-radius: 4px;
+
+
+        .LoginImage{
+            margin-bottom: 20px;
+            text-align: center;
+            
+            img{
+                background-color: yellow;
+                border: 1px solid transparent;
+                border-radius: 50%;
+            }
+        }
+
+
+        .LoginFormGroup{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+
+
+            input{
+                border: transparent;
+                background-color: #dad6d6;
+                padding: 14px  20px;
+                font-size: 12px;
+                outline: 0;
+                font-family: sans-serif;
+                letter-spacing: 1px;
+                border-radius: 40px;
+            }
+
+            button.bntLogin{
+                padding: 14px;
+                margin-bottom: 10px;
+                text-transform: uppercase;
+                font-weight: bold;
+                border: transparent;
+                border-radius: 20px;
+                background-color: #000000;
+                color: #ffffff;
+                letter-spacing: 2px;
+                cursor: pointer;
+                transition: all ease .3s;
+            }
+
+            button.bntLogin:hover{
+                transform: scale(.9,.9);
+                box-shadow: 0 4px 4px 0 #000000;
+            }
+
+            button.bntLogin:focus{
+                background-color: #000000;
+                color: #ffffff;
+            }
+
+            .notCompte{
+                font-size: 12px;
+            }
+            .notCompte a{
+                color: #f05;
+                font-weight: bold;
+                text-decoration: none;
+            }
+        }
+    }
+}

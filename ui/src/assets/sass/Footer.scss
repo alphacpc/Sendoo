@@ -1,0 +1,46 @@
+footer{
+    background-color: #111111;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: sans-serif;
+
+    .myName{
+        font-size: 28px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        padding-bottom: 4px;
+        border-bottom: 2px solid #4ed883 ;
+    }
+
+    .SocialLinks{
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    #Discord{
+        color: rgb(59, 59, 124);
+    }
+
+    #Github{
+        color: white;
+    }
+
+    #Linkedin{
+        color: rgb(10, 52, 97);
+    }
+
+    #Whatsapp{
+        color: green;
+    }
+
+    #Youtube{
+        color: red;
+    }
+
+}

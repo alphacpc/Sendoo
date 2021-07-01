@@ -1,0 +1,18 @@
+.Banniere{
+    height: 550px;
+    // background: linear-gradient(to left, #000, transparent), url("../images/banniere/banniere1.png") no-repeat;
+    background: url("../images/banniere/banniere4.png") no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2{
+   color: #FFF;
+   font-size: 44px;
+   font-family: "Sans-serif";     
+}
+
