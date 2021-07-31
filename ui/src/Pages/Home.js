@@ -2,8 +2,9 @@ import '../assets/sass/Home.scss';
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import Category from '../components/Category';
-import ListCategory from '../components/ListCategory';
-
+import ListLinkCategory from '../components/ListLinkCategory';
+import SendooBanner from '../components/SendooBanner';
+import Footer from '../components/Footer';
 
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
 
             <Header/>
 
-            <ListCategory />
+            <ListLinkCategory />
 
             <Category />
 
@@ -22,7 +23,15 @@ export default function Home() {
             <Category />
 
             <Category />
+            
+            <SendooBanner/>
 
+
+            <Category />
+
+            <Category />
+
+            <Footer/>
                 
         </div>
     )

@@ -1,26 +1,37 @@
 footer{
-    background-color: #111111;
     height: 140px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    // justify-content: center;
     color: #fff;
     font-family: sans-serif;
+    margin-top: 80px;
 
-    .myName{
-        font-size: 28px;
-        font-weight: bold;
-        letter-spacing: 1px;
-        padding-bottom: 4px;
-        border-bottom: 2px solid #4ed883 ;
-    }
 
     .SocialLinks{
-        text-align: center;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        margin-top: 10px;
+        padding: 40px;
+        width: 100%;
+        background-color: gainsboro;
+    }
+
+    .TextFooter{
+        background-color: rgb(2, 2, 49);
+        width: 100%;
+        text-align: center;
+        padding: 40px;
+    }
+    .TextFooter p{
+        margin-bottom: 0;
+    }
+    
+    #Discord,#Github,#Linkedin,#Whatsapp,#Youtube{
+        text-decoration: none;
+        font-size: 20px;
+        letter-spacing: 1px;
     }
 
     #Discord{
@@ -29,18 +40,22 @@ footer{
 
     #Github{
         color: white;
+        text-decoration: none;
     }
 
     #Linkedin{
         color: rgb(10, 52, 97);
+        text-decoration: none;
     }
 
     #Whatsapp{
         color: green;
+        text-decoration: none;
     }
 
     #Youtube{
         color: red;
+        text-decoration: none;
     }
 
 }

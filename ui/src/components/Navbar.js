@@ -14,14 +14,17 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
   },
   appBar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
+    //borderBottom: `1px solid ${theme.palette.divider}`,
   },
   toolbar: {
     flexWrap: 'wrap',
     backgroundColor: '#ffffff',
+    borderBottom: `1px solid ${theme.palette.divider}`,
+
   },
   link: {
     margin: theme.spacing(1, 1.5),
+    textDecoration:'none !important',
   },
 
 }));
@@ -53,8 +56,8 @@ export default function Header() {
             </nav>
 
             <div>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}><PersonAddOutlinedIcon/> Inscription</Link>
-              <Link variant="button" color="textPrimary" href="#" className={classes.link}><PermIdentityOutlinedIcon/> Connexion</Link>
+            <Link variant="button" color="textPrimary" href="/register" className={classes.link}><PersonAddOutlinedIcon/> Inscription</Link>
+              <Link variant="button" color="textPrimary" href="/login" className={classes.link}><PermIdentityOutlinedIcon/> Connexion</Link>
             </div>
           
           </Toolbar>

@@ -14,6 +14,7 @@ import ImgPost from './../assets/images/post6.jpg';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import { Link } from 'react-router-dom';
 
 
 
@@ -25,7 +26,8 @@ const Category = () => {
     return (
         <Container maxWidth="lg">
           <div className={classes.root}>
-            <h1>Education</h1>
+            <h1 className={classes.titleCategory}>Education</h1>
+            
             <Grid container spacing={3}>
 
                 <Grid item xs={4} className={classes.gridItem}>
@@ -93,7 +95,7 @@ const Category = () => {
             </Grid>
 
             <div className={classes.showAllPosts}>
-              <span>Voir plus<ArrowRightAltIcon /></span>
+              <Link to="/category" className={classes.LinkSeeMore}>Voir plus<ArrowRightAltIcon /></Link>
             </div>
 
           </div>
@@ -109,6 +111,13 @@ export default Category;
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+    },
+    titleCategory:{
+      marginTop: 80,
+      marginBottom: 20,
+      fontWeight: 'bold',
+      fontSize: 28,
+      fontFamily: 'sans-serif',
     },
     paper: {
       padding: theme.spacing(2),
@@ -135,4 +144,11 @@ const useStyles = makeStyles((theme) => ({
     showAllPosts:{
       textAlign:'center'
     },
+    LinkSeeMore:{
+      backgroundColor:'#f05',
+      padding: '15px 40px',
+      textDecoration: 'none',
+      color: '#fff',
+    },
+    
   }));
