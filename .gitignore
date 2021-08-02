@@ -3,4 +3,6 @@
 # dependencies
 Backend/node_modules
 ui/node_modules
+ui/src/Secret.js
+
 

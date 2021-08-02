@@ -24,7 +24,7 @@ const Category = () => {
 
     
     return (
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" >
           <div className={classes.root}>
             <h1 className={classes.titleCategory}>Education</h1>
             
