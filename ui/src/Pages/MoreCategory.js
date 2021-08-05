@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Navbar from "../components/Navbar";
 import ListLinkCategory from '../components/ListLinkCategory';
 import { Container } from '@material-ui/core';
@@ -28,7 +28,25 @@ import Pagination from '@material-ui/lab/Pagination';
 const MoreCategory = () => {
 
     const classes = useStyles();
-    const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27];
+    const [loading, setLoading] = useState(false);
+    const [page, setPage] = useState(1);
+    const POST_PER_PAGE = 9;
+
+    const [totalPages, setTotalPages] = useState(0);
+    
+    const startIndex = (page - 1) * POST_PER_PAGE;
+    const selectedPost = cards.slice(startIndex, startIndex + POST_PER_PAGE);
+
+
+    const handleClickPagination = (num) => {
+      setPage(num)
+    }
+
+    useEffect(()=>{
+      setTotalPages(Math.ceil(cards.length / POST_PER_PAGE))
+    },[])
+
 
     return (
         <React.Fragment >
@@ -37,14 +55,13 @@ const MoreCategory = () => {
 
             <ListLinkCategory />
 
-            <Container  className={classes.ContainerElement}>
-                <Breadcrumb/>
 
-                
+            <Container  className={classes.ContainerElement}>
+                <Breadcrumb/>    
 
                 
                 <Grid container spacing={4}>
-            {cards.map((card) => (
+            {selectedPost.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
@@ -71,7 +88,7 @@ const MoreCategory = () => {
 
 
           <div className={classes.pagination}>
-             <Pagination count={10} color="secondary" />
+             <Pagination count={totalPages}   color="secondary" />
         </div>
 
 

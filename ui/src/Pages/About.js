@@ -53,37 +53,95 @@ export default function About() {
         <div className="AboutContainer">
             <Navbar/>
            
-           <div style={{background:`url(${Banniere}) no-repeat`, height:540}}/>
+           <div style={{background:`url(${Banniere}) no-repeat`, height:500}}/>
 
             <Container>
-                <div style={{marginTop:-80, backgroundColor:'#ffffff', padding: 20}}>
-                    <Typography variant="h3" component="h3">A propos de nous</Typography>
-                    <Typography variant="p" component="span">{text}</Typography>
-                    <Link>Ecrivez-nous</Link>
-                    <div>
-                        <Typography variant="h4" component="h4">Nos coordonnees</Typography>
+                <div style={{marginTop:-140, backgroundColor:'#ffffff', padding: 20}}>
+                    
+                    <Typography variant="h3" style={classes.TitleAbout} component="h3">A propos de nous</Typography>
+                    <Typography variant="p" style={classes.TextAbout} component="span">{text}</Typography>
+                    
+                    
+                    <div style={classes.Coords}>
+                        {/* <Typography variant="h4" style={classes.TitleCoords} component="h4">Nos coordonnees</Typography> */}
 
                         <Grid container spacing={2}>
                             <Grid item xs={12} md={4}>
-                                <Typography>Numero de telephone</Typography>
-                                <PhoneIphoneOutlinedIcon/>
+                                <Typography style={classes.TitleCoord}>
+                                    <PhoneIphoneOutlinedIcon/>
+                                    Numero de telephone
+                                </Typography>
+                                <Typography>+221 33 333 33 33</Typography>
                             </Grid>
+
                             <Grid Typography xs={12} md={4}>
-                                <Typography>Adresse email</Typography>
-                                <MailOutlineOutlinedIcon/>
+                                <Typography style={classes.TitleCoord}>
+                                    <MailOutlineOutlinedIcon/>
+                                    Adresse email
+                                </Typography>
+                                <Typography>infos@contact-sendoo.sn</Typography>
                             </Grid>
+
                             <Grid Typography xs={12} md={4}>
-                                <Typography>Siege</Typography>
-                                {/* <AddLocationAltOutlinedIcon/> */}
-                                <LocationOnOutlinedIcon/>
+                                <Typography style={classes.TitleCoord}>
+                                    <LocationOnOutlinedIcon/>
+                                    Siege
+                                </Typography>
+                                <Typography>Avenue Nelson MANDELA, rue Cheikh anta DIOP</Typography>
                             </Grid>
+
                         </Grid>
 
                     </div>
+
+                    <div style={{textAlign:'center'}}><Link style={classes.LinkContact}>Ecrivez-nous</Link></div>
+
                 </div>                
             </Container>
 
             <Footer/>
         </div>
     )
+}
+
+
+const classes = {
+    TitleAbout:{
+        textAlign:'center',
+        fontWeight: 'bold',
+        fontSize: 44,
+        textTransform: 'uppercase',
+        margin: '40px 0'
+    },
+    TextAbout:{
+        heightLine: 2,
+        fontSize: 18,
+        color: '#444444',
+        marginBottom: 40,
+        textAlign:'center'
+    },
+    Coords:{
+        margin: '80px 0',
+    },
+    TitleCoord:{
+        textTransform:'uppercase',
+        fontSize: 22,
+        fontWeight: 'bold',
+        letterSpacing: 0.5,
+    },
+
+    LinkContact:{
+        backgroundColor:'green',
+        padding: '18px 80px',
+        color:'#ffffff',
+        fontSize: 20,
+        textTransform: 'uppercase',
+        letterSpacing: 1,
+        textDecoration: 'none',
+        cursor: 'pointer',
+        '&:hover, &:focus': {
+            backgroundColor: 'yellow',
+            boxShadow: '0 4px 4px 0 #000',
+        },
+    }
 }

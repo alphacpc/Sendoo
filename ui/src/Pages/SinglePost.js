@@ -13,15 +13,10 @@ import { makeStyles } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 
@@ -73,48 +68,39 @@ const SinglePost = () => {
 
                 <div className={classes.root}>
                   <Grid container spacing={3}>
+                    
                     <Grid item xs={2}>
-                    <div className={classes.divAuthor}>
-                      <Avatar alt="Alpha diallo" className={classes.avatar}  src={thomas} />
-                      <Typography variant="span" component="h5">Thomas Sankara</Typography>
-                      <Typography variant="span" component="p">Homme d'Etat</Typography>
-                    </div>
+                      <div className={classes.divAuthor}>
+                        <Avatar alt="thomas_sankara" className={classes.avatar}  src={thomas} />
+                        <Typography variant="span" component="h5">Thomas Sankara</Typography>
+                        <Typography variant="span" component="p">Homme d'Etat</Typography>
+                      </div>
                     </Grid>
 
                     <Grid item xs={10}>
-                      <div className="postContent">
+
+                      <div className={classes.postContent}>  
                         <div className={classes.postTitleDate}>
                           <Typography variant='span' component='h1'>Titre de l'article</Typography>
-                          <Typography variant='span' component='p'>{new Date().toLocaleDateString()}</Typography>
+                          <Typography variant='span' component='h5'>{new Date().toLocaleDateString()}</Typography>
                         </div>
-                        <div className="postText">
-                          
-                          <Typography variant='p' component='p'>
-                            {text}
-                          </Typography>
-                          <Typography variant='p' component='p'>
-                            {text}
-                          </Typography>
-
+                        
+                        <div className={classes.postTextContent}>  
+                          <Typography variant='p' component='p'>{text}</Typography>
+                          <Typography variant='p' component='p'>{text}</Typography>
                         </div>
                       </div>
 
                       <div className={classes.notes}>
                         <Box component="fieldset" mb={3} borderColor="transparent">
                           <Typography variant='span' component="h3">Note(s)</Typography>
-                          <Rating
-                            name="simple-controlled"
-                            value={value}
-                            onChange={(event, newValue) => {
-                              setValue(newValue);
-                            }}
-                          />
+                          <Rating name="simple-controlled" value={value}
+                                  onChange={(event, newValue) => {
+                                    setValue(newValue); }}/>
                         </Box>
                       </div>
 
-
                     </Grid>
-
                   </Grid>
                 </div>
 
@@ -126,38 +112,20 @@ const SinglePost = () => {
                     {cards.map((card) => (
                     <Grid item key={card} xs={12} sm={6} md={4}>
                         <Card className={classes.card}>
-                        <CardMedia
-                            className={classes.cardMedia}
-                            image={myImg2}
-                            title="Image title"
-    
-                        />
+                        <CardMedia className={classes.cardMedia} image={myImg2} title="Image title" />
                         <CardContent className={classes.cardContent}>
-                            <Typography gutterBottom variant="h5" component="h1">
-                            Titre de l'article
-                            </Typography>
-                            <Typography>
-                            This is a media card. You can use this section to describe the content.
-                            </Typography>
+                            <Typography gutterBottom variant="span" component="h4"> Titre de l'article </Typography>
+                            <Typography className={classes.limitTextPostRelated}> This is a media card. You can use this section to describe the content.</Typography>
                         </CardContent>
                         
                         </Card>
                     </Grid>
                     ))}
                 </Grid>
-                
-            
-                
 
-                
-
-
-            
             </Container>
 
-
             <Footer/>
-
         </div>
     )
 }
@@ -169,59 +137,61 @@ export default SinglePost;
 
 const useStyles = makeStyles((theme) => ({
 
-    icon: {
-        marginRight: theme.spacing(2),
-      },
-      heroContent: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(8, 0, 6),
-      },
-      heroButtons: {
-        marginTop: theme.spacing(4),
-      },
-      cardGrid: {
-        paddingTop: theme.spacing(8),
-        paddingBottom: theme.spacing(8),
-      },
-      card: {
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        boxShadow: '0 4px 5px 0 #000',
-      },
-      cardMedia: {
-        paddingTop: '56.25%', // 16:9
-      },
-      cardContent: {
-        flexGrow: 1,
-      },
-      footer: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(6),
-      },
+  divAuthor:{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  
+  avatar:{
+    height: 80,
+    width:80,
+    marginBottom: 10,
+  },
+
+
+  postTitleDate:{
+    display:'flex',
+    alignItems:'center',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+
+
+  postTextContent:{
+    lineHeight: 2,
+    fontSize: 18,
+    textAlign: 'justify',
+  },
+
+      
+  cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
+
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    boxShadow: '0 4px 5px 0 #000',
+  },
+
+  cardMedia: {
+    paddingTop: '56.25%', // 16:9
+  },
+
+  cardContent: {
+    flexGrow: 1,
+  },
+  
+  limitTextPostRelated:{
+    color: '#444',
+  },
     
 
+  notes:{
+    marginTop: 20,
+  }
 
-      divAuthor:{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      },
-      avatar:{
-        height: 80,
-        width:80,
-        boxShadow: '0 4px 4px 0 #000',
-        marginBottom: 10,
-      },
-
-      postTitleDate:{
-        display:'flex',
-        alignItems:'center',
-        justifyContent: 'space-between',
-        marginBottom: 20,
-      },
-
-      notes:{
-        marginTop: 20,
-      }
 }));

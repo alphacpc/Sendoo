@@ -27,6 +27,8 @@ const Category = () => {
         <Container maxWidth="lg" >
           <div className={classes.root}>
             <h1 className={classes.titleCategory}>Education</h1>
+            <p className={classes.paragraphCategory}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum facilis ducimus repudiandae tempora voluptates ipsa, voluptatum iste beatae accusantium similique cumque officia voluptatem, quaerat magnam nisi totam incidunt nihil dolor?
+            Nihil nisi nulla, repellat blanditiis sequi amet ipsum tenetur quis temporibus laudantium eaque inventore odio harum, ipsa, tempora asperiores in nam voluptatum distinctio! Cumque quos laborum odit quod soluta veritatis?</p>
             
             <Grid container spacing={3}>
 
@@ -114,10 +116,16 @@ const useStyles = makeStyles((theme) => ({
     },
     titleCategory:{
       marginTop: 80,
-      marginBottom: 20,
-      fontWeight: 'bold',
+      marginBottom: 22,
+      fontWeight: '600',
       fontSize: 28,
-      fontFamily: 'sans-serif',
+      textTransform:'uppercase',
+      letterSpacing: 1
+      // fontFamily: 'sans-serif',
+    },
+    paragraphCategory:{
+      textAlign: 'center',
+      fontSize: 17,
     },
     paper: {
       padding: theme.spacing(2),
@@ -149,6 +157,13 @@ const useStyles = makeStyles((theme) => ({
       padding: '15px 40px',
       textDecoration: 'none',
       color: '#fff',
+      border:'1px solid transparent',
+      transition: 'all ease .3s',
+      '&:hover':{
+        color:'#fff !important',
+        borderRadius: '30px',
+        boxShadow: '0 4px 4px 0 #000',
+      }
     },
     
   }));
