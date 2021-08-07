@@ -23,7 +23,7 @@ const ListCategory = () => {
 
 
     return (
-        <div>
+        <div id="ListCategoryLink">
             <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
                 {sections.map((section) => (
                 <Link
@@ -49,8 +49,8 @@ const useStyles = makeStyles((theme) => ({
     toolbarSecondary: {
       justifyContent: 'space-between',
       overflowX: 'auto',
-     /*backgroundColor: '#04001E',*/
-      backgroundColor:'rgb(2, 2, 49)',
+     backgroundColor: '#04001E',
+    //   backgroundColor:'rgb(2, 2, 49)',
       height: '100px',
     },
     toolbarLink: {

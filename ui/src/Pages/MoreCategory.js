@@ -39,8 +39,11 @@ const MoreCategory = () => {
     const selectedPost = cards.slice(startIndex, startIndex + POST_PER_PAGE);
 
 
-    const handleClickPagination = (num) => {
-      setPage(num)
+    const handleClickPagination = (e,num) => {
+      console.log(e.target.innerText)
+      setPage(e.target.innerText);
+      document.querySelectorAll('ul li .MuiPaginationItem-page').forEach((btn)=> btn.classList.remove('Mui-selected'));
+      e.target.classList.add('Mui-selected');
     }
 
     useEffect(()=>{
@@ -70,9 +73,7 @@ const MoreCategory = () => {
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h1">
-                      Titre de l'article
-                    </Typography>
+                    <Typography gutterBottom variant="span" component="h4">La nature</Typography>
                     <Typography>
                       This is a media card. You can use this section to describe the content.
                     </Typography>
@@ -88,7 +89,7 @@ const MoreCategory = () => {
 
 
           <div className={classes.pagination}>
-             <Pagination count={totalPages}   color="secondary" />
+             <Pagination count={totalPages} page={page} onClick={(page) => handleClickPagination(page)}  color="secondary" />
         </div>
 
 

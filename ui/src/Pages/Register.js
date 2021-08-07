@@ -1,7 +1,7 @@
 import "./../assets/sass/Register.scss";
 import Logo from "./../assets/images/Logo/Sendoo4.png";
 import { Link } from "react-router-dom";
-import { FaArrowLeft, FaUser, FaEnvelope, FaKey, FaLock, FaUsers  } from "react-icons/fa";
+import { FaHome, FaUser, FaEnvelope, FaKey, FaLock, FaUsers  } from "react-icons/fa";
 
 
 
@@ -10,7 +10,7 @@ export default function Register() {
         <div className="RegisterContainer">
             
             <div className="goHome">
-                <Link to="/" className="goHomeLink"><FaArrowLeft/>Accueil</Link>
+                <Link to="/" className="goHomeLinke"><FaHome size={20} color='yellow'/></Link>
             </div>
 
             <img src={Logo} alt="" />
@@ -53,7 +53,7 @@ export default function Register() {
                 </div>
 
                 <div className="signup">
-                    <p>Vous avez deja un compte ! <Link to="connexion" id="link">se connecter</Link></p>
+                    <p>Vous avez deja un compte ! <Link to="login" id="link">se connecter</Link></p>
                 </div>
            </form>
 

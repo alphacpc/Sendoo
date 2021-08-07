@@ -1,7 +1,7 @@
 import "./../assets/sass/Login.scss";
 import Logo from "./../assets/images/Logo/Sendoo4.png";
 import { Link } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 
 
 
@@ -10,7 +10,7 @@ export default function Login() {
         <div className="LoginContainer">
             
             <div className="goHome">
-                <Link to="/" className="goHomeLink"><FaArrowLeft/>Accueil</Link>
+                <Link to="/" className="goHomeLinke"><FaHome size={24} color="yellow"/></Link>
             </div>
 
             <form className="LoginForm">
@@ -37,7 +37,7 @@ export default function Login() {
                 <div className="LoginFormGroup">
                     <button className="bntLogin">se connecter</button>
                     
-                    <p className="notCompte">Vous n'avez pas de compte! <Link to="/inscription">Cree un compte</Link></p>
+                    <p className="notCompte">Vous n'avez pas de compte! <Link to="/register">Cree un compte</Link></p>
                 </div>
 
             </form>
