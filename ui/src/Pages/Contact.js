@@ -8,8 +8,15 @@ import MapStyles from "./../MapStyle";
 
 import KEY_API  from "./../Secret";
 
+
+import PhoneIphoneOutlinedIcon from '@material-ui/icons/PhoneIphoneOutlined';
+import MailOutlineOutlinedIcon from '@material-ui/icons/MailOutlineOutlined';
+import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
+
+
 import {GoogleMap, withScriptjs, withGoogleMap, Marker} from 'react-google-maps';
 
+import './../assets/sass/Contact.scss';
 
 function Map(){
     return(
@@ -47,40 +54,102 @@ export default function Contact() {
             </div>
             
 
-            <Container align="center">
+            <Container className='contactMain'>
 
-                <div style={{maxWidth: '80%', backgroundColor:'#FFF', marginTop:40, boxShadow:'8px 8px 8px 0 #000',
-            paddingTop: 40}}>
-                    <Typography variant="h3" align="center" style={{textTransform:'uppercase'}}>Contactez-nous</Typography>
+                <div className="FormContact">
+                    <form>
+                        <div className="panelHeader">
+                            <h1>Ecrivez-nous</h1>
+                        </div>
 
-                    <CardContent>
-                        <form>
-                        <Grid xs={12} sm={6} style={{margin:'20px 0'}} item>
-                            <TextField label="Prenom" placeholder="Entrer votre prenom" variant="outlined" fullWidth required/>
-                        </Grid>
+                        <div className="Fullname">
+                            <input type="text" placeholder="Entrer votre prenom" required/>
+                            <input type="text" placeholder="Entrer votre nom de famille" required/>
+                        </div>
 
-                        <Grid xs={12} sm={6} style={{margin:'20px 0'}} item>
-                            <TextField label="Nom de famille" placeholder="Entrer votre nom de famille" variant="outlined" fullWidth required/>
-                        </Grid>
+                        <input type="email" placeholder="Entrer votre adresse email" required/>
+                        
+                        <textarea placeholder="Entrer votre message" required></textarea>
 
-                        <Grid xs={12} sm={12} style={{margin:'20px 0'}} item>
-                            <TextField label="Adresse e-mail" placeholder="Entrer votre adresse e-mail" variant="outlined" fullWidth required/>
-                        </Grid>
+                        <div className="DivBtnSubmit">
+                            <input type="submit" value="Envoyer" />
+                        </div>
+                    </form>
 
-                        <Grid xs={12} sm={12} style={{margin:'20px 0'}} item>
-                            <TextField label="Votre message" multiline rows={5} placeholder="Ecrivez votre message ..." variant="outlined" fullWidth required/>
-                        </Grid>
-
-                        <Grid xs={12} sm={4} item>
-                            <Button type="submit" variant="contained" color="secondary">Envoyez</Button>
-                        </Grid>
-                        </form>
-                    </CardContent>
                 </div>
+
+
+                <div className="DetailContact">
+
+                <Grid item>
+                                <Typography style={classes.TitleCoord}>
+                                    <LocationOnOutlinedIcon/>
+                                    Siege
+                                </Typography>
+                                <Typography>Avenue Nelson MANDELA, rue Cheikh anta DIOP</Typography>
+                            </Grid>
+
+                            <Grid item>
+                                <Typography style={classes.TitleCoord}>
+                                    <PhoneIphoneOutlinedIcon/>
+                                    Numero de telephone
+                                </Typography>
+                                <Typography>+221 33 333 33 33</Typography>
+                            </Grid>
+
+                            <Grid item>
+                                <Typography style={classes.TitleCoord}>
+                                    <MailOutlineOutlinedIcon/>
+                                    Adresse email
+                                </Typography>
+                                <Typography>infos@contact-sendoo.sn</Typography>
+                            </Grid>
+
+                            
+
+                </div>
+               
             </Container>
 
             <Footer />
 
         </div>
     )
+}
+
+
+
+const classes = {
+
+
+   
+    TitleCoord:{
+        textTransform:'uppercase',
+        fontSize: 22,
+        fontWeight: 'bold',
+        letterSpacing: 0.5,
+    },
+
+    LinkContact:{
+        backgroundColor:'green',
+        padding: '18px 80px',
+        color:'#ffffff',
+        fontSize: 20,
+        textTransform: 'uppercase',
+        letterSpacing: 1,
+        textDecoration: 'none',
+        cursor: 'pointer',
+
+        '&:hover, &:focus': {
+            backgroundColor: 'yellow',
+            boxShadow: '0 4px 4px 0 #000',
+        },
+    },
+
+
+
+
+
+
+
 }

@@ -217,6 +217,7 @@ const classes = {
     },
     MemberPicture:{
         borderRadius: '50%',
+        filter: 'grayscale(1)',
     },
     MemberName:{
         textTransform: 'uppercase',
