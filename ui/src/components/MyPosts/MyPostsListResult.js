@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from "react";
+import PropTypes from "prop-types";
 import {
   Avatar,
   Box,
@@ -11,8 +11,8 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  Typography
-} from '@material-ui/core';
+  Typography,
+} from "@material-ui/core";
 
 const MyPostsListResults = ({ customers, ...rest }) => {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
@@ -36,11 +36,18 @@ const MyPostsListResults = ({ customers, ...rest }) => {
     let newSelectedCustomerIds = [];
 
     if (selectedIndex === -1) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds, id);
+      newSelectedCustomerIds = newSelectedCustomerIds.concat(
+        selectedCustomerIds,
+        id
+      );
     } else if (selectedIndex === 0) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds.slice(1));
+      newSelectedCustomerIds = newSelectedCustomerIds.concat(
+        selectedCustomerIds.slice(1)
+      );
     } else if (selectedIndex === selectedCustomerIds.length - 1) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds.slice(0, -1));
+      newSelectedCustomerIds = newSelectedCustomerIds.concat(
+        selectedCustomerIds.slice(0, -1)
+      );
     } else if (selectedIndex > 0) {
       newSelectedCustomerIds = newSelectedCustomerIds.concat(
         selectedCustomerIds.slice(0, selectedIndex),
@@ -71,27 +78,17 @@ const MyPostsListResults = ({ customers, ...rest }) => {
                     checked={selectedCustomerIds.length === customers.length}
                     color="primary"
                     indeterminate={
-                      selectedCustomerIds.length > 0
-                      && selectedCustomerIds.length < customers.length
+                      selectedCustomerIds.length > 0 &&
+                      selectedCustomerIds.length < customers.length
                     }
                     onChange={handleSelectAll}
                   />
                 </TableCell>
-                <TableCell>
-                  Titre
-                </TableCell>
-                <TableCell>
-                  category
-                </TableCell>
-                <TableCell>
-                  Extrait
-                </TableCell>
-                <TableCell>
-                  Date de publication
-                </TableCell>
-                <TableCell>
-                  Derniere mis a jour
-                </TableCell>
+                <TableCell>Titre</TableCell>
+                <TableCell>category</TableCell>
+                <TableCell>Extrait</TableCell>
+                <TableCell>Date de publication</TableCell>
+                <TableCell>Derniere mis a jour</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -111,32 +108,21 @@ const MyPostsListResults = ({ customers, ...rest }) => {
                   <TableCell>
                     <Box
                       sx={{
-                        alignItems: 'center',
-                        display: 'flex'
+                        alignItems: "center",
+                        display: "flex",
                       }}
                     >
-                      
-                      <Typography
-                        color="textPrimary"
-                        variant="body1"
-                      >
+                      <Typography color="textPrimary" variant="body1">
                         {customer.name}
                       </Typography>
                     </Box>
                   </TableCell>
-                  <TableCell>
-                    {customer.email}
-                  </TableCell>
+                  <TableCell>{customer.email}</TableCell>
                   <TableCell>
                     {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
                   </TableCell>
-                  <TableCell>
-                      { new Date().toLocaleDateString()}
-
-                  </TableCell>
-                  <TableCell>
-                    { new Date().toLocaleDateString()}
-                  </TableCell>
+                  <TableCell>{new Date().toLocaleDateString()}</TableCell>
+                  <TableCell>{new Date().toLocaleDateString()}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -155,7 +141,5 @@ const MyPostsListResults = ({ customers, ...rest }) => {
     </Box>
   );
 };
-
-
 
 export default MyPostsListResults;

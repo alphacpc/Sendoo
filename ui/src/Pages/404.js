@@ -1,26 +1,23 @@
-import React from 'react';
-import {Container, Box, Typography} from '@material-ui/core'
+import React from "react";
+import { Container, Typography } from "@material-ui/core";
 
-import Footer from './../components/Footer';
-import Navbar from './../components/Navbar';
-import Category from './../components/Category';
-import ListLinkCategory from './../components/ListLinkCategory';
-
-
+import Footer from "./../components/Footer";
+import Navbar from "./../components/Navbar";
+import ListLinkCategory from "./../components/ListLinkCategory";
 
 const FourToFour = () => {
-    return (
-        <div>
-            <Navbar />
-            <ListLinkCategory />
+  return (
+    <div>
+      <Navbar />
+      <ListLinkCategory />
 
-            <Container>
-                <Typography>Page web introuvable</Typography>
-            </Container>
+      <Container>
+        <Typography>Page web introuvable</Typography>
+      </Container>
 
-            <Footer />
-        </div>
-    )
-}
+      <Footer />
+    </div>
+  );
+};
 
-export default FourToFour
+export default FourToFour;

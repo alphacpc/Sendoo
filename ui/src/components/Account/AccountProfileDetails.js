@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -8,64 +8,54 @@ import {
   Divider,
   Grid,
   TextField,
-  Typography
-} from '@material-ui/core';
+  Typography,
+} from "@material-ui/core";
 
 const states = [
   {
-    value: 'Dakar',
-    label: 'Dakar'
+    value: "Dakar",
+    label: "Dakar",
   },
   {
-    value: 'Accra',
-    label: 'Accra'
+    value: "Accra",
+    label: "Accra",
   },
   {
-    value: 'Ouagadougou',
-    label: 'Ouagadougou'
-  }
+    value: "Ouagadougou",
+    label: "Ouagadougou",
+  },
 ];
 
 const AccountProfileDetails = (props) => {
   const [values, setValues] = useState({
-    firstName: 'Thomas',
-    lastName: 'Sankara',
-    email: 'Thomas@contact.bf',
-    phone: '',
-    state: 'BF',
-    country: 'Burkina Faso',
-    username : 'thomas',
-    job: 'Developpeur junior',
-    adresse: '',
+    firstName: "Thomas",
+    lastName: "Sankara",
+    email: "Thomas@contact.bf",
+    phone: "",
+    state: "BF",
+    country: "Burkina Faso",
+    username: "thomas",
+    job: "Developpeur junior",
+    adresse: "",
   });
 
   const handleChange = (event) => {
     setValues({
       ...values,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
   return (
-    <form
-      autoComplete="off"
-      noValidate
-      {...props}
-    >
+    <form autoComplete="off" noValidate {...props}>
       <Box>
-
-        <Typography variant="span" component="h1">Details du compte</Typography>
+        <Typography variant="span" component="h1">
+          Details du compte
+        </Typography>
         <Divider />
         <CardContent>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+          <Grid container spacing={3}>
+            <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Prenom"
@@ -76,11 +66,7 @@ const AccountProfileDetails = (props) => {
                 variant="outlined"
               />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Nom de famille"
@@ -92,11 +78,7 @@ const AccountProfileDetails = (props) => {
               />
             </Grid>
 
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Nom d'utilisateur"
@@ -108,12 +90,7 @@ const AccountProfileDetails = (props) => {
               />
             </Grid>
 
-
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Adresse email"
@@ -124,11 +101,7 @@ const AccountProfileDetails = (props) => {
                 variant="outlined"
               />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Numero de telephone"
@@ -139,11 +112,7 @@ const AccountProfileDetails = (props) => {
                 variant="outlined"
               />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Profession"
@@ -154,12 +123,8 @@ const AccountProfileDetails = (props) => {
                 variant="outlined"
               />
             </Grid>
-            
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+
+            <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Pays"
@@ -171,11 +136,7 @@ const AccountProfileDetails = (props) => {
               />
             </Grid>
 
-            <Grid
-              item
-              md={12}
-              xs={12}
-            >
+            <Grid item md={12} xs={12}>
               <TextField
                 fullWidth
                 label="Adresse de residence"
@@ -186,10 +147,8 @@ const AccountProfileDetails = (props) => {
                 variant="outlined"
               />
             </Grid>
-
           </Grid>
         </CardContent>
-        
       </Box>
     </form>
   );

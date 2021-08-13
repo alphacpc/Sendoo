@@ -2,10 +2,6 @@ import { useState } from 'react';
 import {
   Box,
   Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
   Grid,
   TextField,
   CardActions
@@ -47,24 +43,11 @@ const SettingAccountDetails = (props) => {
   };
 
   return (
-    <form
-      autoComplete="off"
-      noValidate
-      {...props}
-    >
-      <Box>
-        <Divider />
-        <CardContent>
+    <form autoComplete="off" noValidate {...props}>
+
+      <Grid container spacing={3}>
           
-        <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+          <Grid item md={6} xs={12} >
               <TextField
                 fullWidth
                 label="Prenom"
@@ -74,12 +57,9 @@ const SettingAccountDetails = (props) => {
                 value={values.firstName}
                 variant="outlined"
               />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+          </Grid>
+            
+          <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Nom de famille"
@@ -89,13 +69,9 @@ const SettingAccountDetails = (props) => {
                 value={values.lastName}
                 variant="outlined"
               />
-            </Grid>
+          </Grid>
 
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+          <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Nom d'utilisateur"
@@ -105,14 +81,10 @@ const SettingAccountDetails = (props) => {
                 value={values.username}
                 variant="outlined"
               />
-            </Grid>
+          </Grid>
 
 
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+          <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Adresse email"
@@ -122,12 +94,9 @@ const SettingAccountDetails = (props) => {
                 value={values.email}
                 variant="outlined"
               />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+          </Grid>
+            
+          <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Numero de telephone"
@@ -137,12 +106,9 @@ const SettingAccountDetails = (props) => {
                 value={values.phone}
                 variant="outlined"
               />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+          </Grid>
+            
+          <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Profession"
@@ -152,13 +118,9 @@ const SettingAccountDetails = (props) => {
                 value={values.job}
                 variant="outlined"
               />
-            </Grid>
+          </Grid>
             
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+          <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 label="Pays"
@@ -168,13 +130,9 @@ const SettingAccountDetails = (props) => {
                 value={values.country}
                 variant="outlined"
               />
-            </Grid>
+          </Grid>
 
-            <Grid
-              item
-              md={12}
-              xs={12}
-            >
+          <Grid item md={12} xs={12}>
               <TextField
                 fullWidth
                 label="Adresse de residence"
@@ -184,25 +142,13 @@ const SettingAccountDetails = (props) => {
                 value={values.adresse}
                 variant="outlined"
               />
-            </Grid>
-
           </Grid>
 
-
-
-
-        </CardContent>
-        <Divider />
+        </Grid>
 
         <CardActions>
-      <Button
-        color="primary"
-        fullWidth
-        variant="text"
-      >
-        Ajouter une image 
-      </Button>
-    </CardActions>
+          <Button color="primary" fullWidth variant="text"> Ajouter une image </Button>
+        </CardActions>
 
 
         <Box
@@ -210,16 +156,10 @@ const SettingAccountDetails = (props) => {
             display: 'flex',
             justifyContent: 'flex-end',
             p: 2
-          }}
-        >
-          <Button
-            color="primary"
-            variant="contained"
-          >
-            Enregistrer
-          </Button>
+          }}>
+          <Button color="primary" variant="contained">Enregistrer</Button>
         </Box>
-      </Box>
+        
     </form>
   );
 };

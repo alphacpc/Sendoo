@@ -14,6 +14,23 @@ const UserSchema = new mongoose.Schema({
         required : true,
         unique : true
     },
+    phone:{
+        type : String,
+        required : false,
+        unique : true
+    },
+    job:{
+        type : String,
+        required : false
+    },
+    country:{
+        type : String,
+        required : false
+    },
+    fullAdress:{
+        type : String,
+        required : false
+    },
     email : {
         type : String,
         required : true,
