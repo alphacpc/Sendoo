@@ -25,13 +25,13 @@ function App() {
 
   window.addEventListener('scroll', ()=>{
 
-    // if(document.querySelector('HomePage')){
       if(window.scrollY > 100){
         document.getElementById('navbar-fixed').classList.add('active');
-  
-        if(window.scrollY > 1444 && document.querySelector('HomePage')){
+        console.log(window.scrollY)
+        if(window.scrollY > 1444 && document.querySelector('.HomePage') ){
+          console.log('Test nice')
           document.querySelector('.Arrow').classList.add('visible');
-        }else if(window.scrollY <= 1444 && document.querySelector('HomePage')){
+        }else if(window.scrollY <= 1444 && !document.querySelector('.HomePage')){
           document.querySelector('.Arrow').classList.remove('visible');
         }
   

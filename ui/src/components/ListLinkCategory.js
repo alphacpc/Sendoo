@@ -48,8 +48,8 @@ const useStyles = makeStyles((theme) => ({
   toolbarSecondary: {
     justifyContent: "space-between",
     overflowX: "auto",
-    backgroundColor: "#04001E",
-    //   backgroundColor:'rgb(2, 2, 49)',
+    //backgroundColor: "#04001E",
+    backgroundColor:'#0F044C',
     height: "100px",
   },
   toolbarLink: {
