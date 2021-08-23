@@ -1,5 +1,17 @@
-div#navbar-fixed{
-    // position: fixed !important;
+#navbar-fixed.active{
+    position: fixed;
     width: 100%;
     z-index: 444;
+}
+
+.MuiSvgIcon-root.Arrow{
+    display: block;
+    transform: translateX(84px);
+    transition: all ease 4s;
+}
+
+.MuiSvgIcon-root.Arrow.visible{
+    display: block;
+    transform: translateX(0px);
+    transition: all ease 1s;
 }
