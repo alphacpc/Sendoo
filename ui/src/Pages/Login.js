@@ -8,7 +8,7 @@ export default function Login() {
     <div className="LoginContainer">
       <div className="goHome">
         <Link to="/" className="goHomeLinke">
-          <FaHome size={24} color="yellow" />
+          <FaHome size={44} color="white" />
         </Link>
       </div>
 

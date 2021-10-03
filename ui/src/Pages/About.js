@@ -1,20 +1,15 @@
-import { Container, Grid, Link, Typography } from "@material-ui/core";
+import { Container, Grid, Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 import Banniere from "./../assets/images/ban-contact.png";
-
-import PhoneIphoneOutlinedIcon from "@material-ui/icons/PhoneIphoneOutlined";
-import MailOutlineOutlinedIcon from "@material-ui/icons/MailOutlineOutlined";
-import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 
 import thomas from "./../assets/images/thomas.jpg";
 
 import {
   FaGithub,
   FaLinkedin,
-  FaWhatsapp,
-  FaYoutube,
   FaDiscord,
   FaFacebook,
   FaSlack,
@@ -85,7 +80,7 @@ export default function About() {
             <h1 style={classes.TitleAbout}>Notre Equipe</h1>
             <Grid container style={classes.DivTeam} spacing={2}>
               {Teams.map((item) => (
-                <Grid item key={item} style={classes.Member} xs={12} md={3}>
+                <Grid item key={item} className="GridMember" style={classes.Member} xs={12} md={3}>
                   <img
                     src={thomas}
                     style={classes.MemberPicture}
@@ -93,7 +88,7 @@ export default function About() {
                     height={140}
                   />
                   <span style={classes.MemberName}>Jules Burcez</span>
-                  <span style={classes.MemberJob}>Developpeur web</span>
+                  <span style={classes.MemberJob}>Developpeur Full-Stack</span>
                   <span style={classes.MemberSocialLinks}>
                     <FaGithub />
                     <FaLinkedin />
@@ -106,40 +101,9 @@ export default function About() {
             </Grid>
           </div>
 
-          {/* <div style={classes.Coords}>
-                        <Typography variant="h4" style={classes.TitleCoords} component="h4">Nos coordonnees</Typography>
-
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} md={4}>
-                                <Typography style={classes.TitleCoord}>
-                                    <PhoneIphoneOutlinedIcon/>
-                                    Numero de telephone
-                                </Typography>
-                                <Typography>+221 33 333 33 33</Typography>
-                            </Grid>
-
-                            <Grid Typography xs={12} md={4}>
-                                <Typography style={classes.TitleCoord}>
-                                    <MailOutlineOutlinedIcon/>
-                                    Adresse email
-                                </Typography>
-                                <Typography>infos@contact-sendoo.sn</Typography>
-                            </Grid>
-
-                            <Grid Typography xs={12} md={4}>
-                                <Typography style={classes.TitleCoord}>
-                                    <LocationOnOutlinedIcon/>
-                                    Siege
-                                </Typography>
-                                <Typography>Avenue Nelson MANDELA, rue Cheikh anta DIOP</Typography>
-                            </Grid>
-
-                        </Grid>
-
-                    </div> */}
 
           <div style={{ textAlign: "center" }}>
-            <Link style={classes.LinkContact}>Ecrivez-nous</Link>
+            <Link to="/contact" className="LinkContact" style={classes.LinkContact}>Ecrivez-nous</Link>
           </div>
         </div>
       </Container>
@@ -183,19 +147,16 @@ const classes = {
   },
 
   LinkContact: {
-    backgroundColor: "green",
     padding: "18px 80px",
-    color: "#ffffff",
-    fontSize: 20,
+    color: "green",
+    fontSize: 18,
     textTransform: "uppercase",
     letterSpacing: 1,
     textDecoration: "none",
     cursor: "pointer",
-
-    "&:hover, &:focus": {
-      backgroundColor: "yellow",
-      boxShadow: "0 4px 4px 0 #000",
-    },
+    border:"2px solid green",
+    borderRadius: 4,
+    transition:"all ease .3s"
   },
 
   DivTeam: {
@@ -215,7 +176,6 @@ const classes = {
     cursor: "pointer",
     boxShadow: " 0px 4px 4px 4px #ccc",
     borderRadius: "4px",
-    "&:hover": {},
   },
   MemberPicture: {
     borderRadius: "50%",

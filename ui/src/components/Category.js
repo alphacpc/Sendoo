@@ -97,7 +97,7 @@ const Category = () => {
         </Grid>
 
         <div className={classes.showAllPosts}>
-          <Link to="/category" className={classes.LinkSeeMore}>
+          <Link to="/category" name="LinkSeeMore" className={classes.LinkSeeMore}>
             Voir plus
             <ArrowRightAltIcon />
           </Link>
@@ -150,18 +150,21 @@ const useStyles = makeStyles((theme) => ({
 
   showAllPosts: {
     textAlign: "center",
+    // backgroundColor: "red",
+    padding:"40px",
+    marginTop: 40,
   },
   LinkSeeMore: {
-    backgroundColor: "#f05",
     padding: "15px 40px",
     textDecoration: "none",
-    color: "#fff",
-    border: "1px solid transparent",
+    color: "green",
+    border: "2px solid green",
+    borderRadius: 4,
     transition: "all ease .3s",
     "&:hover": {
-      color: "#fff !important",
-      borderRadius: "30px",
-      boxShadow: "0 4px 4px 0 #000",
+      backgroundColor: "green",
+      color: "#ffffff",
+      transition:"all ease .3s",
     },
   },
 }));

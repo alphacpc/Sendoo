@@ -15,7 +15,7 @@ export default function Register() {
     <div className="RegisterContainer">
       <div className="goHome">
         <Link to="/" className="goHomeLinke">
-          <FaHome size={20} color="yellow" />
+          <FaHome size={50} color="white" />
         </Link>
       </div>
 
@@ -23,7 +23,7 @@ export default function Register() {
       <form id="RegisterForm">
         <div className="RegisterFormGroup">
           <div className="RegisterFormGroupItem">
-            <FaUser />
+            <FaUser color="green" />
             <input
               type="text"
               id="firstname"
@@ -32,7 +32,7 @@ export default function Register() {
             />
           </div>
           <div className="RegisterFormGroupItem">
-            <FaUsers />
+            <FaUsers color="green" />
             <input
               type="text"
               id="lastname"
@@ -44,7 +44,7 @@ export default function Register() {
 
         <div className="RegisterFormGroup">
           <div className="RegisterFormGroupItem">
-            <FaUser />
+            <FaUser color="green" />
             <input
               type="text"
               id="username"
@@ -53,7 +53,7 @@ export default function Register() {
             />
           </div>
           <div className="RegisterFormGroupItem">
-            <FaEnvelope />
+            <FaEnvelope color="green" />
             <input
               type="email"
               id="email"
@@ -65,7 +65,7 @@ export default function Register() {
 
         <div className="RegisterFormGroup">
           <div className="RegisterFormGroupItem">
-            <FaLock />
+            <FaLock color="green" />
             <input
               type="password"
               id="mdp"
@@ -74,7 +74,7 @@ export default function Register() {
             />
           </div>
           <div className="RegisterFormGroupItem">
-            <FaKey />
+            <FaKey color="green" />
             <input
               type="password"
               id="mdpc"
@@ -90,7 +90,7 @@ export default function Register() {
 
         <div className="signup">
           <p>
-            Vous avez deja un compte !{" "}
+            Vous avez deja un compte !
             <Link to="login" id="link">
               se connecter
             </Link>

@@ -10,7 +10,7 @@
 }
 
 .Arrow{
-    background-color: #04001E;
+    background-color: green;
     color:#fff;
     position: fixed;
     bottom: 40px;
@@ -18,6 +18,7 @@
     height: 40px !important;
     width: 40px !important;
     cursor: pointer;
+    border-radius: 20px;
 }
 
 .Arrow:hover{

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import './assets/sass/FixedNavbar.scss';
+import './assets/sass/App.scss';
 
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
@@ -23,25 +24,20 @@ import FourToFour from "./Pages/404";
 
 function App() {
 
+
   window.addEventListener('scroll', ()=>{
+      const navFixedElement = document.getElementById('navbar-fixed');
+      const arrowElement = document.querySelector('.Arrow');
+      //const homePageElement = document.querySelector('.HomePage');
+
 
       if(window.scrollY > 100){
-        document.getElementById('navbar-fixed').classList.add('active');
-        console.log(window.scrollY)
-        if(window.scrollY > 1444 && document.querySelector('.HomePage') ){
-          console.log('Test nice')
-          document.querySelector('.Arrow').classList.add('visible');
-        }else if(window.scrollY <= 1444 && !document.querySelector('.HomePage')){
-          document.querySelector('.Arrow').classList.remove('visible');
-        }
-  
-      }else{
-        document.getElementById('navbar-fixed').classList.remove('active');
+        navFixedElement && navFixedElement.classList.add('active');
+        (window.scrollY > 1444 ) ? arrowElement && arrowElement.classList.add('visible') : arrowElement && arrowElement.classList.remove('visible');;
       }
-
-
-
-    // }
+      else{
+          navFixedElement && navFixedElement.classList.remove('active');
+      }
 
   })
 

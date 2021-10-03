@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #293B5F;
+    background: linear-gradient(to bottom, #1abc, greenyellow);
     
     img{
         background-color: yellow;
@@ -15,25 +15,8 @@
 
     .goHome{
         position: absolute;
-        left: 50px;
-        top: 50px;
-
-
-        .goHomeLink{
-            background-color: #FFC107;
-            color: #000;
-            padding: 4px;
-            letter-spacing: 1px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-family: "Montserrat";
-            font-size: 14px;
-            align-items: center;
-            display: flex;
-            width: 72px;
-            justify-content: space-around;
-            text-decoration: none;
-        }
+        left: 5%;
+        top: 5%;
     }
 
     form#RegisterForm{
@@ -42,7 +25,7 @@
         width: 40%;
         z-index: 9999;
         background-color: white;
-        margin-top: -110px;
+        margin-top: -6%;
     
 
         .RegisterFormGroup{
@@ -98,35 +81,40 @@
         .btnSave{
             button{
                 float: right;
-                background-color: yellow;
                 font-weight: bold;
                 font-size: 14px;
                 letter-spacing: 2px;
                 padding: 14px 20px;
-                border: transparent;
-                margin-right: 50px;
+                border: 2px solid green;
+                color: green;
+                border-radius: 4px;
                 width: 140px;
                 cursor: pointer;
                 transition: all ease .3s;
                 letter-spacing: 1px;
-                box-shadow: 4px 8px 12px 0 #000000;
-
+                outline: 0;
             }
 
             button:hover{
-                transform: scale(.9,.9);
+                background-color: green;
+                color: #ffffff;
             }
         }
 
         .signup p{
-            color: #000000;
-            font-weight: bold;
+            color: #333333;
+            // font-weight: bold;
             font-size: 14px;
-            letter-spacing: 1px;
+            // letter-spacing: 1px;
 
             #link{
-                color:#F05;
+                color: green;
+                font-weight: bold;
                 text-decoration: none;
+                outline: 0;
+                :hover{
+                    border-bottom: 2px solid green !important;
+                }
             }
         }
     }

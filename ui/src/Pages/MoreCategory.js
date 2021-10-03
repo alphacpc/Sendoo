@@ -2,21 +2,17 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import ListLinkCategory from "../components/ListLinkCategory";
 import { Container } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Footer from "../components/Footer";
 import Breadcrumb from "../components/Breadcrumb";
 import { makeStyles } from "@material-ui/core";
 
 import myImg from "./../assets/images/post10.jpg";
 
-import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 
 import Pagination from "@material-ui/lab/Pagination";
@@ -49,6 +45,11 @@ const MoreCategory = () => {
     setTotalPages(Math.ceil(cards.length / POST_PER_PAGE));
   }, []);
 
+  const handleSinglePost = (e) => {
+    window.location.replace('http://localhost:3000/single-post');
+  }
+
+
   return (
     <React.Fragment>
       <Navbar />
@@ -60,20 +61,25 @@ const MoreCategory = () => {
 
         <Grid container spacing={4}>
           {selectedPost.map((card) => (
-            <Grid item key={card} xs={12} sm={6} md={4}>
+            <Grid item key={card} xs={12} className="PostItem" sm={6} md={4}>
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
                   image={myImg}
                   title="Image title"
+                  onClick={handleSinglePost}
                 />
                 <CardContent className={classes.cardContent}>
-                  <Typography gutterBottom variant="span" component="h4">
-                    La nature
-                  </Typography>
-                  <Typography>
+                  <Typography   gutterBottom 
+                                variant="h5" 
+                                component="h4"
+                                onClick={handleSinglePost}
+                                className={classes.Title}>La nature</Typography>
+                  <Typography   gutterBottom 
+                                variant="body1" 
+                                component="p">
                     This is a media card. You can use this section to describe
-                    the content.
+                    the content added next time.
                   </Typography>
                 </CardContent>
               </Card>
@@ -85,7 +91,7 @@ const MoreCategory = () => {
           <Pagination
             count={totalPages}
             page={page}
-            onClick={(page) => handleClickPagination(page)}
+            onClick={ () => handleClickPagination(page)}
             color="secondary"
           />
         </div>
@@ -125,9 +131,14 @@ const useStyles = makeStyles((theme) => ({
   },
   cardMedia: {
     paddingTop: "56.25%", // 16:9
+    cursor:"pointer",
   },
   cardContent: {
     flexGrow: 1,
+  },
+  Title:{
+    fontWeight: "bold",
+    cursor: "pointer"
   },
   footer: {
     backgroundColor: theme.palette.background.paper,

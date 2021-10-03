@@ -49,17 +49,22 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     overflowX: "auto",
     //backgroundColor: "#04001E",
-    backgroundColor:'#0F044C',
-    height: "100px",
+    //backgroundColor:'#0F044C',
+    background:'linear-gradient(to left, orangered, #f05)',
+    height: "50px",
   },
   toolbarLink: {
     padding: theme.spacing(1),
-    flexShrink: 0,
+    // flexShrink: 0,
     textTransform: "uppercase",
     fontWeight: "bold",
-    fontFamily: "Sans-serif",
+    fontFamily: "arial",
     letterSpacing: "1px",
     color: "#fff",
     textDecoration: "none",
+    "&:hover":{
+      textDecoration: "none",
+      color:"#000"
+    }
   },
 }));

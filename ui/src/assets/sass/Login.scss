@@ -1,5 +1,5 @@
 .LoginContainer{
-    background-color: #343A40;
+    background: linear-gradient(to bottom, #1abc, greenyellow);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -9,39 +9,20 @@
         position: absolute;
         left: 50px;
         top: 50px;
-
-
-        .goHomeLink{
-            background-color: #FFC107;
-            color: #000;
-            padding: 4px;
-            letter-spacing: 1px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-family: "Montserrat";
-            font-size: 14px;
-            align-items: center;
-            display: flex;
-            width: 72px;
-            justify-content: space-around;
-            text-decoration: none;
-        }
     }
     
     .LoginForm{
         background-color: #ffffff;
-        width: 340px !important;
-        padding: 30px 20px;
+        width: 360px !important;
+        padding: 30px;
         border-radius: 4px;
 
 
         .LoginImage{
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             text-align: center;
-            
             img{
                 background-color: yellow;
-                border: 1px solid transparent;
                 border-radius: 50%;
             }
         }
@@ -52,39 +33,36 @@
             flex-direction: column;
             margin-bottom: 20px;
 
-
             input{
                 border: transparent;
                 background-color: #dad6d6;
-                padding: 14px  20px;
+                padding: 20px  20px;
                 font-size: 12px;
                 outline: 0;
                 font-family: sans-serif;
                 letter-spacing: 1px;
                 border-radius: 40px;
+                margin-bottom: 5px;
             }
 
             button.bntLogin{
                 padding: 14px;
-                margin-bottom: 10px;
-                text-transform: uppercase;
+                margin-bottom: 20px;
+                // text-transform: uppercase;
                 font-weight: bold;
-                border: transparent;
-                border-radius: 20px;
-                background-color: #000000;
-                color: #ffffff;
-                letter-spacing: 2px;
+                border: 2px solid green;
+                border-radius: 40px;
+                color: green;
+                letter-spacing: 1px;
                 cursor: pointer;
                 transition: all ease .3s;
+                outline: 0;
+                
+                
             }
 
             button.bntLogin:hover{
-                transform: scale(.9,.9);
-                box-shadow: 0 4px 4px 0 #000000;
-            }
-
-            button.bntLogin:focus{
-                background-color: #000000;
+                background-color: green;
                 color: #ffffff;
             }
 
@@ -92,7 +70,7 @@
                 font-size: 12px;
             }
             .notCompte a{
-                color: #f05;
+                color: green;
                 font-weight: bold;
                 text-decoration: none;
             }
