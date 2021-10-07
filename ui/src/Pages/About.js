@@ -69,7 +69,7 @@ export default function About() {
 
       <Container>
         <div style={{ backgroundColor: "#ffffff", padding: 20 }}>
-          <Typography variant="h3" style={classes.TitleAbout} component="h3">
+          <Typography variant="h3" style={classes.TitleAbout} className="titleAbout" component="h3">
             A propos de nous
           </Typography>
           <Typography variant="p" style={classes.TextAbout} component="span">

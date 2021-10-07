@@ -50,7 +50,8 @@ const useStyles = makeStyles((theme) => ({
     overflowX: "auto",
     //backgroundColor: "#04001E",
     //backgroundColor:'#0F044C',
-    background:'linear-gradient(to left, orangered, #f05)',
+    // background:'linear-gradient(to left, orangered, #f05)',
+    background:"#d2d2d2",
     height: "50px",
   },
   toolbarLink: {
@@ -62,9 +63,12 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "1px",
     color: "#fff",
     textDecoration: "none",
+    transition:"all ease .3s",
     "&:hover":{
       textDecoration: "none",
-      color:"#000"
+      color:"#ffffff",
+      backgroundColor: "#f05",
+      lineHeight:"80px",
     }
   },
 }));
