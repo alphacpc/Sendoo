@@ -12,29 +12,33 @@ const UserSchema = new mongoose.Schema({
     username:{
         type : String,
         required : true,
-        unique : true
+        unique : true,
     },
     phone:{
         type : String,
         required : false,
-        unique : true
+        default: "",
     },
     job:{
         type : String,
-        required : false
+        required : false,
+        default: "",
     },
     country:{
         type : String,
-        required : false
+        required : false,
+        default: "",
     },
     fullAdress:{
         type : String,
-        required : false
+        required : false,
+        default: "",
     },
     email : {
         type : String,
         required : true,
-        unique : true
+        unique : true,
+        index: true
     },
     password : {
         type : String,
@@ -42,7 +46,8 @@ const UserSchema = new mongoose.Schema({
     },
     profilePic:{
         type : String,
-        default : ""
+        default : "",
+        required: false
     }
 },
 { timestamps : true })

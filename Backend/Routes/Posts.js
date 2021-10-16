@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const Post = require("../Models/Post");
-const User = require("../Models/User");
 
 // CREATIONT POST
 router.post("/", async (req, res) => {

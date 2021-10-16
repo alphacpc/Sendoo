@@ -8,12 +8,21 @@ const categoriesRoute = require("./Routes/Category");
 
 const multer = require("multer");
 
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static("public"));
 
 mongoose.connect('mongodb://localhost:27017/Sendoo',{
     useNewUrlParser: true, 
     useUnifiedTopology: true,
-    useCreateIndex: true,
+    //useCreateIndex: true,
+
+    // useCreatendex: true, 
+    // useFindAndModify: false, 
+    // useNewUrlParser: true, 
+    //useUnifiedTopology: true 
+
 }).then(console.log("Connexion avec succès au base de données"))
 .catch(error => console.log(error));
 
@@ -37,6 +46,6 @@ app.use("/api/posts", postsRoute);
 app.use("/api/categories", categoriesRoute);
 
 
-app.listen("4000",()=>{
-    console.log("Mon serveur tourne sur le port 4000");
+app.listen("4040",()=>{
+    console.log("Mon serveur tourne sur le port 4040");
 })

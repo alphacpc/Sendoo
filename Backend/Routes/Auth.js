@@ -1,14 +1,16 @@
 const router = require("express").Router();
 const User = require("../Models/User");
 const bcrypt = require('bcrypt');
+
+
 // REGISTER
 router.post("/inscription", async(req, res)=>{
     try {
 
         const saltRounds = await bcrypt.genSalt(10);
-        const hashedPass = await bcrypt.hash(req.body.password, saltRounds)
+        const hashedPass = await bcrypt.hash(req.body.password, saltRounds);
 
-        const newUser = new User({
+        const newUser = await new User({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             username: req.body.username,
@@ -16,11 +18,20 @@ router.post("/inscription", async(req, res)=>{
             password: hashedPass
         });
 
+        console.log(newUser)
+
         const user = await newUser.save();
+
+        console.log(newUser.save())
+
+        console.log("Sauvegarde de:",user)
+
         res.status(200).json(user);
     }
     catch (err){
+        console.log("Not Response from server !")
         res.status(500).json(err)
+        console.log(err)
     }
 });
 

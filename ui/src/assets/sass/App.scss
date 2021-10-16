@@ -1,0 +1,48 @@
+body{
+    margin: 0 !important;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.MuiFormLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated{
+    background-color: #ffffff !important;
+    padding: 0 10px !important;
+}
+#ListCategoryLink nav a:nth-child(4){
+    background-color: #f05;
+    color: #ffffff;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.GridMember:hover{
+    img{
+        filter: grayscale(0) !important;
+    }
+}
+
+.LinkContact:hover{
+    background-color: green;
+    color: #ffffff !important;
+}
+
+a[name="LinkSeeMore"]:hover{
+    transition: all ease .3s;
+    svg{
+        margin-left: 10px;
+        transition: all ease .3s;
+    }
+}
+
+.PostItem:hover{
+    transform: scale(.9,.9);
+    transition: all ease .3s;
+}
+
+//Page About
+h3.titleAbout {
+    position: absolute;
+    top: 30%;
+    color: #ffffff;
+}
