@@ -3,8 +3,10 @@ import axios from "axios";
 
 import "./../assets/sass/Register.scss";
 import Logo from "./../assets/images/Logo/Sendoo4.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FaHome, FaUser, FaEnvelope, FaKey, FaLock, FaUsers } from "react-icons/fa";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 
 export default function Register() {
 
@@ -20,6 +22,8 @@ export default function Register() {
   const [ signunInit, setSignunInit ] = useState(initData);
   const [error, setError ] = useState("");
   const [success, setSuccess ] = useState("");
+  const [submited, setSubmited ] = useState(false);
+  const history = useHistory();
 
   const handleChange = (e) => {
     setSignunInit({...signunInit, [e.target.id] : e.target.value })
@@ -30,6 +34,9 @@ export default function Register() {
     try{
         await axios.post("auth/inscription", signunInit);
         setSuccess("Enregistrement avec succes !");
+        await setTimeout(()=>{
+          history.push("/")      
+        },2000)
         
     }
     catch(err){
@@ -45,7 +52,9 @@ export default function Register() {
          }
     }
 
-    return <button type="submit">s'inscrire</button>;
+    return <button type="submit">s'inscrire
+      { submited ? <CircularProgress  size={10} /> : null}
+    </button>;
   }
 
 
