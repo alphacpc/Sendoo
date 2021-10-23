@@ -8,7 +8,7 @@ router.post("/inscription", async(req, res)=>{
     try {
 
         const saltRounds = await bcrypt.genSalt(10);
-        const hashedPass = await bcrypt.hash(req.body.pa, saltRounds);
+        const hashedPass = await bcrypt.hash(req.body.password, saltRounds);
 
         const newUser = await new User({
             userFname : req.body.firstname,
@@ -37,7 +37,7 @@ router.post("/inscription", async(req, res)=>{
 // LOGIN
 router.post("/connexion", async(req, res)=>{
     try{
-        const user = await User.findOne({userName: req.body.username}) || await User.findOne({userEmail: req.body.email});
+        const user = await User.findOne({userName: req.body.identifiant}) || await User.findOne({userEmail: req.body.identifiant});
         !user && res.status(400).json("email or usename incorrect !");
 
         const validated = await bcrypt.compare(req.body.password, user.userPw);

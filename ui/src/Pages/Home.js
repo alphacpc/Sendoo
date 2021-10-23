@@ -22,17 +22,21 @@ export default function Home() {
     }
   };
 
-  const [post, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-  useEffect(()=>{
-    const fetchPosts = async () =>{
-      const res = await axios("/posts");
-      console.log("salut")
-    }
-    console.log("Hello word")
-    console.log(axios.get("/posts"))
-    fetchPosts()
-  })
+  const fetchPost = async () => {
+    const res = await axios.get("/posts");
+    const datas = await res.data;
+    setPosts(datas)
+  }
+
+
+  useEffect( () => {
+    
+    fetchPost()
+
+  }, [])
+
 
 
   return (
