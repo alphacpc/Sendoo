@@ -8,21 +8,19 @@ router.post("/inscription", async(req, res)=>{
     try {
 
         const saltRounds = await bcrypt.genSalt(10);
-        const hashedPass = await bcrypt.hash(req.body.password, saltRounds);
+        const hashedPass = await bcrypt.hash(req.body.pa, saltRounds);
 
         const newUser = await new User({
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            username: req.body.username,
-            email: req.body.email,
-            password: hashedPass
+            userFname : req.body.firstname,
+            userLname: req.body.lastname,
+            userName : req.body.username,
+            userEmail : req.body.email,
+            userPw : hashedPass
         });
 
         console.log(newUser)
 
         const user = await newUser.save();
-
-        console.log(newUser.save())
 
         console.log("Sauvegarde de:",user)
 
@@ -39,13 +37,13 @@ router.post("/inscription", async(req, res)=>{
 // LOGIN
 router.post("/connexion", async(req, res)=>{
     try{
-        const user = await User.findOne({username: req.body.username}) || await User.findOne({email: req.body.email});
+        const user = await User.findOne({userName: req.body.username}) || await User.findOne({userEmail: req.body.email});
         !user && res.status(400).json("email or usename incorrect !");
 
-        const validated = await bcrypt.compare(req.body.password, user.password);
+        const validated = await bcrypt.compare(req.body.password, user.userPw);
         !validated && res.status(400).json("Password incorrect !");
 
-        const {password, ...others} = user._doc;
+        const { userPw , ...others} = user._doc;
         res.status(200).json(others);
     }
     catch(err){

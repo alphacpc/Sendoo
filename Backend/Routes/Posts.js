@@ -3,7 +3,13 @@ const Post = require("../Models/Post");
 
 // CREATIONT POST
 router.post("/", async (req, res) => {
-    const newPost = new Post(req.body);
+    const newPost = await new Post({
+        postTitle : req.body.title,
+        postBody: req.body.body,
+        postAuthor : req.body.username,
+        postPhoto : req.body.photo,
+        postCategory : req.body.categorie
+    });
 
     try{
         const savedPost = await newPost.save();
@@ -18,7 +24,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async(req, res) => {
     try{
         const post = await Post.findById(req.params.id);
-        if( post.username === req.body.username){
+        if( post.postAuthor === req.body.username){
             try{
                 const updatePost = await Post.findByIdAndUpdate(
                     req.params.id,
@@ -42,7 +48,7 @@ router.delete("/:id", async(req, res) => {
     
     try{
         const post = await Post.findById(req.params.id);
-        if( post.username === req.body.username){
+        if( post.postAuthor === req.body.username){
             try{
                 await post.delete();
                 res.status(200).json("Post a bien été supprimé...");
@@ -80,7 +86,7 @@ router.get("/", async (req, res)=>{
             posts = await Post.find({username})
         }
         else if(catName){
-            posts = await Post.find({categories:{
+            posts = await Post.find({postCategory:{
                 $in : [catName]
             }})
         }else{

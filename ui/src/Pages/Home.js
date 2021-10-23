@@ -1,3 +1,6 @@
+import React,{useState, useEffect} from "react";
+import axios from 'axios';
+
 import "../assets/sass/Home.scss";
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
@@ -18,6 +21,18 @@ export default function Home() {
       window.scrollTo(0, 10);
     }
   };
+
+  const [post, setPosts] = useState([]);
+
+  useEffect(()=>{
+    const fetchPosts = async () =>{
+      const res = await axios("/posts");
+      console.log("salut")
+    }
+    console.log("Hello word")
+    console.log(axios.get("/posts"))
+    fetchPosts()
+  })
 
 
   return (

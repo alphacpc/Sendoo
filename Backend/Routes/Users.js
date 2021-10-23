@@ -34,7 +34,7 @@ router.delete("/:id", async(req, res) => {
         try{
             const user = await User.findById(req.params.id);
             try{
-                await Post.deleteMany({username: user.username})
+                await Post.deleteMany({ postAuthor : user.username });
                 await User.findByIdAndDelete(req.params.id);
                 res.status(200).json("Utilisateur supprimé avec succès !");
                 
@@ -55,7 +55,7 @@ router.delete("/:id", async(req, res) => {
 router.get("/:id", async (req, res)=>{
     try{
         const user = await User.findById(req.params.id);
-        const {password, ...others} = user._doc;
+        const { userPw , ...others} = user._doc;
         res.status(200).json(others);
     }catch(err){
         res.status(500).json(err);

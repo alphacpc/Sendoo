@@ -4,14 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm start",
+    "client": "cd ui && yarn start",
+    "server": "cd Backend && yarn start",
+    "dev": "concurrently \"yarn run server \" \"yarn run client\" "
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alphacpc/sendoo.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alpha amadou DIALLO",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/alphacpc/sendoo/issues"
@@ -22,5 +25,8 @@
     "express": "^4.17.1",
     "mongoose": "^6.0.11",
     "multer": "^1.4.3"
+  },
+  "devDependencies": {
+    "concurrently": "^6.3.0"
   }
 }
