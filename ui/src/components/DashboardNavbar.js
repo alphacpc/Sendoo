@@ -1,10 +1,8 @@
 import React from "react";
-import { Typography, Box, Badge } from "@material-ui/core";
-import {} from "@material-ui/icons";
+import {  Box, Badge } from "@material-ui/core";
 
 import { Link as RouterLink } from "react-router-dom";
 
-import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
 import InputIcon from "@material-ui/icons/Input";
 

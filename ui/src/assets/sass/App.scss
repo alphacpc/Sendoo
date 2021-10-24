@@ -46,3 +46,28 @@ h3.titleAbout {
     top: 30%;
     color: #ffffff;
 }
+
+
+
+//ONLINE & OFFLINE
+.divStatus{
+    display: flex;
+    margin-bottom: 20px;
+}
+.status {
+    position: relative;
+    top: 80%;
+    left: -25%;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background-color: #ccc;
+}
+  
+.status.online {
+    background-color: greenyellow;
+}
+  
+.status.offline {
+    background-color: #f15c4f;
+}

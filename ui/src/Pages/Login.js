@@ -31,7 +31,7 @@ export default function Login() {
     try{
       const user = await axios.post("auth/connexion", signin);
       await setTimeout(()=>{
-        history.push("/")      
+        history.push("/account")      
       },2000)
     }
     catch(err){

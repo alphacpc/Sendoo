@@ -35,7 +35,7 @@ export default function Register() {
         await axios.post("auth/inscription", signunInit);
         setSuccess("Enregistrement avec succes !");
         await setTimeout(()=>{
-          history.push("/")      
+          history.push("/connexion")      
         },2000)
         
     }
