@@ -8,13 +8,6 @@ body{
     background-color: #ffffff !important;
     padding: 0 10px !important;
 }
-#ListCategoryLink nav a:nth-child(4){
-    background-color: #f05;
-    color: #ffffff;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
 
 .GridMember:hover{
     img{
@@ -71,3 +64,29 @@ h3.titleAbout {
 .status.offline {
     background-color: #f15c4f;
 }
+
+
+//******Page Category******//
+#moreCategory #navbar-fixed{
+    top: 0;
+}
+
+.categoryFlexDivider{
+    // background-color: yellow;
+    display: flex;
+    margin-top: 40px;
+}
+
+.categoryFlexLeft{
+    // background-color: aqua;
+    flex: 5;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.categoryFlexRight{
+    // background-color: orange;
+    flex: 1;
+    padding-top: 30px;
+}
+

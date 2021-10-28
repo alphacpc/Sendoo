@@ -52,7 +52,7 @@ const SinglePost = () => {
     <div>
       <Navbar />
 
-      <ListLinkCategory />
+      {/* <ListLinkCategory /> */}
 
       <div className="divImgPost">
         <img src={myImg} />

@@ -3,7 +3,6 @@ import { Container, Typography } from "@material-ui/core";
 
 import Footer from "./../components/Footer";
 import Navbar from "./../components/Navbar";
-import ListLinkCategory from "./../components/ListLinkCategory";
 
 
 import ftof from './../assets/images/ftof1.png'
@@ -13,7 +12,7 @@ const FourToFour = () => {
   return (
     <div>
       <Navbar />
-      <ListLinkCategory />
+      {/* <ListLinkCategory /> */}
 
       <Container>
         <img src={ftof} />

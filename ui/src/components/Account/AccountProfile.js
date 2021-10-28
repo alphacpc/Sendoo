@@ -1,14 +1,5 @@
 import Thomas from "./../../assets/images/thomas.jpg";
-import {
-  Avatar,
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography,
-} from "@material-ui/core";
+import { Box, CardContent, Typography, } from "@material-ui/core";
 
 const user = {
   avatar: Thomas,

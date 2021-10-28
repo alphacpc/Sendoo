@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import ListLinkCategory from "../components/ListLinkCategory";
-import { Container } from "@material-ui/core";
+import ListCategory from "../components/ListLinkCategory";
 import { Link, Redirect } from "react-router-dom";
 import Footer from "../components/Footer";
 import Breadcrumb from "../components/Breadcrumb";
@@ -19,10 +18,7 @@ import Pagination from "@material-ui/lab/Pagination";
 
 const MoreCategory = () => {
   const classes = useStyles();
-  const cards = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-    23, 24, 25, 26, 27,
-  ];
+  const cards = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17];
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const POST_PER_PAGE = 9;
@@ -32,13 +28,11 @@ const MoreCategory = () => {
   const startIndex = (page - 1) * POST_PER_PAGE;
   const selectedPost = cards.slice(startIndex, startIndex + POST_PER_PAGE);
 
-  const handleClickPagination = (e, num) => {
-    console.log(e.target.innerText);
-    setPage(e.target.innerText);
-    document
-      .querySelectorAll("ul li .MuiPaginationItem-page")
-      .forEach((btn) => btn.classList.remove("Mui-selected"));
-    e.target.classList.add("Mui-selected");
+  const handleClickPagination = (e) => {
+    let value = e + 1;
+    setPage(value)
+    document.querySelectorAll("ul li .MuiPaginationItem-page").forEach((btn) => btn.classList.remove("Mui-selected"));
+    //e.target.classList.add("Mui-selected");
   };
 
   useEffect(() => {
@@ -52,40 +46,48 @@ const MoreCategory = () => {
 
   return (
     <React.Fragment>
+      <div id="moreCategory">
       <Navbar />
-
-      <ListLinkCategory />
-
-      <Container className={classes.ContainerElement}>
-        <Breadcrumb />
-
-        <Grid container spacing={4}>
-          {selectedPost.map((card) => (
-            <Grid item key={card} xs={12} className="PostItem" sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={myImg}
-                  title="Image title"
-                  onClick={handleSinglePost}
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography   gutterBottom 
-                                variant="h5" 
-                                component="h4"
-                                onClick={handleSinglePost}
-                                className={classes.Title}>La nature</Typography>
-                  <Typography   gutterBottom 
-                                variant="body1" 
-                                component="p">
-                    This is a media card. You can use this section to describe
-                    the content added next time.
-                  </Typography>
-                </CardContent>
-              </Card>
+      </div>
+      <div className="categoryContainer">
+  
+        <div className="categoryFlexDivider">
+          <div className="categoryFlexLeft">
+            <Breadcrumb />
+            <Grid container spacing={4}>
+              {selectedPost.map((card) => (
+                <Grid item key={card} xs={12} className="PostItem" sm={6} md={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={myImg}
+                      title="Image title"
+                      onClick={handleSinglePost}
+                    />
+                    <CardContent className={classes.cardContent}>
+                      <Typography   gutterBottom 
+                                    variant="h5" 
+                                    component="h4"
+                                    onClick={handleSinglePost}
+                                    className={classes.Title}>La nature</Typography>
+                      <Typography   gutterBottom 
+                                    variant="body1" 
+                                    component="p">
+                        This is a media card. You can use this section to describe
+                        the content added next time.
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
+          </div>
+
+          <div className="categoryFlexRight">
+                <ListCategory/>
+          </div>
+        
+        </div>
 
         <div className={classes.pagination}>
           <Pagination
@@ -95,9 +97,11 @@ const MoreCategory = () => {
             color="secondary"
           />
         </div>
-      </Container>
+      
+      </div>
 
       <Footer />
+    
     </React.Fragment>
   );
 };

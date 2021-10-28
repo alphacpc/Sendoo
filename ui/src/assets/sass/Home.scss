@@ -25,3 +25,57 @@
     background-color: '#f05' !important;
 }
 
+//Style From Home Page
+.HomeContainer{
+    // background-color: yellow;
+    padding: 4% 0;
+    display: flex;
+}
+
+.HomeContainer .HomePostList{
+    // background-color: greenyellow;
+    flex: 5;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.HomeContainer .HomeCategoryList{
+    // background-color: orangered;
+    flex: 1;
+}
+
+.PostItem > div{
+    cursor: pointer;
+    transition: all ease .8s;
+    box-shadow: 0 4px 6px 0 #000;
+}
+
+.PostItem:hover{
+    transform: rotate(-5deg);
+    transition: all ease .8s;
+}
+.cardMediaPost{
+    padding-top: 56.25%;
+}
+
+.titleCategory{
+    font-weight: bold !important;
+    font-size: 20px !important;
+    color: #04001E;
+}
+
+.ulCategory{
+    list-style: none;
+    padding: 10px 4px;
+    display: flex;
+    flex-wrap: wrap;
+    border-left: 4px solid #116a35;
+    margin-top: 20px;
+}
+
+.ulCategory > li{
+    padding: 4px 20px;
+    margin: 6px;
+    border-radius: 20px;
+    background-color: #cccccc;
+}
