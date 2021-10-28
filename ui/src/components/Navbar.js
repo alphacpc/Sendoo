@@ -10,6 +10,8 @@ import PermIdentityOutlinedIcon from "@material-ui/icons/PermIdentityOutlined";
 import AppBar from "@material-ui/core/AppBar";
 
 import "./../assets/sass/FixedNavbar.scss";
+import "./../assets/sass/Navbar.scss";
+
 
 const useStyles = makeStyles((theme) => ({
   toolbarTitle: {
@@ -41,68 +43,27 @@ export default function Header() {
   return (
     <React.Fragment>
       <Toolbar id="navbar-fixed" className={classes.toolbar}>
-        <AppBar
-          position="static"
-          color="default"
-          elevation={0}
-          className={classes.appBar}
-        >
+        <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
           <Toolbar className={classes.toolbar}>
-            <Typography
-              variant="h6"
-              color="inherit"
-              noWrap
-              className={classes.toolbarTitle}
-            >
-              <Link to="/">
-                <img src={Logo} width={100} />
-              </Link>
+            <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+              <Link to="/"><img src={Logo} width={100} /></Link>
             </Typography>
-
+            
             <nav>
-              <Link
-                variant="button"
-                color="textPrimary"
-                to="/"
-                className={classes.link}
-              >
-                Accueil
-              </Link>
-              <Link
-                variant="button"
-                color="textPrimary"
-                to="/about"
-                className={classes.link}
-              >
-                A propos
-              </Link>
-              <Link
-                variant="button"
-                color="textPrimary"
-                to="/contact"
-                className={classes.link}
-              >
-                Contact
-              </Link>
+              <Link variant="button" color="textPrimary" to="/" className={classes.link}>Accueil</Link>
+              <Link variant="button" color="textPrimary" to="/about" className={classes.link}>A propos</Link>
+              <Link variant="button" color="textPrimary" to="/contact" className={classes.link}>Contact</Link>
             </nav>
 
-            <div>
-              <Link
-                variant="button"
-                color="textPrimary"
-                to="/register"
-                className={classes.link}
-              >
-                <PersonAddOutlinedIcon /> Inscription
+            <div className="linksAuth">
+              <Link variant="button" color="textPrimary" to="/register" className={classes.link}>
+                <PersonAddOutlinedIcon /> <span class="textAuth">Inscription</span>
               </Link>
-              <Link
-                variant="button"
-                color="textPrimary"
-                to="/login"
-                className={classes.link}
-              >
-                <PermIdentityOutlinedIcon /> Connexion
+
+              <Link variant="button" color="textPrimary" to="/login" className={classes.link}>
+                <PermIdentityOutlinedIcon /> <span class="textAuth">Connexion</span>
               </Link>
+
             </div>
           </Toolbar>
         </AppBar>
