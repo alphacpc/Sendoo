@@ -8,15 +8,16 @@ const categoriesRoute = require("./Routes/Category");
 
 const multer = require("multer");
 
+require("dotenv").config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
-mongoose.connect('mongodb://localhost:27017/Sendoo',{
+mongoose.connect(process.env.CONNECT_MONGODB,{
     useNewUrlParser: true, 
     useUnifiedTopology: true,
-    //useCreateIndex: true,
+    //useCreateIndex: false,
 
     // useCreatendex: true, 
     // useFindAndModify: false, 

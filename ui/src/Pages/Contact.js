@@ -1,33 +1,13 @@
-import React, { useState } from "react";
-import {
-  Container,
-  Typography,
-  Card,
-  CardContent,
-  Grid,
-  TextField,
-  Button,
-} from "@material-ui/core";
-import Breadcrumb from "../components/Breadcrumb";
+import React from "react";
+
+import { GoogleMap, withScriptjs, withGoogleMap, Marker} from "react-google-maps";
+import "./../assets/sass/Contact.scss";
+
+
+import MapStyles from "./../MapStyle";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
-import MapStyles from "./../MapStyle";
-
-import KEY_API from "./../Secret";
-
-import PhoneIphoneOutlinedIcon from "@material-ui/icons/PhoneIphoneOutlined";
-import MailOutlineOutlinedIcon from "@material-ui/icons/MailOutlineOutlined";
-import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
-
-import {
-  GoogleMap,
-  withScriptjs,
-  withGoogleMap,
-  Marker,
-} from "react-google-maps";
-
-import "./../assets/sass/Contact.scss";
 
 function Map() {
   return (
@@ -50,14 +30,14 @@ export default function Contact() {
 
       <div style={{ height: "80vh", width: "100%" }}>
         <WrappedMap
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${KEY_API}&v=3.exp&libraries=geometry,drawing,places`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.API_MAPS_KEY}&v=3.exp&libraries=geometry,drawing,places`}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `600px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
 
-      <Container className="contactMain">
+      <div className="contactMain">
         <div className="FormContact">
           <form>
             <div className="panelHeader">
@@ -87,32 +67,8 @@ export default function Contact() {
           </form>
         </div>
 
-        <div className="DetailContact">
-          <Grid item>
-            <Typography style={classes.TitleCoord}>
-              <LocationOnOutlinedIcon />
-              Siege
-            </Typography>
-            <Typography>Avenue Nelson MANDELA, rue Cheikh anta DIOP</Typography>
-          </Grid>
 
-          <Grid item>
-            <Typography style={classes.TitleCoord}>
-              <PhoneIphoneOutlinedIcon />
-              Numero de telephone
-            </Typography>
-            <Typography>+221 33 333 33 33</Typography>
-          </Grid>
-
-          <Grid item>
-            <Typography style={classes.TitleCoord}>
-              <MailOutlineOutlinedIcon />
-              Adresse email
-            </Typography>
-            <Typography>infos@contact-sendoo.sn</Typography>
-          </Grid>
-        </div>
-      </Container>
+      </div>
 
       <Footer />
     </div>

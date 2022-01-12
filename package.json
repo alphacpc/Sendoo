@@ -22,5 +22,8 @@
   "homepage": "https://github.com/alphacpc/sendoo#readme",
   "devDependencies": {
     "concurrently": "^6.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^11.0.0"
   }
 }

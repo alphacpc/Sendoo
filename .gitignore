@@ -4,6 +4,9 @@ Backend/node_modules
 ui/node_modules
 
 # env KEY
-ui/src/Secret.js
+ui/src/.env
+Backend/.env
+
+
 
 
