@@ -1,31 +1,24 @@
 const express = require('express');
 const app = express();
+const multer = require("multer");
+require("dotenv").config();
 const mongoose = require('mongoose');
+const connectDB = require("./Config/dbConfig");
+
 const authRoute = require("./Routes/Auth");
 const usersRoute = require("./Routes/Users");
 const postsRoute = require("./Routes/Posts");
 const categoriesRoute = require("./Routes/Category");
 
-const multer = require("multer");
 
-require("dotenv").config();
-
+// MIDDLEWARES
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
-mongoose.connect(process.env.CONNECT_MONGODB,{
-    useNewUrlParser: true, 
-    useUnifiedTopology: true,
-    //useCreateIndex: false,
 
-    // useCreatendex: true, 
-    // useFindAndModify: false, 
-    // useNewUrlParser: true, 
-    //useUnifiedTopology: true 
-
-}).then(console.log("Connexion avec succès au base de données"))
-.catch(error => console.log(error));
+//CONNECT TO MONGODB
+connectDB();
 
 const storage = multer.diskStorage({
     destination: (req,file, cb) =>{
@@ -47,6 +40,8 @@ app.use("/api/posts", postsRoute);
 app.use("/api/categories", categoriesRoute);
 
 
-app.listen("4040",()=>{
-    console.log("Mon serveur tourne sur le port 4040");
-})
+mongoose.connection.once('open', ()=>{
+    console.log("Connected to MongoDB");
+    app.listen("4040",()=> console.log("Mon serveur tourne sur le port 4040"));
+});
+
