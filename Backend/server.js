@@ -20,6 +20,7 @@ app.use(express.static("public"));
 //CONNECT TO MONGODB
 connectDB();
 
+//For Share Files
 const storage = multer.diskStorage({
     destination: (req,file, cb) =>{
         cb(null, "images")
@@ -34,12 +35,13 @@ app.post("/api/upload", upload.single("file"), (req,res)=>{
     res.status(200).json('Fichier chargée avec succes !');
 })
 
+// For Routes
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/posts", postsRoute);
 app.use("/api/categories", categoriesRoute);
 
-
+//Check Connection & Listenning server
 mongoose.connection.once('open', ()=>{
     console.log("Connected to MongoDB");
     app.listen("4040",()=> console.log("Mon serveur tourne sur le port 4040"));

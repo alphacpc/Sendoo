@@ -3,21 +3,24 @@ const Post = require("../Models/Post");
 
 // CREATIONT POST
 router.post("/", async (req, res) => {
+    
     const newPost = await new Post({
         postTitle : req.body.title,
+        postCategory : req.body.categorie,
+        postPhoto : req.body.photo,
         postBody: req.body.body,
         postAuthor : req.body.username,
-        postPhoto : req.body.photo,
-        postCategory : req.body.categorie
     });
 
     try{
         const savedPost = await newPost.save();
         res.status(200).json(savedPost);
     }catch(err){
+        console.log("Probleme d'ajout d'un post !");
         res.status(500).json(err);
     }
 });
+
 
 
 // MODIFICATION POST
@@ -43,7 +46,7 @@ router.put("/:id", async(req, res) => {
     }
 });
 
-// sUPPRESSION POST
+// SUPPRESSION POST
 router.delete("/:id", async(req, res) => {
     
     try{
@@ -83,7 +86,7 @@ router.get("/", async (req, res)=>{
     try{
         let posts;
         if(username){
-            posts = await Post.find({username})
+            posts = await Post.find({postAuthor: username})
         }
         else if(catName){
             posts = await Post.find({postCategory:{

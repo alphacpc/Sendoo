@@ -5,7 +5,7 @@ const PostSchema = new mongoose.Schema({
     postBody:{ type : String, required : true },
     postPhoto:{ type : String, required : true },
     postAuthor : { type : String, required : true },
-    postCategory : { type : String, required : true }
+    postCategory : { type : Array, required : false }
     },{ timestamps : true });
 
 module.exports = mongoose.model("Post", PostSchema);
