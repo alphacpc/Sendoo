@@ -1,5 +1,4 @@
-import React,{useState, useEffect} from "react";
-import axios from 'axios';
+import React from "react";
 
 import "../assets/sass/Home.scss";
 
@@ -12,7 +11,6 @@ import SVG from "./../assets/images/wavesOpacity.svg";
 import myImg from "./../assets/images/post10.jpg";
 
 import { ArrowDropUpOutlined } from "@material-ui/icons";
-
 import { Grid, Card, CardMedia, CardContent, Typography} from "@material-ui/core";
 
 
@@ -20,7 +18,6 @@ import { Grid, Card, CardMedia, CardContent, Typography} from "@material-ui/core
 export default function Home() {
 
   const cards = [ 1, 2, 3, 4, 5];
-  const [posts, setPosts] = useState([]);
 
   const handleClickArrow = () => {
     let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
@@ -33,23 +30,14 @@ export default function Home() {
     window.location.replace('http://localhost:3000/single-post');
   }
 
-  const fetchPost = async () => {
-    const res = await axios.get("/posts");
-    const datas = await res.data;
-    setPosts(datas);
-  };
-
-  useEffect( () => {
-    fetchPost()
-  }, [])
 
   return (
     <div className="HomPage">
+
       <Navbar />
 
       <Header />
-
-      <img src={SVG} className="ImageDivider" />
+      <img src={SVG} className="ImageDivider" alt="svg divider" />
 
       <ArrowDropUpOutlined className="Arrow" onClick={() => handleClickArrow()}/>
 

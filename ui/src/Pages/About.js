@@ -1,23 +1,18 @@
-import { Container, Grid, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
+
+import { Container, Grid, Typography } from "@material-ui/core";
+import { FaGithub, FaLinkedin, FaDiscord, FaFacebook, FaSlack} from "react-icons/fa";
+
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 import Banniere from "./../assets/images/ban-contact.png";
-
 import thomas from "./../assets/images/thomas.jpg";
-
-import {
-  FaGithub,
-  FaLinkedin,
-  FaDiscord,
-  FaFacebook,
-  FaSlack,
-} from "react-icons/fa";
-
 import Svg from "./../assets/images/wavesOpacity.svg";
 
+
 export default function About() {
+
   const Teams = [1, 2, 3];
 
   const text = `Lorem Ipsum is simply dummy text of the printing 
@@ -63,29 +58,31 @@ export default function About() {
     <div className="AboutContainer">
       <Navbar />
 
-      <div style={{ background: `url(${Banniere}) no-repeat`, height: 500 }} />
-      {/* <svg></svg> */}
-      <img src={Svg} style={classes.ImgTransitionDivider} />
+      <div style={{ background: `url(${Banniere}) no-repeat`, height: 600 }} >
+        <Typography variant="h3" style={classes.TitleAbout} className="titleAbout" component="h3">
+          A propos de nous
+        </Typography>
+      </div>
+
+      <img src={Svg} style={classes.ImgTransitionDivider} alt="svg divider" />
 
       <Container>
         <div style={{ backgroundColor: "#ffffff", padding: 20 }}>
-          <Typography variant="h3" style={classes.TitleAbout} className="titleAbout" component="h3">
-            A propos de nous
-          </Typography>
+          
           <Typography variant="p" style={classes.TextAbout} component="span">
             {text}
           </Typography>
 
           <div style={classes.Coords}>
-            <h1 style={classes.TitleAbout}>Notre Equipe</h1>
+
+            <h1 style={classes.TitleTeam}>Notre Equipe</h1>
+
             <Grid container style={classes.DivTeam} spacing={2}>
               {Teams.map((item) => (
                 <Grid item key={item} className="GridMember" style={classes.Member} xs={12} md={3}>
                   <img
-                    src={thomas}
-                    style={classes.MemberPicture}
-                    width={140}
-                    height={140}
+                    src={thomas} style={classes.MemberPicture}
+                    width={140} height={140} alt="member sendoo"
                   />
                   <span style={classes.MemberName}>Jules Burcez</span>
                   <span style={classes.MemberJob}>Developpeur Full-Stack</span>
@@ -99,6 +96,7 @@ export default function About() {
                 </Grid>
               ))}
             </Grid>
+
           </div>
 
 
@@ -117,9 +115,13 @@ const classes = {
   TitleAbout: {
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: 44,
+    fontSize: 54,
     textTransform: "uppercase",
-    margin: "40px 0",
+    position: "relative",
+    top: '50%',
+    marginLeft: '10%',
+    color: '#ffffff !important',
+    width: 600,
   },
 
   ImgTransitionDivider: {
@@ -160,10 +162,14 @@ const classes = {
   },
 
   DivTeam: {
-    // backgroundColor:'yellow',
     display: "flex",
-    // padding: 20,
     justifyContent: "center",
+  },
+  TitleTeam: {
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 54,
+    textTransform: "uppercase",
   },
   Member: {
     backgroundColor: "#ffffff",

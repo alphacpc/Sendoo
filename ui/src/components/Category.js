@@ -1,18 +1,11 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
+import { Link } from "react-router-dom";
+
+import { makeStyles, Avatar, CardContent, CardHeader, Typography , Grid, Container } from "@material-ui/core";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardContent from "@material-ui/core/CardContent";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
 import ImgPost from "./../assets/images/post6.jpg";
 
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import { Link } from "react-router-dom";
 
 const Category = () => {
   const classes = useStyles();

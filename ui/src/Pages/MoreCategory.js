@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from "react";
+// import { Link, Redirect } from "react-router-dom";
+
 import Navbar from "../components/Navbar";
 import ListCategory from "../components/ListLinkCategory";
-import { Link, Redirect } from "react-router-dom";
-import Footer from "../components/Footer";
 import Breadcrumb from "../components/Breadcrumb";
-import { makeStyles } from "@material-ui/core";
+import Footer from "../components/Footer";
 
 import myImg from "./../assets/images/post10.jpg";
 
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-
+import {Card, CardContent, CardMedia, Grid, Typography, makeStyles} from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination";
 
+
 const MoreCategory = () => {
+
   const classes = useStyles();
   const cards = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17];
-  const [loading, setLoading] = useState(false);
+
+  // const [loading, setLoading] = useState(false);
+
   const [page, setPage] = useState(1);
-  const POST_PER_PAGE = 9;
-
   const [totalPages, setTotalPages] = useState(0);
-
+  const POST_PER_PAGE = 9;
   const startIndex = (page - 1) * POST_PER_PAGE;
   const selectedPost = cards.slice(startIndex, startIndex + POST_PER_PAGE);
 
@@ -32,26 +29,30 @@ const MoreCategory = () => {
     let value = e + 1;
     setPage(value)
     document.querySelectorAll("ul li .MuiPaginationItem-page").forEach((btn) => btn.classList.remove("Mui-selected"));
-    //e.target.classList.add("Mui-selected");
   };
-
-  useEffect(() => {
-    setTotalPages(Math.ceil(cards.length / POST_PER_PAGE));
-  }, []);
 
   const handleSinglePost = (e) => {
     window.location.replace('http://localhost:3000/single-post');
   }
 
 
+  useEffect(() => {
+    setTotalPages(Math.ceil(cards.length / POST_PER_PAGE));
+  }, []);
+
+
+
   return (
     <React.Fragment>
+
       <div id="moreCategory">
-      <Navbar />
+        <Navbar />
       </div>
+
       <div className="categoryContainer">
   
         <div className="categoryFlexDivider">
+          
           <div className="categoryFlexLeft">
             <Breadcrumb />
             <Grid container spacing={4}>

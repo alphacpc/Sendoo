@@ -1,16 +1,51 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
-import Logo from "./../assets/images/Logo/Sendoo4.png";
+
+import { makeStyles, Toolbar, Typography, AppBar } from "@material-ui/core";
 import PersonAddOutlinedIcon from "@material-ui/icons/PersonAddOutlined";
 import PermIdentityOutlinedIcon from "@material-ui/icons/PermIdentityOutlined";
 
-import AppBar from "@material-ui/core/AppBar";
-
 import "./../assets/sass/FixedNavbar.scss";
 import "./../assets/sass/Navbar.scss";
+import Logo from "./../assets/images/Logo/Sendoo4.png";
+
+
+export default function Header() {
+  
+  const classes = useStyles();
+
+  return (
+    <React.Fragment>
+      <Toolbar id="navbar-fixed" className={classes.toolbar}>
+        <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+          <Toolbar className={classes.toolbar}>
+            
+            <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+              <Link to="/"><img src={Logo} alt="Logo sendoo" width={100} /></Link>
+            </Typography>
+            
+            <nav>
+              <Link variant="button" color="textPrimary" to="/" className={classes.link}>Accueil</Link>
+              <Link variant="button" color="textPrimary" to="/about" className={classes.link}>A propos</Link>
+              <Link variant="button" color="textPrimary" to="/contact" className={classes.link}>Contact</Link>
+            </nav>
+
+            <div className="linksAuth">
+              <Link variant="button" color="textPrimary" to="/register" className={classes.link}>
+                <PersonAddOutlinedIcon /> <span class="textAuth">Inscription</span>
+              </Link>
+
+              <Link variant="button" color="textPrimary" to="/login" className={classes.link}>
+                <PermIdentityOutlinedIcon /> <span class="textAuth">Connexion</span>
+              </Link>
+            </div>
+
+          </Toolbar>
+        </AppBar>
+      </Toolbar>
+    </React.Fragment>
+  );
+}
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,39 +70,3 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-export default function Header() {
-  const classes = useStyles();
-
-
-  return (
-    <React.Fragment>
-      <Toolbar id="navbar-fixed" className={classes.toolbar}>
-        <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
-          <Toolbar className={classes.toolbar}>
-            <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-              <Link to="/"><img src={Logo} width={100} /></Link>
-            </Typography>
-            
-            <nav>
-              <Link variant="button" color="textPrimary" to="/" className={classes.link}>Accueil</Link>
-              <Link variant="button" color="textPrimary" to="/about" className={classes.link}>A propos</Link>
-              <Link variant="button" color="textPrimary" to="/contact" className={classes.link}>Contact</Link>
-            </nav>
-
-            <div className="linksAuth">
-              <Link variant="button" color="textPrimary" to="/register" className={classes.link}>
-                <PersonAddOutlinedIcon /> <span class="textAuth">Inscription</span>
-              </Link>
-
-              <Link variant="button" color="textPrimary" to="/login" className={classes.link}>
-                <PermIdentityOutlinedIcon /> <span class="textAuth">Connexion</span>
-              </Link>
-
-            </div>
-          </Toolbar>
-        </AppBar>
-      </Toolbar>
-    </React.Fragment>
-  );
-}

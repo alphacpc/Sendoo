@@ -1,31 +1,25 @@
-import { Container } from "@material-ui/core";
 import React from "react";
+
+import Navbar from "../components/Navbar";
 import Breadcrumb from "../components/Breadcrumb";
 import Footer from "../components/Footer";
-import ListLinkCategory from "../components/ListLinkCategory";
-import Navbar from "../components/Navbar";
+
 import "./../assets/sass/SinglePost.scss";
 
-import { makeStyles } from "@material-ui/core";
-
+import { makeStyles, Container, Card, CardContent, CardMedia, Grid, Typography, Avatar, Box } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
-import Box from "@material-ui/core/Box";
-
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 
 import myImg from "./../assets/images/post10.jpg";
 import myImg2 from "./../assets/images/post3.jpg";
 import thomas from "./../assets/images/thomas.jpg";
 
-import Avatar from "@material-ui/core/Avatar";
 
 const SinglePost = () => {
+
   const classes = useStyles();
+
   const cards = [1, 2, 3];
+
   const [value, setValue] = React.useState(3);
 
   const text = `Lorem Ipsum is simply dummy text of the printing 
@@ -52,10 +46,9 @@ const SinglePost = () => {
     <div>
       <Navbar />
 
-      {/* <ListLinkCategory /> */}
 
       <div className="divImgPost">
-        <img src={myImg} />
+        <img src={myImg} alt="image de l'article" />
       </div>
 
       <Container>
@@ -119,6 +112,7 @@ const SinglePost = () => {
         </div>
 
         <h4 className="relatedPost">Articles associes</h4>
+        
         <Grid container spacing={4}>
           {cards.map((card) => (
             <Grid item key={card} xs={12} sm={6} md={4}>
@@ -143,6 +137,7 @@ const SinglePost = () => {
             </Grid>
           ))}
         </Grid>
+
       </Container>
 
       <Footer />
