@@ -3,16 +3,7 @@ import DashboardSlideBar from "./../components/DashboardSlideBar";
 import DashboardNavbar from "./../components/DashboardNavbar";
 
 import BlocStyleDashboard from "./../Styles";
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Typography,
-  Divider,
-  TextField,
-} from "@material-ui/core";
+import { Box, Button, CardContent , Typography, Divider, TextField, } from "@material-ui/core";
 
 const ResetPassword = () => {
   const [values, setValues] = useState({

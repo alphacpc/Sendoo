@@ -38,7 +38,7 @@ const MoreCategory = () => {
 
   useEffect(() => {
     setTotalPages(Math.ceil(cards.length / POST_PER_PAGE));
-  }, []);
+  }, [cards.length]);
 
 
 

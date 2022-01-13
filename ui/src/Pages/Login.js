@@ -1,10 +1,10 @@
 import React , { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
+// import axios from "axios";
 
 import "./../assets/sass/Login.scss";
 import Logo from "./../assets/images/Logo/Sendoo4.png";
-import { FaHome, FaTruckMonster } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function Login() {
@@ -16,7 +16,7 @@ export default function Login() {
 
   const [signin, setSignin ] = useState(signinInit);
   const [submited, setSubmited ] = useState(false);
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleChange = (e) => {
     setSignin({...signin , [e.target.id] : e.target.value });
@@ -28,15 +28,15 @@ export default function Login() {
     console.log(signin);
     setSubmited(true);
 
-    try{
-      const user = await axios.post("auth/connexion", signin);
-      await setTimeout(()=>{
-        history.push("/account")      
-      },2000)
-    }
-    catch(err){
-      console.log(err)
-    }
+    // try{
+    //   const user = await axios.post("auth/connexion", signin);
+    //   await setTimeout(()=>{
+    //     history.push("/account")      
+    //   },2000)
+    // }
+    // catch(err){
+    //   console.log(err)
+    // }
   }
 
   const checkBtnSubmit = () => {

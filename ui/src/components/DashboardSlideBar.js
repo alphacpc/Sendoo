@@ -1,12 +1,11 @@
 import React from "react";
-import { Link as RouterLink, useLocation } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { Avatar, Box, Button, Divider, List, ListItem, Typography,} from "@material-ui/core";
 
 import { SettingsOutlined, PostAddOutlined, AccountBoxOutlined, LockOutlined, HomeOutlined,
   FolderOutlined } from "@material-ui/icons";
 
 import ProfileImg from "./../assets/images/thomas.jpg";
-// import { BackgroundColor } from "chalk";
 
 const user = {
   avatar: ProfileImg,
@@ -71,33 +70,36 @@ const DashboardSlideBar = () => {
   return (
     <Box  sx={{ display: "flex", flexDirection: "column", height: "100%",
           borderRight: "1px solid #ccc", backgroundColor: "#FFE5E2",}}>
+      
       <Box sx={{ alignItems: "center", display: "flex", flexDirection: "column", p: 2,}}>
+        
         <div className="divStatus">
           <Avatar component={RouterLink} style={{width:100, height: 100}} src={user.avatar} sx={{ cursor: "pointer",}} to="/account" />
           <span className="status online"></span>
         </div>
+
         <Typography color="textPrimary" variant="body1"> {user.name}  </Typography>
         <Typography color="textSecondary" variant="body2"> {user.jobTitle} </Typography>
+      
       </Box>
       
       <Divider />
       
       <Box sx={{ p: 2 }}>
+        
         <List>
+
           {items.map((item) => (
-            <NavItem  style={{ height: "5vh" }} href={item.href} key={item.title} 
-                      title={item.title} icon={item.icon} />))}
+            <NavItem  
+              style={{ height: "5vh", marginBottom: 20, width: "100%" }} 
+              href={item.href} key={item.title} title={item.title} icon={item.icon} 
+            />
+          ))}
+
         </List>
       </Box>
-      <Box sx={{ flexGrow: 1 }} />
 
-      <Box sx={{ backgroundColor: "background.default", m: 2, p: 2 }} >
-        <Box sx={{ display: "flex", justifyContent: "center", pt: 2 }}>
-          <Button color="secondary" component="a" href="/login" variant="contained" >
-            Deconnexion
-          </Button>
-        </Box>
-      </Box>
+      
     </Box>
   );
 };

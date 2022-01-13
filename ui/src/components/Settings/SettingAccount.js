@@ -1,11 +1,5 @@
 import { useState } from 'react';
-import {
-  Box,
-  Button,
-  Grid,
-  TextField,
-  CardActions
-} from '@material-ui/core';
+import { Box, Button, Grid, TextField, makeStyles } from '@material-ui/core';
 
 const states = [
   {
@@ -23,9 +17,13 @@ const states = [
 ];
 
 const SettingAccountDetails = (props) => {
+  
+  const classes = useStyles();
+  
   const [values, setValues] = useState({
     firstName: 'Thomas',
     lastName: 'Sankara',
+    gender: 'masculin',
     email: 'Thomas@contact.bf',
     phone: '',
     state: 'BF',
@@ -83,6 +81,16 @@ const SettingAccountDetails = (props) => {
               />
           </Grid>
 
+          <Grid item md={6} xs={12}>
+              <TextField
+                fullWidth
+                label="Genre"
+                name="gender"
+                required
+                value={values.gender}
+                variant="outlined"
+              />
+            </Grid>
 
           <Grid item md={6} xs={12}>
               <TextField
@@ -146,17 +154,9 @@ const SettingAccountDetails = (props) => {
 
         </Grid>
 
-        <CardActions>
-          <Button color="primary" fullWidth variant="text"> Ajouter une image </Button>
-        </CardActions>
-
-
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            p: 2
-          }}>
+        <Button color="primary" className={classes.addPictute} variant="file"><input type="file" /></Button>
+      
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
           <Button color="primary" variant="contained">Enregistrer</Button>
         </Box>
         
@@ -165,3 +165,12 @@ const SettingAccountDetails = (props) => {
 };
 
 export default SettingAccountDetails;
+
+
+const useStyles = makeStyles((theme) => ({
+  addPictute:{
+    backgroundColor: 'yellow',
+    marginTop: 20
+  }
+}));
+

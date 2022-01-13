@@ -6,6 +6,7 @@ const AccountProfileDetails = (props) => {
   const [values, setValues] = useState({
     firstName: "Thomas",
     lastName: "Sankara",
+    gender: "masculin",
     email: "Thomas@contact.bf",
     phone: "",
     state: "BF",
@@ -53,6 +54,17 @@ const AccountProfileDetails = (props) => {
                 name="username"
                 required
                 value={values.username}
+                variant="outlined"
+              />
+            </Grid>
+
+            <Grid item md={6} xs={12}>
+              <TextField
+                fullWidth
+                label="Genre"
+                name="gender"
+                required
+                value={values.gender}
                 variant="outlined"
               />
             </Grid>
