@@ -69,6 +69,13 @@ export default function Register() {
 
       <img src={Logo} alt="" />
       <form type="POST" id="RegisterForm" onSubmit={ handleSubmit }>
+        
+        {/* Check Handle Message */}
+        <div className="divHandleMessage RegisterPage">
+          <p className="paraError">Une Erreur c'est produite lors de l'enregistrement !</p>
+          <p className="paraSuccess">Inscription avec succès, vous pouvez vous connecter à présent !</p>
+        </div>
+        
         <div className="RegisterFormGroup">
           <div className="RegisterFormGroupItem">
             <FaUser color="green" />

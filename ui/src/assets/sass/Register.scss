@@ -27,12 +27,14 @@
         background-color: white;
         margin-top: -6%;
     
+       
 
         .RegisterFormGroup{
             display: flex;
             justify-content: space-between;
             margin-bottom: 50px;
             width: 100%;
+
             .RegisterFormGroupItem{
                 flex: 1;
                 display: flex;
@@ -87,7 +89,7 @@
                 padding: 14px 20px;
                 border: 2px solid green;
                 color: green;
-                border-radius: 4px;
+                border-radius: 50px;
                 width: 140px;
                 cursor: pointer;
                 transition: all ease .3s;

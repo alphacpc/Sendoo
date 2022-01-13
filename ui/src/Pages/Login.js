@@ -66,6 +66,10 @@ export default function Login() {
           <img src={Logo} alt="Logo de Sendoo" />
         </div>
 
+        <div className="divHandleMessage LoginPage">
+          <p className="paraError">Une Erreur c'est produite lors de l'enregistrement !</p>
+        </div>
+
         <div className="LoginFormGroup">
           <input  type="text" id="identifiant" name="identifiant"
                   placeholder="Email ou nom d'utilisateur" onChange={ handleChange }/>

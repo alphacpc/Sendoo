@@ -65,6 +65,30 @@ h3.titleAbout {
     background-color: #f15c4f;
 }
 
+// Handle Message FORM
+.divHandleMessage{
+
+    p{
+        text-align: center;
+        font-size: 18px;
+        padding: 10px;
+        transform: all ease .3s;
+    }
+
+    .paraSuccess{
+        background-color: rgb(41, 240, 23);
+    }
+
+    .paraError{
+        background-color: #f05;
+        color: #fff;
+    }
+}
+
+.LoginPage.divHandleMessage p{
+    font-size: 15px;
+}
+
 
 //******Page Category******//
 #moreCategory #navbar-fixed{
