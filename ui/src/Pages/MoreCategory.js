@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import { Link, Redirect } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
-import ListCategory from "../components/ListLinkCategory";
+import CategoryList from "../components/CategoryList";
 import Breadcrumb from "../components/Breadcrumb";
 import Footer from "../components/Footer";
 
@@ -85,7 +85,7 @@ const MoreCategory = () => {
           </div>
 
           <div className="categoryFlexRight">
-                <ListCategory/>
+                <CategoryList/>
           </div>
         
         </div>

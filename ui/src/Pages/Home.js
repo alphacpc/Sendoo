@@ -7,6 +7,7 @@ import "../assets/sass/Home.scss";
 
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
+import CategoryList from "../components/CategoryList";
 import Footer from "../components/Footer";
 
 import SVG from "./../assets/images/wavesOpacity.svg";
@@ -22,7 +23,6 @@ export default function Home() {
 
   const cards = [ 1, 2, 3, 4, 5];
   const [posts, setPosts] = useState([]);
-  const [categories, setCategories] = useState([]);
 
   const handleClickArrow = () => {
     let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
@@ -40,14 +40,8 @@ export default function Home() {
     setPosts(res.data);
   }
 
-  const fetchCategories = async ()=>{
-    const res = await axios.get('/categories');
-    setCategories(res.data);
-  }
-
   useEffect(()=>{
     fetchPosts();
-    fetchCategories();
   },[])
 
   return (
@@ -85,17 +79,7 @@ export default function Home() {
         </div>
         
         <div className="HomeCategoryList">    
-          <Typography component="h2" variant="h2"
-                      className="titleCategory">Toutes les catégories</Typography>
-          <ul className="ulCategory">
-            {
-              categories.map((category, index) => {
-                return <li key={index}>
-                  <Link to={`/category`}>{category.name}</Link>
-                </li>
-              })
-            }
-          </ul>
+          <CategoryList/>
         </div>
         
       </div>
