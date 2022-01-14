@@ -33,7 +33,7 @@ router.get("/", async(req, res)=>{
 
 //Recuperer tous les article pour une categories;
 router.get("/category", async (req, res) => {
-    const category = req.query.categ;
+    const category = req.query.category;
     
     try{
         let posts;

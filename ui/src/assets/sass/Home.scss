@@ -1,3 +1,4 @@
+
 .ImageDivider{
     margin-top: -10px;
     height: 137px;
@@ -37,45 +38,90 @@
     flex: 5;
     padding-left: 4%;
     padding-right: 4%;
+
+
+    .PostItem > div{
+        transition: all ease .8s;
+        box-shadow: 0 4px 6px 0 #000;
+    }
+
+    .PostItem{
+        transition: all ease .8s;
+
+        .postBody, .postTitle{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+        }
+        .postTitle{
+            
+            -webkit-line-clamp: 2;
+
+            a{
+                color: #9B0000;
+                font-weight: bold;
+                font-size: 30px;
+                text-decoration: none;
+                transition: all ease .3s;
+            }
+            a:hover{
+                color: #F05;
+            }
+        }
+
+        .postBody{
+            -webkit-line-clamp: 3; 
+        }
+
+    }
+    .PostItem:hover{
+        transform: scale(1.05,1.05);
+        transition: all ease .8s;
+    }
+    .cardMediaPost{
+        padding-top: 56.25%;
+    }
+
 }
 
 .HomeContainer .HomeCategoryList{
     // background-color: orangered;
     flex: 1;
-}
 
-.PostItem > div{
-    cursor: pointer;
-    transition: all ease .8s;
-    box-shadow: 0 4px 6px 0 #000;
-}
 
-.PostItem:hover{
-    transform: rotate(-5deg);
-    transition: all ease .8s;
-}
-.cardMediaPost{
-    padding-top: 56.25%;
-}
+    .titleCategory{
+        font-weight: bold !important;
+        font-size: 20px !important;
+        color: #04001E;
+    }
 
-.titleCategory{
-    font-weight: bold !important;
-    font-size: 20px !important;
-    color: #04001E;
-}
+    .ulCategory{
+        list-style: none;
+        padding: 10px 4px;
+        display: flex;
+        flex-wrap: wrap;
+        border-left: 4px solid #116a35;
+        margin-top: 20px;
+    }
 
-.ulCategory{
-    list-style: none;
-    padding: 10px 4px;
-    display: flex;
-    flex-wrap: wrap;
-    border-left: 4px solid #116a35;
-    margin-top: 20px;
-}
+    .ulCategory > li{
+        padding: 10px 20px;
+        margin: 6px;
+        border-radius: 30px;
+        background-color: #cccccc;
+        transition: all ease .3s;
 
-.ulCategory > li{
-    padding: 4px 20px;
-    margin: 6px;
-    border-radius: 20px;
-    background-color: #cccccc;
+        a{
+            text-decoration: none;
+            color: #04001E;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            font-size: 18px;
+        }
+    }
+
+    .ulCategory > li:hover{
+        background-color: #FFBD35;
+    }
 }

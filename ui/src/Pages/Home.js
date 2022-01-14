@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 import "../assets/sass/Home.scss";
 
@@ -20,6 +22,7 @@ export default function Home() {
 
   const cards = [ 1, 2, 3, 4, 5];
   const [posts, setPosts] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const handleClickArrow = () => {
     let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
@@ -28,10 +31,24 @@ export default function Home() {
     }
   };
 
-  const handleSinglePost = (e) => {
-    window.location.replace('http://localhost:3000/single-post');
+  // const handleSinglePost = (e) => {
+  //   window.location.replace('http://localhost:3000/single-post');
+  // }
+
+  const fetchPosts = async ()=>{
+    const res = await axios.get('/posts');
+    setPosts(res.data);
   }
 
+  const fetchCategories = async ()=>{
+    const res = await axios.get('/categories');
+    setCategories(res.data);
+  }
+
+  useEffect(()=>{
+    fetchPosts();
+    fetchCategories();
+  },[])
 
   return (
     <div className="HomPage">
@@ -47,18 +64,18 @@ export default function Home() {
         
         <div className="HomePostList">
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} className="PostItem" sm={6} md={4}>
+            {posts.map((post, index) => (
+              <Grid item key={index} xs={12} className="PostItem" sm={6} md={4}>
                 <Card >
-                  <CardMedia image={myImg} title="Image title" onClick={handleSinglePost} className="cardMediaPost"/>
+                  <CardMedia image={myImg} title="Image title" className="cardMediaPost"/>
                   <CardContent >
                     <Typography gutterBottom variant="h5" 
-                                component="h4" onClick={handleSinglePost}
-                                className="">La nature</Typography>
-                    <Typography gutterBottom variant="body1" 
-                                component="p" className="">
-                      This is a media card. You can use this section to describe
-                      the content added next time.
+                        component="h4" 
+                        className="postTitle">
+                          <Link to={`/single-post/${post._id}`} >{post.postTitle}</Link>
+                      </Typography>
+                    <Typography gutterBottom variant="body1" component="p" className="postBody">
+                      {post.postBody}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -71,10 +88,13 @@ export default function Home() {
           <Typography component="h2" variant="h2"
                       className="titleCategory">Toutes les catégories</Typography>
           <ul className="ulCategory">
-            <li>Sport</li>
-            <li>Sante</li>
-            <li>Politique</li>
-            <li>Economie</li>
+            {
+              categories.map((category, index) => {
+                return <li key={index}>
+                  <Link to={`/category`}>{category.name}</Link>
+                </li>
+              })
+            }
           </ul>
         </div>
         
