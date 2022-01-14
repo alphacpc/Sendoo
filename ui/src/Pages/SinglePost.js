@@ -24,13 +24,13 @@ const SinglePost = () => {
   const [value, setValue] = useState(3);
 
   const { postID } = useParams();
-  const [currentPost, setCurrentPost] = useState({})
+  const [currentPost, setCurrentPost] = useState(null)
   const [relatedPosts, setRelatedPosts] = useState([])
   const [image, setImage] = useState("")
 
   const fetchCurrentPost = async ()=>{
       const response = await axios.get(`/posts/${postID}`);
-      setCurrentPost(response.data);
+      await setCurrentPost(response.data);
       await setImage(require(`./../assets/images/${currentPost.postPhoto}`).default)
   }
 
@@ -41,14 +41,14 @@ const SinglePost = () => {
     setRelatedPosts(response.data);
 }
 
-  useEffect(()=>{
-    fetchCurrentPost();
+  useEffect( async()=>{
+    await fetchCurrentPost();
     fetchRelatedPost();
   },[])
 
   console.log(currentPost)
 
-  return currentPost == undefined ? (<h2>En chargement...</h2>) : (
+  return (currentPost == undefined || currentPost ==null ) ? (<h3>En chargement...</h3>) : (
     
     
     <div>
