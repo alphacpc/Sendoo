@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { useParams } from "react-router-dom";
+
 
 import Navbar from "../components/Navbar";
 import Breadcrumb from "../components/Breadcrumb";
@@ -12,6 +14,7 @@ import Rating from "@material-ui/lab/Rating";
 import myImg from "./../assets/images/post10.jpg";
 import myImg2 from "./../assets/images/post3.jpg";
 import thomas from "./../assets/images/thomas.jpg";
+import axios, { Axios } from "axios";
 
 
 const SinglePost = () => {
@@ -20,35 +23,42 @@ const SinglePost = () => {
 
   const cards = [1, 2, 3];
 
-  const [value, setValue] = React.useState(3);
+  const [value, setValue] = useState(3);
 
-  const text = `Lorem Ipsum is simply dummy text of the printing 
-    and typesetting industry. Lorem Ipsum has been the industry's 
-    standard dummy text ever since the 1500s, when an unknown printer
-    took a galley of type and scrambled it to make a type specimen 
-    book. It has survived not only five centuries, but also the leap 
-    into electronic typesetting, remaining essentially unchanged. 
-    It was popularised in the 1960s with the release of Letraset 
-    sheets containing Lorem Ipsum passages, and more recently with 
-    desktop publishing software like Aldus PageMaker including 
-    versions of Lorem Ipsum. It is a long established fact that a 
-    reader will be distracted by the readable content of a page when 
-    looking at its layout. The point of using Lorem Ipsum is that it 
-    has a more-or-less normal distribution of letters, as opposed to 
-    using 'Content here, content here', making it look like readable 
-    English. Many desktop publishing packages and web page editors 
-    now use Lorem Ipsum as their default model text, and a search 
-    for 'lorem ipsum' will uncover many web sites still in their 
-    infancy. Various versions have evolved over the years, sometimes 
-    by accident, sometimes on purpose (injected humour and the like).`;
+  const { postID } = useParams();
+  const [currentPost, setCurrentPost] = useState({})
+  const [image, setImage] = useState("")
+
+  const fetchCurrentPost = async ()=>{
+    try{
+      const response = await axios.get(`/posts/${postID}`);
+      console.log(response.data);
+      setCurrentPost(response.data);
+      setImage(require(`./../assets/images/${currentPost?.postPhoto}`).default)
+    }
+    catch(err){
+
+    }
+
+  }
+
+  useEffect(()=>{
+    fetchCurrentPost();
+  },[])
+
+  // console.log(image)
+  //const imag = require(`./../assets/images/${currentPost.postPhoto}`).default;
 
   return (
     <div>
+
+
       <Navbar />
 
 
       <div className="divImgPost">
-        <img src={myImg} alt="image de l'article" />
+       <img src={image} alt={`${currentPost.postAuthor}`} />
+       {/* {  && <img src={require(`./../assets/images/${currentPost?.postPhoto}`).default} alt={`${currentPost.postAuthor}`} />} */}
       </div>
 
       <Container>
@@ -63,9 +73,7 @@ const SinglePost = () => {
                   className={classes.avatar}
                   src={thomas}
                 />
-                <Typography variant="span" component="h5">
-                  Thomas Sankara
-                </Typography>
+                <Typography variant="span" component="h5">{currentPost.postAuthor}</Typography>
                 <Typography variant="span" component="p">
                   Homme d'Etat
                 </Typography>
@@ -74,21 +82,17 @@ const SinglePost = () => {
 
             <Grid item xs={10}>
               <div className={classes.postContent}>
+                
                 <div className={classes.postTitleDate}>
-                  <Typography variant="span" component="h1">
-                    Titre de l'article
-                  </Typography>
+                  <Typography variant="span" component="h1">{currentPost.postTitle}</Typography>
                   <Typography variant="span" component="h5">
-                    {new Date().toLocaleDateString()}
+                    {new Date(currentPost.createdAt).toLocaleDateString()}
                   </Typography>
                 </div>
 
                 <div className={classes.postTextContent}>
                   <Typography variant="p" component="p">
-                    {text}
-                  </Typography>
-                  <Typography variant="p" component="p">
-                    {text}
+                    {currentPost.postBody}
                   </Typography>
                 </div>
               </div>

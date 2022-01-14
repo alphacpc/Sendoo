@@ -58,7 +58,7 @@ function App() {
         <Route path="/category">
           <MoreCategory />
         </Route>
-        <Route path="/single-post">
+        <Route path="/single-post/:postID">
           <SinglePost />
         </Route>
         <Route path="/about">
