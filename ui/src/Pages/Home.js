@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
 
 import "../assets/sass/Home.scss";
 
@@ -18,6 +19,7 @@ import { Grid, Card, CardMedia, CardContent, Typography} from "@material-ui/core
 export default function Home() {
 
   const cards = [ 1, 2, 3, 4, 5];
+  const [posts, setPosts] = useState([]);
 
   const handleClickArrow = () => {
     let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;

@@ -20,8 +20,8 @@ export default function Register() {
   }
 
   const [ signunInit, setSignunInit ] = useState(initData);
-  const [error, setError ] = useState("");
-  const [success, setSuccess ] = useState("");
+  const [msgError, setError ] = useState("");
+  const [msgSuccess, setSuccess ] = useState("");
   const [submited, setSubmited ] = useState(false);
   const history = useHistory();
 
@@ -30,17 +30,22 @@ export default function Register() {
   }
 
   const handleSubmit = async(e) => {
+    
     e.preventDefault();
+
     try{
+
         await axios.post("auth/inscription", signunInit);
+
         setSuccess("Enregistrement avec succes !");
         await setTimeout(()=>{
-          history.push("/connexion")      
+          history.push("/login")      
         },2000)
         
     }
     catch(err){
-      setSuccess(err)
+      setError("Erreur d'inscription !");
+      console.log(msgError)
     }
   }
 
@@ -72,8 +77,8 @@ export default function Register() {
         
         {/* Check Handle Message */}
         <div className="divHandleMessage RegisterPage">
-          <p className="paraError">Une Erreur c'est produite lors de l'enregistrement !</p>
-          <p className="paraSuccess">Inscription avec succès, vous pouvez vous connecter à présent !</p>
+          { msgError!= "" && <p className="paraError">{msgError}</p>}
+          { msgSuccess != "" && <p className="paraSuccess">{msgSuccess}</p>}
         </div>
         
         <div className="RegisterFormGroup">

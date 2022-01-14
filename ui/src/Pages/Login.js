@@ -1,6 +1,6 @@
 import React , { useState } from "react";
-import { Link } from "react-router-dom";
-// import axios from "axios";
+import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
 
 import "./../assets/sass/Login.scss";
 import Logo from "./../assets/images/Logo/Sendoo4.png";
@@ -16,7 +16,8 @@ export default function Login() {
 
   const [signin, setSignin ] = useState(signinInit);
   const [submited, setSubmited ] = useState(false);
-  // const history = useHistory();
+  const [msgError, setError ] = useState("");
+  const history = useHistory();
 
   const handleChange = (e) => {
     setSignin({...signin , [e.target.id] : e.target.value });
@@ -28,15 +29,15 @@ export default function Login() {
     console.log(signin);
     setSubmited(true);
 
-    // try{
-    //   const user = await axios.post("auth/connexion", signin);
-    //   await setTimeout(()=>{
-    //     history.push("/account")      
-    //   },2000)
-    // }
-    // catch(err){
-    //   console.log(err)
-    // }
+    try{
+      const user = await axios.post("auth/connexion", signin);
+      await setTimeout(()=>{
+        history.push("/account")      
+      },2000)
+    }
+    catch(err){
+      setError("Email(ou nom d'utilisateur) ou mot de passe incorrect !")
+    }
   }
 
   const checkBtnSubmit = () => {
@@ -67,7 +68,7 @@ export default function Login() {
         </div>
 
         <div className="divHandleMessage LoginPage">
-          <p className="paraError">Une Erreur c'est produite lors de l'enregistrement !</p>
+          { msgError != "" && <p className="paraError">{msgError}</p>}
         </div>
 
         <div className="LoginFormGroup">

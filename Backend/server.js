@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
 const multer = require("multer");
+const cors = require('cors')
 require("dotenv").config();
 const mongoose = require('mongoose');
 const connectDB = require("./Config/dbConfig");
+
 
 const authRoute = require("./Routes/Auth");
 const usersRoute = require("./Routes/Users");
@@ -15,6 +17,7 @@ const categoriesRoute = require("./Routes/Category");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
+app.use(cors());
 
 
 //CONNECT TO MONGODB
