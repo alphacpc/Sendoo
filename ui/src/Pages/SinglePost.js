@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 
 import Navbar from "../components/Navbar";
@@ -11,54 +12,51 @@ import "./../assets/sass/SinglePost.scss";
 import { makeStyles, Container, Card, CardContent, CardMedia, Grid, Typography, Avatar, Box } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 
-import myImg from "./../assets/images/post10.jpg";
+
 import myImg2 from "./../assets/images/post3.jpg";
 import thomas from "./../assets/images/thomas.jpg";
-import axios, { Axios } from "axios";
 
 
 const SinglePost = () => {
 
   const classes = useStyles();
 
-  const cards = [1, 2, 3];
-
   const [value, setValue] = useState(3);
 
   const { postID } = useParams();
   const [currentPost, setCurrentPost] = useState({})
+  const [relatedPosts, setRelatedPosts] = useState([])
   const [image, setImage] = useState("")
 
   const fetchCurrentPost = async ()=>{
-    try{
       const response = await axios.get(`/posts/${postID}`);
-      console.log(response.data);
       setCurrentPost(response.data);
-      setImage(require(`./../assets/images/${currentPost?.postPhoto}`).default)
-    }
-    catch(err){
-
-    }
-
+      await setImage(require(`./../assets/images/${currentPost.postPhoto}`).default)
   }
+
+
+  const fetchRelatedPost = async ()=> {
+    const response = await axios.get(`/posts?category=${currentPost.postCategory}`);
+    // console.log(response.data)
+    setRelatedPosts(response.data);
+}
 
   useEffect(()=>{
     fetchCurrentPost();
+    fetchRelatedPost();
   },[])
 
-  // console.log(image)
-  //const imag = require(`./../assets/images/${currentPost.postPhoto}`).default;
+  console.log(currentPost)
 
-  return (
+  return currentPost == undefined ? (<h2>En chargement...</h2>) : (
+    
+    
     <div>
-
-
       <Navbar />
 
 
       <div className="divImgPost">
        <img src={image} alt={`${currentPost.postAuthor}`} />
-       {/* {  && <img src={require(`./../assets/images/${currentPost?.postPhoto}`).default} alt={`${currentPost.postAuthor}`} />} */}
       </div>
 
       <Container>
@@ -115,11 +113,11 @@ const SinglePost = () => {
           </Grid>
         </div>
 
-        <h4 className="relatedPost">Articles associes</h4>
+        <h4 className="relatedPost">Articles associees</h4>
         
         <Grid container spacing={4}>
-          {cards.map((card) => (
-            <Grid item key={card} xs={12} sm={6} md={4}>
+          {relatedPosts.map((post, index) => (
+            <Grid item key={index} xs={12} sm={6} md={4}>
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
@@ -128,13 +126,10 @@ const SinglePost = () => {
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="span" component="h4">
-                    {" "}
-                    Titre de l'article{" "}
+                    {post.postTitle}
                   </Typography>
                   <Typography className={classes.limitTextPostRelated}>
-                    {" "}
-                    This is a media card. You can use this section to describe
-                    the content.
+                    {post.postBody}
                   </Typography>
                 </CardContent>
               </Card>
