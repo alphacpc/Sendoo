@@ -16,13 +16,14 @@ import myImg from "./../assets/images/post10.jpg";
 
 import { ArrowDropUpOutlined } from "@material-ui/icons";
 import { Grid, Card, CardMedia, CardContent, Typography} from "@material-ui/core";
+import Loader from "../components/Loader";
 
 
 
 export default function Home() {
 
-  const cards = [ 1, 2, 3, 4, 5];
   const [posts, setPosts] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   const handleClickArrow = () => {
     let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
@@ -38,13 +39,14 @@ export default function Home() {
   const fetchPosts = async ()=>{
     const res = await axios.get('/posts');
     setPosts(res.data);
+    setLoaded(true);
   }
 
   useEffect(()=>{
     fetchPosts();
   },[])
 
-  return (
+  return (!loaded)? <Loader/> : (
     <div className="HomPage">
 
       <Navbar />

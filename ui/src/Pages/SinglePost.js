@@ -25,20 +25,22 @@ const SinglePost = () => {
   const [value, setValue] = useState(3);
 
   const { postID } = useParams();
-  const [currentPost, setCurrentPost] = useState(null)
-  const [relatedPosts, setRelatedPosts] = useState([])
-  const [image, setImage] = useState("")
+  const [currentPost, setCurrentPost] = useState([]);
+  const [relatedPosts, setRelatedPosts] = useState([]);
+  const [image, setImage] = useState("");
+  const [loaded, setLoaded] = useState(false);
+
 
   const fetchCurrentPost = async ()=>{
       const response = await axios.get(`/posts/${postID}`);
       await setCurrentPost(response.data);
-      await setImage(require(`./../assets/images/${currentPost.postPhoto}`).default)
+      await setImage(require(`./../assets/images/${response.data.postPhoto}`).default);
+      setLoaded(true);
   }
 
 
   const fetchRelatedPost = async ()=> {
     const response = await axios.get(`/posts?category=${currentPost.postCategory}`);
-    // console.log(response.data)
     setRelatedPosts(response.data);
 }
 
@@ -49,8 +51,7 @@ const SinglePost = () => {
 
   console.log(currentPost)
 
-  return (currentPost == undefined || currentPost ==null ) ? (<Loader/>) : (
-    
+  return (!loaded) ? (<Loader/>) : (
     
     <div>
       <Navbar />
