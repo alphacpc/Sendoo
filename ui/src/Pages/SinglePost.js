@@ -5,6 +5,7 @@ import axios from "axios";
 
 import Navbar from "../components/Navbar";
 import Breadcrumb from "../components/Breadcrumb";
+import Loader from "../components/Loader";
 import Footer from "../components/Footer";
 
 import "./../assets/sass/SinglePost.scss";
@@ -48,7 +49,7 @@ const SinglePost = () => {
 
   console.log(currentPost)
 
-  return (currentPost == undefined || currentPost ==null ) ? (<h3>En chargement...</h3>) : (
+  return (currentPost == undefined || currentPost ==null ) ? (<Loader/>) : (
     
     
     <div>
