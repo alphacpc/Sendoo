@@ -24,6 +24,9 @@ export default function Home() {
 
   const [posts, setPosts] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const [image, setImage] = useState("");
+
+
 
   const handleClickArrow = () => {
     let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
@@ -32,14 +35,14 @@ export default function Home() {
     }
   };
 
-  // const handleSinglePost = (e) => {
-  //   window.location.replace('http://localhost:3000/single-post');
-  // }
+
 
   const fetchPosts = async ()=>{
     const res = await axios.get('/posts');
-    setPosts(res.data);
+    await setPosts(res.data);
     setLoaded(true);
+    // setImage(require(`./../assets/images/${res.data.postPhoto}`).default);
+
   }
 
   useEffect(()=>{
@@ -63,7 +66,7 @@ export default function Home() {
             {posts.map((post, index) => (
               <Grid item key={index} xs={12} className="PostItem" sm={6} md={4}>
                 <Card >
-                  <CardMedia image={myImg} title="Image title" className="cardMediaPost"/>
+                  <CardMedia image={require(`./../assets/images/${post.postPhoto}`).default} title="Image title" className="cardMediaPost"/>
                   <CardContent >
                     <Typography gutterBottom variant="h5" 
                         component="h4" 
