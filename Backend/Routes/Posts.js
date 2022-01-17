@@ -81,7 +81,7 @@ router.get("/:id", async (req, res)=>{
 // RECUPERER TOUS LES POSTS
 router.get("/", async (req, res)=>{
     const username = req.query.user;
-    const catName = req.query.category;
+    const catName = req.query.cat;
 
     try{
         let posts;
