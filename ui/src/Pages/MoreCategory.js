@@ -25,7 +25,7 @@ const MoreCategory = () => {
 
 
   const fetchAllPostCategory = async () =>{
-    const response = await axios.get(`/posts?cat=${postCategory}`);
+    const response = await axios.get(`/posts?category=${postCategory}`);
     setPostsCategory(response.data);
     setLoaded(true);
   }
@@ -33,7 +33,7 @@ const MoreCategory = () => {
 
   useEffect(() => {
     fetchAllPostCategory();
-  }, []);
+  }, [postCategory]);
 
 
 

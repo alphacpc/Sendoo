@@ -91,7 +91,7 @@ const SinglePost = () => {
   useEffect( async()=>{
     await fetchCurrentPost();
     if(loaded) fetchRelatedPost();
-  },[loaded])
+  },[loaded, postID])
 
 
   return (!loaded) ? (<Loader/>) : (
