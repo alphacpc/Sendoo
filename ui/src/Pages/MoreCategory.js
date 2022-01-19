@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import { Link, Redirect } from "react-router-dom";
+import axios from "axios";
+import { Link, useParams } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
 import CategoryList from "../components/CategoryList";
@@ -7,40 +8,32 @@ import Breadcrumb from "../components/Breadcrumb";
 import Footer from "../components/Footer";
 import Loader from "../components/Loader";
 
-
-import myImg from "./../assets/images/post10.jpg";
+import "./../assets/sass/moreCategory.scss";
 
 import {Card, CardContent, CardMedia, Grid, Typography, makeStyles} from "@material-ui/core";
-import Pagination from "@material-ui/lab/Pagination";
 
 
 const MoreCategory = () => {
 
   const classes = useStyles();
-  const cards = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17];
 
   const [loaded, setLoaded] = useState(false);
+  const [postsCategory, setPostsCategory] = useState([]);
+  const { postCategory } = useParams();
 
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
-  const POST_PER_PAGE = 9;
-  const startIndex = (page - 1) * POST_PER_PAGE;
-  const selectedPost = cards.slice(startIndex, startIndex + POST_PER_PAGE);
+  console.log(postCategory)
 
-  const handleClickPagination = (e) => {
-    let value = e + 1;
-    setPage(value)
-    document.querySelectorAll("ul li .MuiPaginationItem-page").forEach((btn) => btn.classList.remove("Mui-selected"));
-  };
 
-  const handleSinglePost = (e) => {
-    window.location.replace('http://localhost:3000/single-post');
+  const fetchAllPostCategory = async () =>{
+    const response = await axios.get(`/posts?cat=${postCategory}`);
+    setPostsCategory(response.data);
+    setLoaded(true);
   }
 
 
   useEffect(() => {
-    setTotalPages(Math.ceil(cards.length / POST_PER_PAGE));
-  }, [cards.length]);
+    fetchAllPostCategory();
+  }, []);
 
 
 
@@ -58,26 +51,24 @@ const MoreCategory = () => {
           <div className="categoryFlexLeft">
             <Breadcrumb />
             <Grid container spacing={4}>
-              {selectedPost.map((card) => (
-                <Grid item key={card} xs={12} className="PostItem" sm={6} md={4}>
+              {postsCategory.map((post, index) => (
+                <Grid item key={index} xs={12} className="PostItem" sm={6} md={4}>
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image={myImg}
+                      image={require(`./../assets/images/${post.postPhoto}`).default}
                       title="Image title"
-                      onClick={handleSinglePost}
                     />
                     <CardContent className={classes.cardContent}>
                       <Typography   gutterBottom 
                                     variant="h5" 
                                     component="h4"
-                                    onClick={handleSinglePost}
-                                    className={classes.Title}>La nature</Typography>
+                                    className="postTitle">
+                                      <Link to={`/single-post/${post._id}`} >{post.postTitle}</Link></Typography>
                       <Typography   gutterBottom 
                                     variant="body1" 
-                                    component="p">
-                        This is a media card. You can use this section to describe
-                        the content added next time.
+                                    component="p" className="postBody">
+                          {post.postBody}
                       </Typography>
                     </CardContent>
                   </Card>
@@ -92,14 +83,7 @@ const MoreCategory = () => {
         
         </div>
 
-        <div className={classes.pagination}>
-          <Pagination
-            count={totalPages}
-            page={page}
-            onClick={ () => handleClickPagination(page)}
-            color="secondary"
-          />
-        </div>
+
       
       </div>
 
@@ -162,4 +146,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginTop: 80,
   },
+
+
+  
+
+
+
+
 }));

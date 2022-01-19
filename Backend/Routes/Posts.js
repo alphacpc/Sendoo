@@ -81,7 +81,7 @@ router.get("/:id", async (req, res)=>{
 // RECUPERER TOUS LES POSTS
 router.get("/", async (req, res)=>{
     const username = req.query.user;
-    const catName = req.query.cat;
+    const catName = req.query.category;
 
     try{
         let posts;
@@ -102,3 +102,4 @@ router.get("/", async (req, res)=>{
 })
 
 module.exports = router;
+

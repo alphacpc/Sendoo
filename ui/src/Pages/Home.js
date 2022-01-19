@@ -41,7 +41,6 @@ export default function Home() {
     const res = await axios.get('/posts');
     await setPosts(res.data);
     setLoaded(true);
-    // setImage(require(`./../assets/images/${res.data.postPhoto}`).default);
 
   }
 

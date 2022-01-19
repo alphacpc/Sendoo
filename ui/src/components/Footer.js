@@ -31,11 +31,7 @@ export default function Footer() {
         </Link>
       </div>
       <div className="TextFooter">
-        <p>
-          {" "}
-          {year} Copyright ! Template developpe par alphacpc "Developpeur Full
-          Stack"{" "}
-        </p>
+        <p>{year} Copyright ! Template developpe par alphacpc "Développeur Full Stack"</p>
       </div>
     </footer>
   );

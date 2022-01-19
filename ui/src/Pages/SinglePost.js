@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 
@@ -14,7 +14,6 @@ import { makeStyles, Container, Card, CardContent, CardMedia, Grid, Typography, 
 import Rating from "@material-ui/lab/Rating";
 
 
-import myImg2 from "./../assets/images/post3.jpg";
 import thomas from "./../assets/images/thomas.jpg";
 
 
@@ -27,6 +26,7 @@ const SinglePost = () => {
   const { postID } = useParams();
   const [currentPost, setCurrentPost] = useState([]);
   const [relatedPosts, setRelatedPosts] = useState([]);
+  const [isRelated, setIsRelated] = useState(false);
   const [image, setImage] = useState("");
   const [loaded, setLoaded] = useState(false);
 
@@ -40,16 +40,59 @@ const SinglePost = () => {
 
 
   const fetchRelatedPost = async ()=> {
+
     const response = await axios.get(`/posts?category=${currentPost.postCategory}`);
-    setRelatedPosts(response.data);
-}
+    const datas = await response.data;
+    const related = await datas.filter(data => data._id != currentPost._id);
+
+
+    if(related.length > 0){
+      setRelatedPosts(related);
+      setIsRelated(true);
+    }else{
+      setIsRelated(false);
+    }
+
+  }
+
+  const renderRelatedPost = ()=>{
+    return <>
+    
+      <h4 className="relatedPost">Articles associés</h4>
+            
+      <Grid container spacing={4}>
+        {relatedPosts.map((post, index) => (
+          <Grid item key={index} xs={12} sm={6} md={4}>
+            <Card className={classes.card}>
+              <CardMedia
+                className={classes.cardMedia}
+                image={require(`./../assets/images/${post.postPhoto}`).default}
+                title="Image title"
+              />
+              <CardContent className={classes.cardContent}>
+                <Typography gutterBottom className={classes.postRelatedTitle} variant="span" component="h4">
+                  <Link to={`/single-post/${post._id}`} >{post.postTitle}></Link>
+                </Typography>
+                <Typography className={classes.postRelatedBody}>
+                  {post.postBody}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+
+    </>;
+  }
+
+  const checkRelated = (isRelated) ? renderRelatedPost() : "";
+  
 
   useEffect( async()=>{
     await fetchCurrentPost();
-    fetchRelatedPost();
-  },[])
+    if(loaded) fetchRelatedPost();
+  },[loaded])
 
-  console.log(currentPost)
 
   return (!loaded) ? (<Loader/>) : (
     
@@ -115,29 +158,11 @@ const SinglePost = () => {
           </Grid>
         </div>
 
-        <h4 className="relatedPost">Articles associees</h4>
-        
-        <Grid container spacing={4}>
-          {relatedPosts.map((post, index) => (
-            <Grid item key={index} xs={12} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={myImg2}
-                  title="Image title"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography gutterBottom variant="span" component="h4">
-                    {post.postTitle}
-                  </Typography>
-                  <Typography className={classes.limitTextPostRelated}>
-                    {post.postBody}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+
+
+        <Container >
+                    {checkRelated}
+        </Container>
 
       </Container>
 
@@ -196,6 +221,23 @@ const useStyles = makeStyles((theme) => ({
 
   limitTextPostRelated: {
     color: "#444",
+
+  },
+  postRelatedTitle:{
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    display: "-webkit-box",
+    "-webkit-box-orient": "vertical",
+    "-webkit-line-clamp": 2,
+    color: "#9B0000",
+    height : "60px"
+  },
+  postRelatedBody:{
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    display: "-webkit-box",
+    "-webkit-box-orient": "vertical",
+    "-webkit-line-clamp": 3,
   },
 
   notes: {

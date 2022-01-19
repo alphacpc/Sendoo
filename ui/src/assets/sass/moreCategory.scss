@@ -1,0 +1,38 @@
+.categoryContainer{
+    padding-bottom: 140px;
+}
+
+.PostItem{
+    transition: all ease .8s;
+
+    .postBody, .postTitle{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+    .postTitle{
+        
+        -webkit-line-clamp: 2;
+
+        a{
+            color: #9B0000;
+            font-weight: bold;
+            font-size: 30px;
+            text-decoration: none;
+            transition: all ease .3s;
+        }
+        a:hover{
+            color: #F05;
+        }
+    }
+
+    .postBody{
+        -webkit-line-clamp: 3; 
+    }
+
+}
+.PostItem:hover{
+    transform: scale(1.05,1.05);
+    transition: all ease .8s;
+}

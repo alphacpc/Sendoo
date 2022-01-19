@@ -16,6 +16,13 @@ const CategoryList = () => {
     setCategories(res.data);
   }
 
+
+  // const checkPost = async (category)=>{
+  //     const res = await axios.get(`/posts?cat=${category}`);
+  //     console.log(res.data)
+  //     return (res.data.length == 0 ) ? null :   <Link className={classes.linkStyle} to={`/category/${category.name}`}>{category.name}</Link>
+  // }
+
   useEffect(()=>{
     fetchCategories();
   },[])
@@ -28,7 +35,7 @@ const CategoryList = () => {
             {
               categories.map((category, index) => {
                 return <li className={classes.itemLi} key={index}>
-                  <Link className={classes.linkStyle} to={`/category`}>{category.name}</Link>
+                  <Link className={classes.linkStyle} to={`/category/${category.name}`}>{category.name}</Link>
                 </li>
               })
             }
