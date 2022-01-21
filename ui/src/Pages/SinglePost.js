@@ -45,7 +45,6 @@ const SinglePost = () => {
     const datas = await response.data;
     const related = await datas.filter(data => data._id != currentPost._id);
 
-
     if(related.length > 0){
       setRelatedPosts(related);
       setIsRelated(true);
@@ -71,7 +70,7 @@ const SinglePost = () => {
               />
               <CardContent className={classes.cardContent}>
                 <Typography gutterBottom className={classes.postRelatedTitle} variant="span" component="h4">
-                  <Link to={`/single-post/${post._id}`} >{post.postTitle}></Link>
+                  <Link className={classes.postRelatedTitle} to={`/single-post/${post._id}`} >{post.postTitle}</Link>
                 </Typography>
                 <Typography className={classes.postRelatedBody}>
                   {post.postBody}
@@ -87,24 +86,30 @@ const SinglePost = () => {
 
   const checkRelated = (isRelated) ? renderRelatedPost() : "";
   
+  console.log(window.location.pathname);
 
   useEffect( async()=>{
     await fetchCurrentPost();
+    
     if(loaded) fetchRelatedPost();
-  },[loaded, postID])
+
+  },[loaded,postID])
 
 
   return (!loaded) ? (<Loader/>) : (
     
     <div>
+
       <Navbar />
 
-
       <div className="divImgPost">
-       <img src={image} alt={`${currentPost.postAuthor}`} />
+        
+        <img src={image} alt={`${currentPost.postAuthor}`} />
+      
       </div>
 
       <Container>
+
         <Breadcrumb />
 
         <div className={classes.root}>
@@ -160,9 +165,7 @@ const SinglePost = () => {
 
 
 
-        <Container >
-                    {checkRelated}
-        </Container>
+        <Container >{checkRelated}</Container>
 
       </Container>
 
@@ -230,7 +233,12 @@ const useStyles = makeStyles((theme) => ({
     "-webkit-box-orient": "vertical",
     "-webkit-line-clamp": 2,
     color: "#9B0000",
-    height : "60px"
+    height : "70px",
+    textDecoration: "none",
+    fontSize: 30,
+    "&:hover": {
+      color: "#f05",
+    },
   },
   postRelatedBody:{
     overflow: "hidden",
