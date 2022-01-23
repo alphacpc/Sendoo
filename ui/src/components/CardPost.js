@@ -14,7 +14,8 @@ const CardPost = ({post, index}) => {
                 
                 <CardContent className={classes.cardContent}>
                     <Typography gutterBottom  variant="h5" component="h4" className="postTitle">
-                        <Link to={`/single-post/${post._id}`} >{post.postTitle}</Link></Typography>
+                        <Link to={`/single-post/${post._id}`} >{post.postTitle}</Link>
+                    </Typography>
                     
                     <Typography gutterBottom variant="body1" component="p" className="postBody">
                         {post.postBody}
@@ -31,7 +32,7 @@ export default CardPost;
 
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     card: {
       height: "100%",
       display: "flex",

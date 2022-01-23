@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 
@@ -7,10 +7,11 @@ import Navbar from "../components/Navbar";
 import Breadcrumb from "../components/Breadcrumb";
 import Loader from "../components/Loader";
 import Footer from "../components/Footer";
+import CardPost from "../components/CardPost";
 
 import "./../assets/sass/SinglePost.scss";
 
-import { makeStyles, Container, Card, CardContent, CardMedia, Grid, Typography, Avatar, Box } from "@material-ui/core";
+import { makeStyles, Container, Grid, Typography, Avatar, Box } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 
 
@@ -55,33 +56,15 @@ const SinglePost = () => {
   }
 
   const renderRelatedPost = ()=>{
-    return <>
+    return <React.Fragment>
     
       <h4 className="relatedPost">Articles associés</h4>
             
       <Grid container spacing={4}>
-        {relatedPosts.map((post, index) => (
-          <Grid item key={index} xs={12} sm={6} md={4}>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.cardMedia}
-                image={require(`./../assets/images/${post.postPhoto}`).default}
-                title="Image title"
-              />
-              <CardContent className={classes.cardContent}>
-                <Typography gutterBottom className={classes.postRelatedTitle} variant="span" component="h4">
-                  <Link className={classes.postRelatedTitle} to={`/single-post/${post._id}`} >{post.postTitle}</Link>
-                </Typography>
-                <Typography className={classes.postRelatedBody}>
-                  {post.postBody}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
+        { relatedPosts.map((post, index) => <CardPost post={post} index={index}/>) }
       </Grid>
 
-    </>;
+    </React.Fragment>;
   }
 
   const checkRelated = (isRelated) ? renderRelatedPost() : "";
@@ -161,8 +144,6 @@ const SinglePost = () => {
           </Grid>
         </div>
 
-
-
         <Container >{checkRelated}</Container>
 
       </Container>
@@ -198,52 +179,6 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 2,
     fontSize: 18,
     textAlign: "justify",
-  },
-
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-
-  card: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    boxShadow: "0 4px 5px 0 #000",
-  },
-
-  cardMedia: {
-    paddingTop: "56.25%", // 16:9
-  },
-
-  cardContent: {
-    flexGrow: 1,
-  },
-
-  limitTextPostRelated: {
-    color: "#444",
-
-  },
-  postRelatedTitle:{
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    display: "-webkit-box",
-    "-webkit-box-orient": "vertical",
-    "-webkit-line-clamp": 2,
-    color: "#9B0000",
-    height : "70px",
-    textDecoration: "none",
-    fontSize: 30,
-    "&:hover": {
-      color: "#f05",
-    },
-  },
-  postRelatedBody:{
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    display: "-webkit-box",
-    "-webkit-box-orient": "vertical",
-    "-webkit-line-clamp": 3,
   },
 
   notes: {
