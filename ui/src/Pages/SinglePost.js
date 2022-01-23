@@ -85,8 +85,6 @@ const SinglePost = () => {
   }
 
   const checkRelated = (isRelated) ? renderRelatedPost() : "";
-  
-  console.log(window.location.pathname);
 
   useEffect( async()=>{
     await fetchCurrentPost();
