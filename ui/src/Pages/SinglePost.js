@@ -44,7 +44,7 @@ const SinglePost = () => {
 
     const response = await axios.get(`/posts?category=${currentPost.postCategory}`);
     const datas = await response.data;
-    const related = await datas.filter(data => data._id != currentPost._id);
+    const related = await datas.filter(data => data._id !== currentPost._id);
 
     if(related.length > 0){
       setRelatedPosts(related);

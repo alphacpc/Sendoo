@@ -9,7 +9,7 @@ const Loader = () => {
     return (
         <div className='divLoader'>
             <div className='divImg'>
-                <img src={imgLogo}/>
+                <img src={imgLogo} alt="logo sendoo"/>
             </div>        
         </div>
     )

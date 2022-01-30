@@ -18,7 +18,7 @@ const SettingProfile = () => {
 
         <div style={BlocStyleDashboard.Content}>
           <Box>
-            <h1>Mettre a jour le compte</h1>
+            <h1>Méttre à jour le compte</h1>
           </Box>
 
           <Box

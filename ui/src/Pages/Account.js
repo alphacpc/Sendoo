@@ -29,9 +29,7 @@ const Account = () => {
               alignItems: "center",
             }}>
             <Typography variant="span" component="h1">Détails du compte</Typography>
-            <Typography variant="p" style={{ color: "red" }}>
-              Supprimer le compte
-            </Typography>
+            <Typography variant="p" style={{ color: "red", cursor:"pointer" }}>Supprimer le compte</Typography>
           </Box>
 
           <Box sx={{ height: "90%", display: "flex", alignItems: "center",}}>

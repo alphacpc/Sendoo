@@ -4,8 +4,7 @@ import { Avatar, Box, Button, Divider, List, ListItem, Typography,} from "@mater
 
 import {Context} from "./../context/Context"
 
-import { SettingsOutlined, PostAddOutlined, AccountBoxOutlined, LockOutlined, HomeOutlined,
-  FolderOutlined } from "@material-ui/icons";
+import { SettingsOutlined, PostAddOutlined, AccountBoxOutlined, LockOutlined, HomeOutlined,FolderOutlined } from "@material-ui/icons";
 
 import ProfileImg from "./../assets/images/thomas.jpg";
 
@@ -83,7 +82,7 @@ const DashboardSlideBar = () => {
           <span className="status online"></span>
         </div>
 
-        <Typography color="textPrimary" variant="body1"> {user.userFname +" "+ user.userMname+" "+user.userLname}  </Typography>
+        <Typography color="textPrimary" variant="body1" style={{textTransform:"uppercase"}}> {user.userFname +" "+ user.userMname+" "+user.userLname}  </Typography>
         <Typography color="textSecondary" variant="body2"> {user.userJob }</Typography>
       
       </Box>

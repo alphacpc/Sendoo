@@ -1,44 +1,32 @@
-import { useState } from 'react';
-import { Box, Button, Grid, TextField, makeStyles } from '@material-ui/core';
+import { useState, useContext, useEffect } from 'react';
+import { Box, Button, Grid, TextField, Container } from '@material-ui/core';
+import { PhotoCameraSharp } from "@material-ui/icons";
 
-const states = [
-  {
-    value: 'Dakar',
-    label: 'Dakar'
-  },
-  {
-    value: 'Accra',
-    label: 'Accra'
-  },
-  {
-    value: 'Ouagadougou',
-    label: 'Ouagadougou'
-  }
-];
+import { Context } from "./../../context/Context";
 
 const SettingAccountDetails = (props) => {
   
-  const classes = useStyles();
-  
-  const [values, setValues] = useState({
-    firstName: 'Thomas',
-    lastName: 'Sankara',
-    gender: 'masculin',
-    email: 'Thomas@contact.bf',
-    phone: '',
-    state: 'BF',
-    country: 'Burkina Faso',
-    username : 'thomas',
-    job: 'Developpeur junior',
-    adresse: '',
-  });
+  const { user } = useContext(Context)
+  const [userUpdate, setUserUpdate] = useState(user)
 
   const handleChange = (event) => {
-    setValues({
-      ...values,
+    setUserUpdate({
+      ...userUpdate,
       [event.target.name]: event.target.value
     });
   };
+
+
+
+  useEffect(()=>{
+    const actualBtn = document.getElementById('inputFile');
+    const fileChosen = document.getElementById('fileChosen');
+    actualBtn.addEventListener('change', function(){
+      fileChosen.textContent = this.files[0].name
+    })
+  },[])
+
+  console.log(userUpdate)
 
   return (
     <form autoComplete="off" noValidate {...props}>
@@ -49,10 +37,10 @@ const SettingAccountDetails = (props) => {
               <TextField
                 fullWidth
                 label="Prenom"
-                name="firstName"
+                name="userFname"
                 onChange={handleChange}
                 required
-                value={values.firstName}
+                value={user.userFname}
                 variant="outlined"
               />
           </Grid>
@@ -61,10 +49,10 @@ const SettingAccountDetails = (props) => {
               <TextField
                 fullWidth
                 label="Nom de famille"
-                name="lastName"
+                name="userLname"
                 onChange={handleChange}
                 required
-                value={values.lastName}
+                value={user.userLname}
                 variant="outlined"
               />
           </Grid>
@@ -76,7 +64,7 @@ const SettingAccountDetails = (props) => {
                 name="username"
                 onChange={handleChange}
                 required
-                value={values.username}
+                value={user.userName}
                 variant="outlined"
               />
           </Grid>
@@ -85,9 +73,9 @@ const SettingAccountDetails = (props) => {
               <TextField
                 fullWidth
                 label="Genre"
-                name="gender"
+                name="userGender"
                 required
-                value={values.gender}
+                value={user.userGender}
                 variant="outlined"
               />
             </Grid>
@@ -96,10 +84,10 @@ const SettingAccountDetails = (props) => {
               <TextField
                 fullWidth
                 label="Adresse email"
-                name="email"
+                name="userEmail"
                 onChange={handleChange}
                 required
-                value={values.email}
+                value={user.userEmail}
                 variant="outlined"
               />
           </Grid>
@@ -108,10 +96,10 @@ const SettingAccountDetails = (props) => {
               <TextField
                 fullWidth
                 label="Numero de telephone"
-                name="phone"
+                name="userPhone"
                 onChange={handleChange}
                 type="number"
-                value={values.phone}
+                value={user.userPhone}
                 variant="outlined"
               />
           </Grid>
@@ -120,10 +108,10 @@ const SettingAccountDetails = (props) => {
               <TextField
                 fullWidth
                 label="Profession"
-                name="job"
+                name="userJob"
                 onChange={handleChange}
                 required
-                value={values.job}
+                value={user.userJob}
                 variant="outlined"
               />
           </Grid>
@@ -132,10 +120,10 @@ const SettingAccountDetails = (props) => {
               <TextField
                 fullWidth
                 label="Pays"
-                name="country"
+                name="userCountry"
                 onChange={handleChange}
                 required
-                value={values.country}
+                value={user.userCountry}
                 variant="outlined"
               />
           </Grid>
@@ -144,17 +132,21 @@ const SettingAccountDetails = (props) => {
               <TextField
                 fullWidth
                 label="Adresse de residence"
-                name="Adress"
+                name="userAdress"
                 onChange={handleChange}
                 required
-                value={values.adresse}
+                value={user.userAdress}
                 variant="outlined"
               />
           </Grid>
 
         </Grid>
 
-        <Button color="primary" className={classes.addPictute} variant="file"><input type="file" /></Button>
+        <Container color="primary" className="containerAddFile">
+          <label htmlFor="inputFile"><PhotoCameraSharp id="iconPicture"/>Ajouter une photo</label>
+          <span id="fileChosen">No file chosen</span>
+          <input type="file" id="inputFile" hidden/>
+        </Container>
       
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
           <Button color="primary" variant="contained">Enregistrer</Button>
@@ -167,10 +159,4 @@ const SettingAccountDetails = (props) => {
 export default SettingAccountDetails;
 
 
-const useStyles = makeStyles((theme) => ({
-  addPictute:{
-    backgroundColor: 'yellow',
-    marginTop: 20
-  }
-}));
 

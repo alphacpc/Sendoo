@@ -1,5 +1,5 @@
 import React , { useContext, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 import "./../assets/sass/Login.scss";
@@ -18,8 +18,7 @@ export default function Login() {
   const [signin, setSignin ] = useState(signinInit);
   const [submited, setSubmited ] = useState(false);
   const [msgError, setError ] = useState("");
-  const history = useHistory();
-  const {dispatch, isFetching } = useContext(Context)
+  const {dispatch, } = useContext(Context)
 
   const handleChange = (e) => {
     setSignin({...signin , [e.target.id] : e.target.value });
@@ -34,26 +33,12 @@ export default function Login() {
     try{
       const res = await axios.post("auth/connexion", signin);
       dispatch({type: "LOGIN_SUCCESS", payload: res.data})
-      // await setTimeout(()=>{
-      //   history.push("/account")      
-      // },2000)
     }catch(error){
       dispatch({type: "LOGIN_FAILURE"});
       setError("Email(ou nom d'utilisateur) ou mot de passe incorrect !")
     }
 
-    // try{
-    //   const user = await axios.post("auth/connexion", signin);
-    //   await setTimeout(()=>{
-    //     history.push("/account")      
-    //   },2000)
-    // }
-    // catch(err){
-    //   setError("Email(ou nom d'utilisateur) ou mot de passe incorrect !")
-    // }
   }
-
-  // console.log(isFetching);
 
   const checkBtnSubmit = () => {
     
@@ -83,7 +68,7 @@ export default function Login() {
         </div>
 
         <div className="divHandleMessage LoginPage">
-          { msgError != "" && <p className="paraError">{msgError}</p>}
+          { msgError !== "" && <p className="paraError">{msgError}</p>}
         </div>
 
         <div className="LoginFormGroup">

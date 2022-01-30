@@ -1,9 +1,6 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
 import {
-  Avatar,
   Box,
-  Card,
   Checkbox,
   Table,
   TableBody,

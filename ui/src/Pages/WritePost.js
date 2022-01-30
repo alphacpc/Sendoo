@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import DashboardSlideBar from "./../components/DashboardSlideBar";
 import DashboardNavbar from "./../components/DashboardNavbar";
 
@@ -6,20 +6,6 @@ import BlocStyleDashboard from "./../Styles";
 
 import { Grid, Button, TextField, Typography } from "@material-ui/core";
 
-const states = [
-  {
-    value: "Dakar",
-    label: "Dakar",
-  },
-  {
-    value: "Accra",
-    label: "Accra",
-  },
-  {
-    value: "Ouagadougou",
-    label: "Ouagadougou",
-  },
-];
 
 const WritePost = () => {
   return (

@@ -54,7 +54,7 @@ export default function Header() {
             { user && (
               <div className="divUserConnected">
                 <div>
-                  <img src={thomas}/>
+                  <img src={thomas} alt="thomas"/>
                 </div>
                 <button onClick={handleLogout} className="btnLogout">{user && "Déconnexion"}</button>
             </div>

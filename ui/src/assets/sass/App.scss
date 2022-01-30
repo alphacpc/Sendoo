@@ -130,3 +130,28 @@ h3.titleAbout {
        height: 100% !important;
    }
 }
+
+// ********Update Account******/
+.containerAddFile{
+    margin: 40px 0;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    label{
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        margin-right: 10px;
+        cursor: pointer;
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+    #iconPicture{
+        margin-right: 10px;
+    }
+
+    label:hover{
+        background-color: rgb(32, 102, 32);
+    }
+}

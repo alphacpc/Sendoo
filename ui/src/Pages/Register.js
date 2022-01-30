@@ -22,7 +22,7 @@ export default function Register() {
   const [ signunInit, setSignunInit ] = useState(initData);
   const [msgError, setError ] = useState("");
   const [msgSuccess, setSuccess ] = useState("");
-  const [submited, setSubmited ] = useState(false);
+  const [submited ] = useState(false);
   const history = useHistory();
 
   const handleChange = (e) => {
@@ -77,8 +77,8 @@ export default function Register() {
         
         {/* Check Handle Message */}
         <div className="divHandleMessage RegisterPage">
-          { msgError!= "" && <p className="paraError">{msgError}</p>}
-          { msgSuccess != "" && <p className="paraSuccess">{msgSuccess}</p>}
+          { msgError!== "" && <p className="paraError">{msgError}</p>}
+          { msgSuccess !== "" && <p className="paraSuccess">{msgSuccess}</p>}
         </div>
         
         <div className="RegisterFormGroup">
