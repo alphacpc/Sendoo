@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import { Context } from "./context/Context";
 
 import './assets/sass/FixedNavbar.scss';
 import './assets/sass/App.scss';
@@ -24,12 +26,11 @@ import FourToFour from "./Pages/404";
 
 function App() {
 
+  const {user} = useContext(Context);
 
   window.addEventListener('scroll', ()=>{
       const navFixedElement = document.getElementById('navbar-fixed');
       const arrowElement = document.querySelector('.Arrow');
-      //const homePageElement = document.querySelector('.HomePage');
-
 
       if(window.scrollY > 100){
         navFixedElement && navFixedElement.classList.add('active');
@@ -38,56 +39,26 @@ function App() {
       else{
           navFixedElement && navFixedElement.classList.remove('active');
       }
-
-  })
-
+  });
 
 
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/register">
-          <Register />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/category/:postCategory">
-          <MoreCategory />
-        </Route>
-        <Route path="/single-post/:postID">
-          <SinglePost />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/contact">
-          <Contact />
-        </Route>
-        <Route path="/account">
-          <Account />
-        </Route>
-        <Route path="/setting">
-          <SettingProfile />
-        </Route>
-        <Route path="/write">
-          <WritePost />
-        </Route>
-        <Route path="/update">
-          <UpdatePost />
-        </Route>
-        <Route path="/posts">
-          <MyPosts />
-        </Route>
-        <Route path="/password">
-          <ResetPassword />
-        </Route>
-        <Route path="*">
-          <FourToFour />
-        </Route>
+        <Route exact path="/"><Home /></Route>
+        <Route path="/register">{user? <Home/> :  <Register />}</Route>
+        <Route path="/login">{user? <Home/> :  <Login />}</Route>
+        <Route path="/category/:postCategory"><MoreCategory /></Route>
+        <Route path="/single-post/:postID"><SinglePost /></Route>
+        <Route path="/about"><About /></Route>
+        <Route path="/contact"><Contact /></Route>
+        <Route path="/account">{user? <Account /> : <Login/>}</Route>
+        <Route path="/setting">{user? <SettingProfile /> : <Login/>}</Route>
+        <Route path="/write">{user? <WritePost /> : <Login/>}</Route>
+        <Route path="/update">{user? <UpdatePost /> : <Login/>}</Route>
+        <Route path="/posts">{user? <MyPosts /> : <Login/>}</Route>
+        <Route path="/password">{user? <ResetPassword /> : <Login/>}</Route>
+        <Route path="*"><FourToFour /></Route>
       </Switch>
     </Router>
   );

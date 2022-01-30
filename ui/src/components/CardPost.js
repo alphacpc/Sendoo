@@ -3,9 +3,11 @@ import {Card, CardContent, CardMedia, Grid, Typography, makeStyles} from "@mater
 import { Link } from "react-router-dom";
 
 
-const CardPost = ({post, index}) => {
+const CardPost = ({post, index, reload=false}) => {
 
     const classes = useStyles();
+
+    // console.log(reload)
 
     return <React.Fragment>
         <Grid item key={index} xs={12} className="PostItem" sm={6} md={4}>
@@ -14,7 +16,7 @@ const CardPost = ({post, index}) => {
                 
                 <CardContent className={classes.cardContent}>
                     <Typography gutterBottom  variant="h5" component="h4" className="postTitle">
-                        <Link to={`/single-post/${post._id}`} >{post.postTitle}</Link>
+                        {(reload)? <a href={`/single-post/${post._id}`}>{post.postTitle}</a> : <Link to={`/single-post/${post._id}`} >{post.postTitle}</Link> }
                     </Typography>
                     
                     <Typography gutterBottom variant="body1" component="p" className="postBody">

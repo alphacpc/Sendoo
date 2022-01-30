@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
+
+import { Context } from "../context/Context";
 
 import { makeStyles, Toolbar, Typography, AppBar } from "@material-ui/core";
 import PersonAddOutlinedIcon from "@material-ui/icons/PersonAddOutlined";
@@ -8,11 +10,17 @@ import PermIdentityOutlinedIcon from "@material-ui/icons/PermIdentityOutlined";
 import "./../assets/sass/FixedNavbar.scss";
 import "./../assets/sass/Navbar.scss";
 import Logo from "./../assets/images/Logo/Sendoo4.png";
+import thomas from "./../assets/images/thomas.jpg";
 
 
 export default function Header() {
+
+  const {user, dispatch} = useContext(Context);
   
   const classes = useStyles();
+
+  const handleLogout = ()=> dispatch({type:"LOGOUT"});
+  
 
   return (
     <React.Fragment>
@@ -28,17 +36,29 @@ export default function Header() {
               <Link variant="button" color="textPrimary" to="/" className={classes.link}>Accueil</Link>
               <Link variant="button" color="textPrimary" to="/about" className={classes.link}>A propos</Link>
               <Link variant="button" color="textPrimary" to="/contact" className={classes.link}>Contact</Link>
+              {user && <Link variant="button" color="textPrimary" to="/account" className={classes.link}>Mon compte</Link>}
             </nav>
 
-            <div className="linksAuth">
-              <Link variant="button" color="textPrimary" to="/register" className={classes.link}>
-                <PersonAddOutlinedIcon /> <span class="textAuth">Inscription</span>
-              </Link>
+            {!user && (
+              <div className="linksAuth">
+                <Link variant="button" color="textPrimary" to="/register" className={classes.link}>
+                  <PersonAddOutlinedIcon /> <span class="textAuth">Inscription</span>
+                </Link>
 
-              <Link variant="button" color="textPrimary" to="/login" className={classes.link}>
-                <PermIdentityOutlinedIcon /> <span class="textAuth">Connexion</span>
-              </Link>
+                <Link variant="button" color="textPrimary" to="/login" className={classes.link}>
+                  <PermIdentityOutlinedIcon /> <span class="textAuth">Connexion</span>
+                </Link>
             </div>
+            )}
+
+            { user && (
+              <div className="divUserConnected">
+                <div>
+                  <img src={thomas}/>
+                </div>
+                <button onClick={handleLogout} className="btnLogout">{user && "Déconnexion"}</button>
+            </div>
+            )}
 
           </Toolbar>
         </AppBar>
@@ -69,4 +89,5 @@ const useStyles = makeStyles((theme) => ({
       color: "green",
     },
   },
+
 }));

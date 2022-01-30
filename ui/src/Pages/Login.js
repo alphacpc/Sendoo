@@ -1,4 +1,4 @@
-import React , { useState } from "react";
+import React , { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
@@ -6,6 +6,7 @@ import "./../assets/sass/Login.scss";
 import Logo from "./../assets/images/Logo/Sendoo4.png";
 import { FaHome } from "react-icons/fa";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { Context } from "../context/Context";
 
 export default function Login() {
 
@@ -18,27 +19,41 @@ export default function Login() {
   const [submited, setSubmited ] = useState(false);
   const [msgError, setError ] = useState("");
   const history = useHistory();
+  const {dispatch, isFetching } = useContext(Context)
 
   const handleChange = (e) => {
     setSignin({...signin , [e.target.id] : e.target.value });
 
   }
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(signin);
     setSubmited(true);
+    dispatch({type: "LOGIN_START"});
 
     try{
-      const user = await axios.post("auth/connexion", signin);
-      await setTimeout(()=>{
-        history.push("/account")      
-      },2000)
-    }
-    catch(err){
+      const res = await axios.post("auth/connexion", signin);
+      dispatch({type: "LOGIN_SUCCESS", payload: res.data})
+      // await setTimeout(()=>{
+      //   history.push("/account")      
+      // },2000)
+    }catch(error){
+      dispatch({type: "LOGIN_FAILURE"});
       setError("Email(ou nom d'utilisateur) ou mot de passe incorrect !")
     }
+
+    // try{
+    //   const user = await axios.post("auth/connexion", signin);
+    //   await setTimeout(()=>{
+    //     history.push("/account")      
+    //   },2000)
+    // }
+    // catch(err){
+    //   setError("Email(ou nom d'utilisateur) ou mot de passe incorrect !")
+    // }
   }
+
+  // console.log(isFetching);
 
   const checkBtnSubmit = () => {
     

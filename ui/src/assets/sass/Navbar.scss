@@ -1,79 +1,32 @@
-// .Navbar{
-//     border-bottom: 2px solid #DBE6FD;
-//     height: 80px;
-//     width: 100%;
-//     position: relative;
-//     display: flex;
-//     padding: 0;
+.divUserConnected{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 12%;
+    padding-left: 20px;
 
-//     .NavLogo{
-//         flex: 1;
-//         text-align: center;
-//         img{
-//             width: 80px;
-//         }
-//     }
-//     .NavLink{
-//         flex: 4;
-//         display: flex;
-//         justify-content: flex-end;
-//         line-height: 80px;
+    > div{
+        width: 50px;
+        height: 50px;
+        img{
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            // box-shadow: 0 4px 5px 0 #000000;
+            cursor: pointer;
+        }
+    }
 
-//         ul{
-//             display: flex;
-//             padding: 0;
-//             margin: 0;
-
-//             li{
-//                 list-style: none;
-//                 line-height: 80px;
-//                 height: 80px;
-//                 margin: 0 20px;
-//                 padding: 0 10px;
-//                 transition: all ease .3s;
-//                 .Link{
-//                     text-decoration: none;
-//                     color: #343A40;
-//                     font-family: sans-serif;
-//                     letter-spacing: 2px;
-//                 }
-                
-//             }
-//             li:hover{
-//                 transition: all ease .3s;
-//                 background-color: green;
-                
-//                 .Link{
-//                     color: #fff;
-//                 }
-//             }
-//         }
-        
-//         div{
-//             .Link{
-//                 text-decoration: none;
-//                 margin: 0 20px;
-//                 padding: 4px;
-
-//             }
-//             #signin{
-//                 color: white;
-//                 background-color: #F54748;
-//                 border: 1px solid transparent;
-//                 border-radius: 50px;
-//             }
-//             #signup{
-//                 color: white;
-//                 border: 1px solid transparent;
-//                 background-color: #01937C;
-//                 border-radius: 50px;
-//             }
-//         }
-//     }
-// }
-
-@media only screen and (max-width:768px){
-    .linksAuth > span.textAuth{
-        display: none !important;
+    button{
+        cursor: pointer;
+        background-color: #f05;
+        color: white;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        padding: 5px 10px;
+        transition: all ease .3s;
+    }
+    button:hover{
+        background-color: rgb(207, 43, 98);
     }
 }

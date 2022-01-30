@@ -61,7 +61,7 @@ const SinglePost = () => {
       <h4 className="relatedPost">Articles associés</h4>
             
       <Grid container spacing={4}>
-        { relatedPosts.map((post, index) => <CardPost post={post} index={index}/>) }
+        { relatedPosts.map((post, index) => <CardPost post={post} index={index} reload={true}/>) }
       </Grid>
 
     </React.Fragment>;
@@ -72,9 +72,9 @@ const SinglePost = () => {
   useEffect( async()=>{
     await fetchCurrentPost();
     
-    if(loaded) fetchRelatedPost();
+    fetchRelatedPost();
 
-  },[loaded,postID])
+  },[loaded])
 
 
   return (!loaded) ? (<Loader/>) : (
