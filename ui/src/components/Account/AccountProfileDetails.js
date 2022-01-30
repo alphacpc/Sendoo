@@ -1,28 +1,13 @@
-import { useState } from "react";
-import { Box, CardContent, Divider, Grid, TextField, Typography, } from "@material-ui/core";
+import { Box, CardContent, Divider, Grid, TextField, } from "@material-ui/core";
 
 
-const AccountProfileDetails = (props) => {
-  const [values, setValues] = useState({
-    firstName: "Thomas",
-    lastName: "Sankara",
-    gender: "masculin",
-    email: "Thomas@contact.bf",
-    phone: "",
-    state: "BF",
-    country: "Burkina Faso",
-    username: "Thomas",
-    job: "Developpeur junior",
-    adresse: "",
-  });
+const AccountProfileDetails = ({user}) => {
 
+  console.log(user,"Dans Profile")  
 
   return (
-    <form autoComplete="off" noValidate {...props}>
+    <form autoComplete="off" >
       <Box>
-        <Typography variant="span" component="h1">
-          Details du compte
-        </Typography>
         <Divider />
         <CardContent>
           <Grid container spacing={3}>
@@ -32,7 +17,7 @@ const AccountProfileDetails = (props) => {
                 label="Prenom"
                 name="firstName"
                 required
-                value={values.firstName}
+                value={user.userFname+" "+user.userMname}
                 variant="outlined"
               />
             </Grid>
@@ -42,7 +27,7 @@ const AccountProfileDetails = (props) => {
                 label="Nom de famille"
                 name="lastName"
                 required
-                value={values.lastName}
+                value={user.userLname}
                 variant="outlined"
               />
             </Grid>
@@ -53,7 +38,7 @@ const AccountProfileDetails = (props) => {
                 label="Nom d'utilisateur"
                 name="username"
                 required
-                value={values.username}
+                value={user.userName}
                 variant="outlined"
               />
             </Grid>
@@ -64,7 +49,7 @@ const AccountProfileDetails = (props) => {
                 label="Genre"
                 name="gender"
                 required
-                value={values.gender}
+                value={user.userGender}
                 variant="outlined"
               />
             </Grid>
@@ -75,7 +60,7 @@ const AccountProfileDetails = (props) => {
                 label="Adresse email"
                 name="email"
                 required
-                value={values.email}
+                value={user.userEmail}
                 variant="outlined"
               />
             </Grid>
@@ -85,7 +70,7 @@ const AccountProfileDetails = (props) => {
                 label="Numero de telephone"
                 name="phone"
                 type="number"
-                value={values.phone}
+                value={user.userPhone}
                 variant="outlined"
               />
             </Grid>
@@ -95,7 +80,7 @@ const AccountProfileDetails = (props) => {
                 label="Profession"
                 name="job"
                 required
-                value={values.job}
+                value={user.userJob}
                 variant="outlined"
               />
             </Grid>
@@ -106,7 +91,7 @@ const AccountProfileDetails = (props) => {
                 label="Pays"
                 name="country"
                 required
-                value={values.country}
+                value={user.userCountry}
                 variant="outlined"
               />
             </Grid>
@@ -117,7 +102,7 @@ const AccountProfileDetails = (props) => {
                 label="Adresse de residence"
                 name="Adress"
                 required
-                value={values.adresse}
+                value={user.userAdress}
                 variant="outlined"
               />
             </Grid>
