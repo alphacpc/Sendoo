@@ -3,7 +3,6 @@ import { Box, CardContent, Divider, Grid, TextField, } from "@material-ui/core";
 
 const AccountProfileDetails = ({user}) => {
 
-  console.log(user,"Dans Profile")  
 
   return (
     <form autoComplete="off" >
