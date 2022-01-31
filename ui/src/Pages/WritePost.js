@@ -24,7 +24,7 @@ const WritePost = () => {
             style={{
               height: "30vh",
               backgroundColor: "#24A19C",
-              marginTop: "4vh",
+              marginTop: "2vh",
               borderRadius: "20px",
             }}
           ></Grid>

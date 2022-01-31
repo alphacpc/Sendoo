@@ -1,26 +1,17 @@
 import { useState } from "react";
-import {
-  Box,
-  Checkbox,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TablePagination,
-  TableRow,
-  Typography,
-} from "@material-ui/core";
+import { Box, Checkbox, Table, TableBody, TableCell, TableHead, TablePagination, TableRow, Typography} from "@material-ui/core";
 
-const MyPostsListResults = ({ customers, ...rest }) => {
+const MyPostsListResults = ({ customers,posts, ...rest }) => {
+
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(8);
   const [page, setPage] = useState(0);
 
   const handleSelectAll = (event) => {
     let newSelectedCustomerIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = customers.map((customer) => customer.id);
+      newSelectedCustomerIds = posts.map((post) => post._id);
     } else {
       newSelectedCustomerIds = [];
     }
@@ -72,54 +63,44 @@ const MyPostsListResults = ({ customers, ...rest }) => {
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
-                    checked={selectedCustomerIds.length === customers.length}
+                    checked={selectedCustomerIds.length === posts.length}
                     color="primary"
                     indeterminate={
                       selectedCustomerIds.length > 0 &&
-                      selectedCustomerIds.length < customers.length
+                      selectedCustomerIds.length < posts.length
                     }
                     onChange={handleSelectAll}
                   />
                 </TableCell>
                 <TableCell>Titre</TableCell>
-                <TableCell>category</TableCell>
+                <TableCell>Catégorie</TableCell>
                 <TableCell>Extrait</TableCell>
                 <TableCell>Date de publication</TableCell>
-                <TableCell>Derniere mis a jour</TableCell>
+                <TableCell>Derniere mis à jour</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {customers.slice(0, limit).map((customer) => (
+              {posts.slice(0, limit).map((post) => (
                 <TableRow
                   hover
-                  key={customer.id}
-                  selected={selectedCustomerIds.indexOf(customer.id) !== -1}
-                >
+                  key={post._id}
+                  selected={selectedCustomerIds.indexOf(post._id) !== -1}>
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={selectedCustomerIds.indexOf(customer.id) !== -1}
-                      onChange={(event) => handleSelectOne(event, customer.id)}
+                      checked={selectedCustomerIds.indexOf(post._id) !== -1}
+                      onChange={(event) => handleSelectOne(event, post._id)}
                       value="true"
                     />
                   </TableCell>
                   <TableCell>
-                    <Box
-                      sx={{
-                        alignItems: "center",
-                        display: "flex",
-                      }}
-                    >
-                      <Typography color="textPrimary" variant="body1">
-                        {customer.name}
-                      </Typography>
+                    <Box sx={{ alignItems: "center", display: "flex",}}>
+                      <Typography color="textPrimary" variant="body1">{post.postTitle}</Typography>
                     </Box>
                   </TableCell>
-                  <TableCell>{customer.email}</TableCell>
-                  <TableCell>
-                    {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
-                  </TableCell>
-                  <TableCell>{new Date().toLocaleDateString()}</TableCell>
-                  <TableCell>{new Date().toLocaleDateString()}</TableCell>
+                  <TableCell>{post.postCategory[0]}</TableCell>
+                  <TableCell>{post.postBody}</TableCell>
+                  <TableCell>{new Date(`${post.createdAt}`).toLocaleDateString()}</TableCell>
+                  <TableCell>{new Date(`${post.updatedAt}`).toLocaleDateString()}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -128,7 +109,7 @@ const MyPostsListResults = ({ customers, ...rest }) => {
       </>
       <TablePagination
         component="div"
-        count={customers.length}
+        count={posts.length}
         onPageChange={handlePageChange}
         onRowsPerPageChange={handleLimitChange}
         page={page}

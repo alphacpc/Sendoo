@@ -144,7 +144,7 @@ const SettingAccountDetails = (props) => {
 
         <Container color="primary" className="containerAddFile">
           <label htmlFor="inputFile"><PhotoCameraSharp id="iconPicture"/>Ajouter une photo</label>
-          <span id="fileChosen">No file chosen</span>
+          <span id="fileChosen">Aucun fichier choisi</span>
           <input type="file" id="inputFile" hidden/>
         </Container>
       
