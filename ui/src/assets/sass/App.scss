@@ -136,6 +136,7 @@ h3.titleAbout {
     margin: 40px 0;
     padding-left: 0 !important;
     margin-left: 0 !important;
+
     label{
         background-color: green;
         color: white;
@@ -175,3 +176,35 @@ h3.titleAbout {
         border-radius: 4px;
     }
 }
+
+
+
+//************POSTS LIST RESULT ACCOUNT**********
+.theadPost{
+    th{color: red;}
+}
+.tbodyPost{
+    font-size: 20px !important;
+    td{
+        font-size: 20px;
+    }
+    #titleValue{
+        font-size: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        height: 80px;
+        font-weight: bold;
+    }
+    #bodyValue{
+        font-size: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        height: 80px;
+    }
+} 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {Link} from "react-router-dom"
 import { Box, Checkbox, Table, TableBody, TableCell, TableHead, TablePagination, TableRow, Typography} from "@material-ui/core";
 
 const MyPostsListResults = ({ customers,posts, ...rest }) => {
@@ -59,7 +60,7 @@ const MyPostsListResults = ({ customers,posts, ...rest }) => {
       <>
         <Box sx={{ minWidth: 1050 }}>
           <Table>
-            <TableHead>
+            <TableHead className="theadPost">
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
@@ -69,8 +70,7 @@ const MyPostsListResults = ({ customers,posts, ...rest }) => {
                       selectedCustomerIds.length > 0 &&
                       selectedCustomerIds.length < posts.length
                     }
-                    onChange={handleSelectAll}
-                  />
+                    onChange={handleSelectAll}/>
                 </TableCell>
                 <TableCell>Titre</TableCell>
                 <TableCell>Catégorie</TableCell>
@@ -79,26 +79,17 @@ const MyPostsListResults = ({ customers,posts, ...rest }) => {
                 <TableCell>Derniere mis à jour</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody className="tbodyPost">
               {posts.slice(0, limit).map((post) => (
-                <TableRow
-                  hover
-                  key={post._id}
-                  selected={selectedCustomerIds.indexOf(post._id) !== -1}>
+                <TableRow hover key={post._id} selected={selectedCustomerIds.indexOf(post._id) !== -1}>
                   <TableCell padding="checkbox">
-                    <Checkbox
-                      checked={selectedCustomerIds.indexOf(post._id) !== -1}
-                      onChange={(event) => handleSelectOne(event, post._id)}
-                      value="true"
-                    />
+                    <Checkbox checked={selectedCustomerIds.indexOf(post._id) !== -1} onChange={(event) => handleSelectOne(event, post._id)} value="true"/>
                   </TableCell>
-                  <TableCell>
-                    <Box sx={{ alignItems: "center", display: "flex",}}>
-                      <Typography color="textPrimary" variant="body1">{post.postTitle}</Typography>
-                    </Box>
+                  <TableCell id="titleValue">
+                    <Link to={`/single-post/${post._id}`}>{post.postTitle}</Link>
                   </TableCell>
-                  <TableCell>{post.postCategory[0]}</TableCell>
-                  <TableCell>{post.postBody}</TableCell>
+                  <TableCell className="TableCellTitle">{post.postCategory[0]}</TableCell>
+                  <TableCell id="bodyValue">{post.postBody}</TableCell>
                   <TableCell>{new Date(`${post.createdAt}`).toLocaleDateString()}</TableCell>
                   <TableCell>{new Date(`${post.updatedAt}`).toLocaleDateString()}</TableCell>
                 </TableRow>

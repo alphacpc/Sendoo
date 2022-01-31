@@ -7,8 +7,6 @@ const CardPost = ({post, index, reload=false}) => {
 
     const classes = useStyles();
 
-    // console.log(reload)
-
     return <React.Fragment>
         <Grid item key={index} xs={12} className="PostItem" sm={6} md={4}>
             <Card className={classes.card}>

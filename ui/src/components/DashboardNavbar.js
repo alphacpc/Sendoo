@@ -2,8 +2,7 @@ import React, {useContext} from "react";
 
 import { Context } from "./../context/Context";
 
-import {  Box, Badge } from "@material-ui/core";
-import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
+import {  Box } from "@material-ui/core";
 import InputIcon from "@material-ui/icons/Input";
 
 const DashboardNavbar = () => {
@@ -15,15 +14,6 @@ const DashboardNavbar = () => {
   return (
     <div style={classes.Navbar}>
       <Box style={classes.Box}>
-        <Badge
-          badgeContent={1}
-          color="secondary"
-          variant="standard"
-          style={{ cursor: "pointer" }}
-        >
-          <NotificationsIcon />
-        </Badge>
-
         <InputIcon style={{ cursor: "pointer" }} onClick={handleLogout} />
       </Box>
     </div>
