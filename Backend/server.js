@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const multer = require("multer");
-const cors = require('cors')
+const path = require("path");
+const cors = require('cors');
 require("dotenv").config();
 const mongoose = require('mongoose');
 const connectDB = require("./Config/dbConfig");
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use(cors());
+app.use("/images", express.static(path.join(__dirname,"/images")))
 
 
 //CONNECT TO MONGODB
@@ -35,6 +37,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage : storage});
 app.post("/api/upload", upload.single("file"), (req,res)=>{
+    console.log(req.body,"dans post")
     res.status(200).json('Fichier chargée avec succes !');
 })
 

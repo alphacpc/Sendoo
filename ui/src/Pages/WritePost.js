@@ -1,4 +1,5 @@
 import React, {useState, useContext} from "react";
+import axios from "axios";
 
 import {Context} from "./../context/Context";
 
@@ -18,10 +19,13 @@ const WritePost = () => {
   const [category, setCategory] = useState("");
   const [file, setFile] = useState(null);
 
-  const handleSubmit = (e)=>{
+  const handleSubmit =async (e)=>{
     e.preventDefault();
     const newPost = {
-      title, desc, "file" :file, category
+      title,
+      "categorie":category,
+      "body":desc,
+      "username": user.userName
     }
 
     if(file){
@@ -29,11 +33,22 @@ const WritePost = () => {
       const filename = Date.now() + file.name;
       data.append("name",filename);
       data.append("file",file);
+      newPost.photo = filename;
 
-      console.log("Data dans ecrire un article", data)
-      console.log(newPost)
+      try{
+        await axios.post("/upload", data)
+      }
+      catch(err){
+        console.log("Pas d'enregistrement de l'image",err)
+      }
+    }
 
-
+    try{
+      const res = await axios.post("/posts", newPost);
+      window.location.replace("/single-post/"+res.data._id)
+    }
+    catch(err){
+      console.log(err)
     }
   }
 
@@ -46,11 +61,10 @@ const WritePost = () => {
 
         <div style={BlocStyleDashboard.Content}>
           <Typography variant="span" component="h1">Ecrire un nouveau article</Typography>
-          { file && (
-          <Grid className="divImagePost">
+        
             {file && (<img className="imagePost" src={URL.createObjectURL(file)} alt="hello"/>)}
-          </Grid>
-          )}
+          
+          
           <form autoComplete="off" onSubmit={handleSubmit} noValidate style={{ marginTop: "4vh" }}>
             <Grid container spacing={4}>
               <div className="divInputImageArticle">

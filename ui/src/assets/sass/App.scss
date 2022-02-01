@@ -159,26 +159,15 @@ h3.titleAbout {
 
 
 // *******WRITE POST CSS**********
-.divImagePost{
-    // background: linear-gradient(to right, #11468F, #041562);
-    height: 30vh;
-    border: 1px solid transparent;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    box-shadow: 0 4px 6px 0 #535353;
 
-    h2{
-        font-size: 20px;
-    }
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 20px;
-    }
+.imagePost{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    height: 30vh;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 black;
 }
 
 .divInputImageArticle{
