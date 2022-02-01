@@ -30,7 +30,6 @@ const SinglePost = () => {
   const [isRelated, setIsRelated] = useState(false);
   const [image, setImage] = useState("");
   const [loaded, setLoaded] = useState(false);
-  const PF = "http://localhost/images/"
 
 
 
@@ -39,7 +38,6 @@ const SinglePost = () => {
       // console.log(`${PF}/${response.data.postPhoto}`)
       await setCurrentPost(response.data);
       console.log(response.data)
-      // await setImage(require(`${PF}/${response.data.postPhoto}`).default);
       await setImage(`http://localhost:4040/images/${response.data.postPhoto}`);
       setLoaded(true);
   }
@@ -77,7 +75,7 @@ const SinglePost = () => {
   useEffect( async()=>{
     await fetchCurrentPost();
     
-    // fetchRelatedPost();
+    fetchRelatedPost();
 
   },[loaded])
 
@@ -119,7 +117,7 @@ const SinglePost = () => {
                 
                 <div className={classes.postTitleDate}>
                   <Typography variant="span" component="h1">{currentPost.postTitle}</Typography>
-                  <Typography variant="span" component="h5">hello
+                  <Typography variant="span" component="h5">
                     {new Date(currentPost.createdAt).toLocaleDateString()}
                   </Typography>
                 </div>
