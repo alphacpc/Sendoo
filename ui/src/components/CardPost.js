@@ -13,7 +13,7 @@ const CardPost = ({post, index, reload=false}) => {
     return <React.Fragment>
         <Grid item key={index} xs={12} className="PostItem" sm={6} md={4}>
             <Card className={classes.card}>
-                <CardMedia className={classes.cardMedia} image={require(`${PF}/${post.postPhoto}`).default} title="Image title"/>
+                <CardMedia className={classes.cardMedia} image={`http://localhost:4040/images/soudan.jpg`} title="Image title"/>
                 
                 <CardContent className={classes.cardContent}>
                     <Typography gutterBottom  variant="h5" component="h4" className="postTitle">
