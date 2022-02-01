@@ -78,11 +78,12 @@ const DashboardSlideBar = () => {
       <Box sx={{ alignItems: "center", display: "flex", flexDirection: "column", p: 2,}}>
         
         <div className="divStatus">
-          <Avatar component={RouterLink} style={{width:100, height: 100}} src={userFake.avatar} sx={{ cursor: "pointer",}} to="/account" />
+          <Avatar component={RouterLink} style={{width:100, height: 100}} src={require(`./../assets/images/${user.userPhoto}`).default} alt={user.userFname} sx={{ cursor: "pointer",}} to="/account" />
           <span className="status online"></span>
         </div>
 
-        <Typography color="textPrimary" variant="body1" style={{textTransform:"uppercase"}}> {user.userFname +" "+ user.userMname+" "+user.userLname}  </Typography>
+        {/* <Typography color="textPrimary" variant="body1" style={{textTransform:"uppercase"}}> {user.userFname +" "+ user.userMname+" "+user.userLname}  </Typography> */}
+        <Typography color="textPrimary" variant="body1" style={{textTransform:"uppercase"}}> Jules Burcez  </Typography>
         <Typography color="textSecondary" variant="body2"> {user.userJob }</Typography>
       
       </Box>

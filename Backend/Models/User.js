@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
     userAdress : { type : String, required : false, default: "" },
     userEmail : { type : String, required : true, unique : true, index: true },
     userPw : { type : String, required : true },
-    userPhoto :{ type : String, default : "", required: false }
+    userPhoto :{ type : String, default : "default-avatar.png", required: false }
     }, { timestamps : true })
 
 module.exports = mongoose.model("User", UserSchema);

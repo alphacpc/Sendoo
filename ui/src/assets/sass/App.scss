@@ -159,6 +159,28 @@ h3.titleAbout {
 
 
 // *******WRITE POST CSS**********
+.divImagePost{
+    // background: linear-gradient(to right, #11468F, #041562);
+    height: 30vh;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px 0 #535353;
+
+    h2{
+        font-size: 20px;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+}
+
 .divInputImageArticle{
     display: flex;
     align-items: center;
@@ -181,30 +203,45 @@ h3.titleAbout {
 
 //************POSTS LIST RESULT ACCOUNT**********
 .theadPost{
-    th{color: red;}
+    th{
+        color: black;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 18px;
+    }
 }
 .tbodyPost{
-    font-size: 20px !important;
-    td{
-        font-size: 20px;
+    tr{
+        border-bottom: 1px solid rgb(219, 218, 218);
     }
-    #titleValue{
-        font-size: 20px;
+    td{
+        font-size: 16px;
+        border-bottom: none;
+        letter-spacing: 1px;
+    }
+    td:nth-child(3){
+        text-transform: uppercase;
+    }
+    #titleValue a,#bodyValue{
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-box-orient: vertical;
+        height: 66px;
         -webkit-line-clamp: 2;
-        height: 80px;
-        font-weight: bold;
+    }
+    #titleValue a{
+        text-decoration: none !important;
+        color: rgb(54, 39, 39);
+        transition: all ease .3s;
+        height: 50px;
+    }
+    #titleValue a:hover{
+        color: #f05;
     }
     #bodyValue{
-        font-size: 20px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        height: 80px;
+        // -webkit-line-clamp: 2;
     }
 } 
+
+

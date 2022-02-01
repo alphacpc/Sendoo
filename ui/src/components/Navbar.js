@@ -10,7 +10,6 @@ import PermIdentityOutlinedIcon from "@material-ui/icons/PermIdentityOutlined";
 import "./../assets/sass/FixedNavbar.scss";
 import "./../assets/sass/Navbar.scss";
 import Logo from "./../assets/images/Logo/Sendoo4.png";
-import thomas from "./../assets/images/thomas.jpg";
 
 
 export default function Header() {
@@ -21,7 +20,6 @@ export default function Header() {
 
   const handleLogout = ()=> dispatch({type:"LOGOUT"});
   
-
   return (
     <React.Fragment>
       <Toolbar id="navbar-fixed" className={classes.toolbar}>
@@ -54,7 +52,7 @@ export default function Header() {
             { user && (
               <div className="divUserConnected">
                 <div>
-                  <img src={thomas} alt="thomas"/>
+                  <img src={require(`./../assets/images/${user.userPhoto}`).default} alt={user.userFname}/>
                 </div>
                 <button onClick={handleLogout} className="btnLogout">{user && "Déconnexion"}</button>
             </div>
