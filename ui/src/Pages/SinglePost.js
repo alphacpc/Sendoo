@@ -38,8 +38,9 @@ const SinglePost = () => {
       const response = await axios.get(`/posts/${postID}`);
       // console.log(`${PF}/${response.data.postPhoto}`)
       await setCurrentPost(response.data);
+      console.log(response.data)
       // await setImage(require(`${PF}/${response.data.postPhoto}`).default);
-      await setImage(`http://localhost:4040/images/soudan.jpg`);
+      await setImage(`http://localhost:4040/images/${response.data.postPhoto}`);
       setLoaded(true);
   }
 
@@ -89,8 +90,7 @@ const SinglePost = () => {
 
       <div className="divImgPost">
         
-        {/* <img src={image} alt={`${currentPost.postAuthor}`} /> */}
-        <img src={`http://localhost:4040/images/soudan.jpg`}/>
+        <img src={`http://localhost:4040/images/${currentPost.postPhoto}`} alt={`${currentPost.postAuthor}`}/>
       
       </div>
 
@@ -107,7 +107,7 @@ const SinglePost = () => {
                   className={classes.avatar}
                   src={thomas}
                 />
-                {/* <Typography variant="span" component="h5">{currentPost.postAuthor}</Typography> */}
+                <Typography variant="span" component="h5">{currentPost.postAuthor}</Typography>
                 <Typography variant="span" component="p">
                   Homme d'Etat
                 </Typography>
@@ -118,15 +118,15 @@ const SinglePost = () => {
               <div className={classes.postContent}>
                 
                 <div className={classes.postTitleDate}>
-                  {/* <Typography variant="span" component="h1">{currentPost.postTitle}</Typography> */}
+                  <Typography variant="span" component="h1">{currentPost.postTitle}</Typography>
                   <Typography variant="span" component="h5">hello
-                    {/* {new Date(currentPost.createdAt).toLocaleDateString()} */}
+                    {new Date(currentPost.createdAt).toLocaleDateString()}
                   </Typography>
                 </div>
 
                 <div className={classes.postTextContent}>
                   <Typography variant="p" component="p">
-                    {/* {currentPost.postBody} */}
+                    {currentPost.postBody}
                   </Typography>
                 </div>
               </div>
