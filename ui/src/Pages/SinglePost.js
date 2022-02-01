@@ -30,12 +30,14 @@ const SinglePost = () => {
   const [isRelated, setIsRelated] = useState(false);
   const [image, setImage] = useState("");
   const [loaded, setLoaded] = useState(false);
+  const PF = "http://localhost/images/"
+
 
 
   const fetchCurrentPost = async ()=>{
       const response = await axios.get(`/posts/${postID}`);
       await setCurrentPost(response.data);
-      await setImage(require(`./../assets/images/${response.data.postPhoto}`).default);
+      // await setImage(require(`${PF}/${response.data.postPhoto}`).default);
       setLoaded(true);
   }
 
@@ -85,7 +87,7 @@ const SinglePost = () => {
 
       <div className="divImgPost">
         
-        <img src={image} alt={`${currentPost.postAuthor}`} />
+        {/* <img src={image} alt={`${currentPost.postAuthor}`} /> */}
       
       </div>
 
