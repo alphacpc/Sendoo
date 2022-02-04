@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import { Context } from "../context/Context";
 
 import Navbar from "../components/Navbar";
 import Breadcrumb from "../components/Breadcrumb";
@@ -11,6 +12,7 @@ import CardPost from "../components/CardPost";
 
 import "./../assets/sass/SinglePost.scss";
 
+import { DeleteOutline, Edit} from "@material-ui/icons";
 import { makeStyles, Container, Grid, Typography, Avatar, Box } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 
@@ -28,8 +30,8 @@ const SinglePost = () => {
   const [currentPost, setCurrentPost] = useState([]);
   const [relatedPosts, setRelatedPosts] = useState([]);
   const [isRelated, setIsRelated] = useState(false);
-  const [image, setImage] = useState("");
   const [loaded, setLoaded] = useState(false);
+  const {user} = useContext(Context)
 
 
 
@@ -76,6 +78,11 @@ const SinglePost = () => {
 
   },[loaded])
 
+  // console.log(user)
+
+  if(user?.userName === currentPost.postAuthor){
+    console.log("Hello word user == post");
+  }
 
   return (!loaded) ? (<Loader/>) : (
     
@@ -114,10 +121,17 @@ const SinglePost = () => {
                 
                 <div className={classes.postTitleDate}>
                   <Typography variant="span" component="h1">{currentPost.postTitle}</Typography>
-                  <Typography variant="span" component="h5">
-                    {new Date(currentPost.createdAt).toLocaleDateString()}
-                  </Typography>
+                  <Typography variant="span" component="h5">{new Date(currentPost.createdAt).toLocaleDateString()}</Typography>
                 </div>
+
+                
+                {user?.userName === currentPost.postAuthor && (
+                  <div className="divUpdate">
+                    <button className="btn-edit"><Edit/>modifier</button>
+                    <button className="btn-delete"><DeleteOutline/>Supprimer</button>
+                  </div>
+                )}
+                
 
                 <div className={classes.postTextContent}>
                   <Typography variant="p" component="p">

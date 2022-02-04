@@ -17,3 +17,37 @@
     font-family: sans-serif;
     margin: 60px 0;
 }
+
+.divUpdate{
+    // background-color: rebeccapurple;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 0 40px 0;
+
+    button{
+        border: 1px solid transparent;
+        border-radius: 8px;
+        padding: 10px;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+
+        svg{
+            margin-right: 10px;
+        }
+    }
+    button:last-child{
+        margin-left: 10px;
+    }
+}
+
+.btn-edit{
+    background-color: #086E7D;
+    color: white;
+}
+
+.btn-delete{
+    background-color: #f05;
+    color: white;
+}
