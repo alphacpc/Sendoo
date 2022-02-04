@@ -6,14 +6,6 @@ import {Context} from "./../context/Context"
 
 import { SettingsOutlined, PostAddOutlined, AccountBoxOutlined, LockOutlined, HomeOutlined,FolderOutlined } from "@material-ui/icons";
 
-import ProfileImg from "./../assets/images/thomas.jpg";
-
-const userFake = {
-  avatar: ProfileImg,
-  jobTitle: "Junior Developer",
-  name: "Jules Burcez",
-};
-
 const items = [
   {
     href: "/account",

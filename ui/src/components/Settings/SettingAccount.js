@@ -1,8 +1,11 @@
 import { useState, useContext, useEffect } from 'react';
+import axios from "axios";
+
 import { Box, Button, Grid, TextField, Container } from '@material-ui/core';
 import { PhotoCameraSharp } from "@material-ui/icons";
 
 import { Context } from "./../../context/Context";
+
 
 const SettingAccountDetails = (props) => {
   
@@ -16,6 +19,12 @@ const SettingAccountDetails = (props) => {
     });
   };
 
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    const tab = userUpdate.userPhoto.split("C:\\fakepath\\");
+    userUpdate.userPhoto = tab[1];
+
+  }
 
 
   useEffect(()=>{
@@ -26,10 +35,9 @@ const SettingAccountDetails = (props) => {
     })
   },[])
 
-  console.log(userUpdate)
 
   return (
-    <form autoComplete="off" noValidate {...props}>
+    <form autoComplete="off" onSubmit={handleSubmit}>
 
       <Grid container spacing={3}>
           
@@ -40,7 +48,7 @@ const SettingAccountDetails = (props) => {
                 name="userFname"
                 onChange={handleChange}
                 required
-                value={user.userFname}
+                value={userUpdate.userFname}
                 variant="outlined"
               />
           </Grid>
@@ -52,7 +60,7 @@ const SettingAccountDetails = (props) => {
                 name="userLname"
                 onChange={handleChange}
                 required
-                value={user.userLname}
+                value={userUpdate.userLname}
                 variant="outlined"
               />
           </Grid>
@@ -61,10 +69,10 @@ const SettingAccountDetails = (props) => {
               <TextField
                 fullWidth
                 label="Nom d'utilisateur"
-                name="username"
+                name="userName"
                 onChange={handleChange}
                 required
-                value={user.userName}
+                value={userUpdate.userName}
                 variant="outlined"
               />
           </Grid>
@@ -74,8 +82,7 @@ const SettingAccountDetails = (props) => {
                 fullWidth
                 label="Genre"
                 name="userGender"
-                required
-                value={user.userGender}
+                value={userUpdate.userGender}
                 variant="outlined"
               />
             </Grid>
@@ -85,9 +92,9 @@ const SettingAccountDetails = (props) => {
                 fullWidth
                 label="Adresse email"
                 name="userEmail"
-                onChange={handleChange}
                 required
-                value={user.userEmail}
+                onChange={handleChange}
+                value={userUpdate.userEmail}
                 variant="outlined"
               />
           </Grid>
@@ -99,7 +106,7 @@ const SettingAccountDetails = (props) => {
                 name="userPhone"
                 onChange={handleChange}
                 type="number"
-                value={user.userPhone}
+                value={userUpdate.userPhone}
                 variant="outlined"
               />
           </Grid>
@@ -110,8 +117,7 @@ const SettingAccountDetails = (props) => {
                 label="Profession"
                 name="userJob"
                 onChange={handleChange}
-                required
-                value={user.userJob}
+                value={userUpdate.userJob}
                 variant="outlined"
               />
           </Grid>
@@ -122,8 +128,7 @@ const SettingAccountDetails = (props) => {
                 label="Pays"
                 name="userCountry"
                 onChange={handleChange}
-                required
-                value={user.userCountry}
+                value={userUpdate.userCountry}
                 variant="outlined"
               />
           </Grid>
@@ -134,8 +139,7 @@ const SettingAccountDetails = (props) => {
                 label="Adresse de residence"
                 name="userAdress"
                 onChange={handleChange}
-                required
-                value={user.userAdress}
+                value={userUpdate.userAdress}
                 variant="outlined"
               />
           </Grid>
@@ -145,12 +149,14 @@ const SettingAccountDetails = (props) => {
         <Container color="primary" className="containerAddFile">
           <label htmlFor="inputFile"><PhotoCameraSharp id="iconPicture"/>Ajouter une photo</label>
           <span id="fileChosen">Aucun fichier choisi</span>
-          <input type="file" id="inputFile" hidden/>
+          <input type="file" id="inputFile" name="userPhoto" onChange={handleChange}  hidden/>
         </Container>
       
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
-          <Button color="primary" variant="contained">Enregistrer</Button>
+          <Button type='submit' variant="contained"  color="primary">Enregistrer</Button>
         </Box>
+
+        
         
     </form>
   );
