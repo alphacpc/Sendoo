@@ -77,9 +77,9 @@ export default function About() {
 
             <h1 style={classes.TitleTeam}>Notre Equipe</h1>
 
-            <Grid container style={classes.DivTeam} spacing={2}>
+            <Grid container style={classes.DivTeam} id="teams" spacing={2}>
               {Teams.map((item) => (
-                <Grid item key={item} className="GridMember" style={classes.Member} xs={12} md={3}>
+                <Grid item key={item} className="GridMember" style={classes.Member} xs={5} md={3}>
                   <img
                     src={thomas} style={classes.MemberPicture}
                     width={140} height={140} alt="member sendoo"

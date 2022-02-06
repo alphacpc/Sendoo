@@ -228,9 +228,70 @@ h3.titleAbout {
     #titleValue a:hover{
         color: #f05;
     }
-    #bodyValue{
-        // -webkit-line-clamp: 2;
-    }
 } 
 
 
+
+
+
+// **********TABLETTE**********
+@media only screen and (max-width:768px) {
+    nav a{
+        font-size: 12px;
+    }
+
+    header > div{
+        padding: 0;
+        width: 100% !important;
+
+        h6{
+            flex: 1;
+        }
+        nav{
+            flex: 4;
+        }
+        .divUserConnected{
+            flex: 1;
+
+            img{
+                display: none;
+            }
+        }
+    }
+
+    .HomeContainer{
+        flex-direction: column-reverse;
+
+        .HomeCategoryList{
+            padding-left: 4%;
+            margin-bottom: 40px;
+        }
+    }
+
+    .categoryFlexDivider{
+        flex-direction: column-reverse;
+
+        .categoryFlexRight{
+            padding-left: 4%;
+            margin-bottom: 40px;
+        }
+    }
+
+    .ContactContainer .FormContact{
+        padding: 50px 4% !important;
+    }
+
+
+    #teams{
+        justify-content: flex-start !important;
+        align-items: flex-start;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        width: 100% !important;
+        div{
+            width: 20% !important;
+            margin: 20px 25px !important;
+        }
+    }
+
+}
