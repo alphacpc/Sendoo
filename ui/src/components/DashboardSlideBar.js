@@ -70,7 +70,7 @@ const DashboardSlideBar = () => {
       <Box sx={{ alignItems: "center", display: "flex", flexDirection: "column", p: 2,}}>
         
         <div className="divStatus">
-          <Avatar component={RouterLink} style={{width:100, height: 100}} src={require(`./../assets/images/${user.userPhoto}`).default} alt={user.userFname} sx={{ cursor: "pointer",}} to="/account" />
+          <Avatar component={RouterLink} style={{width:100, height: 100}} src={ `http://localhost:4040/images/${user.userPhoto}`} alt={user.userFname} sx={{ cursor: "pointer",}} to="/account" />
           <span className="status online"></span>
         </div>
 

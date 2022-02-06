@@ -7,10 +7,12 @@ import { PhotoCameraSharp } from "@material-ui/icons";
 import { Context } from "./../../context/Context";
 
 
+
 const SettingAccountDetails = (props) => {
   
-  const { user } = useContext(Context)
+  const { user, dispatch } = useContext(Context)
   const [userUpdate, setUserUpdate] = useState(user)
+  const [file, setFile] = useState(null)
 
   const handleChange = (event) => {
     setUserUpdate({
@@ -20,9 +22,32 @@ const SettingAccountDetails = (props) => {
   };
 
   const handleSubmit = async(e) => {
-    e.preventDefault()
-    const tab = userUpdate.userPhoto.split("C:\\fakepath\\");
-    userUpdate.userPhoto = tab[1];
+    e.preventDefault();
+
+    if(file){
+      const data = new FormData();
+      const filename = Date.now() + file.name;
+      data.append("name",filename);
+      data.append("file",file);
+      userUpdate.userPhoto = filename;
+
+      try{
+        await axios.post("/upload", data);
+        dispatch({type:"LOGOUT"})
+      }
+      catch(err){
+        console.log("Pas d'enregistrement de l'image",err)
+      }
+    }
+
+    try{
+      await axios.put(`users/${user._id}`, userUpdate)
+    }
+    catch(err){
+      console.log(err);
+    }
+
+    console.log(userUpdate)
 
   }
 
@@ -149,7 +174,7 @@ const SettingAccountDetails = (props) => {
         <Container color="primary" className="containerAddFile">
           <label htmlFor="inputFile"><PhotoCameraSharp id="iconPicture"/>Ajouter une photo</label>
           <span id="fileChosen">Aucun fichier choisi</span>
-          <input type="file" id="inputFile" name="userPhoto" onChange={handleChange}  hidden/>
+          <input type="file" id="inputFile" onChange={(e) => setFile(e.target.files[0])}  hidden/>
         </Container>
       
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>

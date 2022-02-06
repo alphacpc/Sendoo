@@ -52,7 +52,8 @@ export default function Header() {
             { user && (
               <div className="divUserConnected">
                 <div>
-                  <img src={require(`./../assets/images/${user.userPhoto}`).default} alt={user.userFname}/>
+                  {/* <img src={require(`./../assets/images/${user.userPhoto}`).default} alt={user.userFname}/> */}
+                  <img src={user.userPhoto && `http://localhost:4040/images/${user.userPhoto}`} alt={user.userFname}/>
                 </div>
                 <button onClick={handleLogout} className="btnLogout">{user && "Déconnexion"}</button>
             </div>
