@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {Link} from "react-router-dom"
 import { Box, Checkbox, Table, TableBody, TableCell, TableHead, TablePagination, TableRow, Typography} from "@material-ui/core";
 
 const MyPostsListResults = ({ customers,posts, ...rest }) => {
 
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
-  const [limit, setLimit] = useState(8);
+  const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(0);
 
   const handleSelectAll = (event) => {
@@ -55,10 +55,14 @@ const MyPostsListResults = ({ customers,posts, ...rest }) => {
     setPage(newPage);
   };
 
+  useEffect(() => {
+    console.log("hello world")
+  }, [page])
+
   return (
     <Box {...rest}>
       <>
-        <Box sx={{ minWidth: 1050 }}>
+        <Box>
           <Table>
             <TableHead className="theadPost">
               <TableRow>
@@ -105,10 +109,11 @@ const MyPostsListResults = ({ customers,posts, ...rest }) => {
         onRowsPerPageChange={handleLimitChange}
         page={page}
         rowsPerPage={limit}
-        rowsPerPageOptions={[5, 10]}
+        rowsPerPageOptions={[5]}
       />
     </Box>
   );
 };
 
 export default MyPostsListResults;
+
